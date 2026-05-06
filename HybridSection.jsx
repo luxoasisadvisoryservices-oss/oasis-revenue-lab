@@ -261,7 +261,7 @@ export default function HybridSection() {
               </p>
 
               <a
-                href="https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Oasis%20Revenue%20Lab"
+                href="https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Oasis%20Revenue%20Lab"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

@@ -1,6 +1,6 @@
 'use client'
 
-const WHATSAPP_CALC = 'https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20receive%20the%20free%20STR%20Pricing%20Floor%20Calculator'
+const WHATSAPP_CALC = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20receive%20the%20free%20STR%20Pricing%20Floor%20Calculator'
 
 export default function CalculatorLeadMagnet() {
   const benefits = [

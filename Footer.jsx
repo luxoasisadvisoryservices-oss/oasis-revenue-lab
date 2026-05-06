@@ -1,6 +1,6 @@
 'use client'
 
-const WHATSAPP_URL = 'https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Oasis%20Revenue%20Lab'
+const WHATSAPP_URL = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Oasis%20Revenue%20Lab'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -13,7 +13,7 @@ export default function Footer() {
       { label: 'Pricing', href: '#pricing' },
     ],
     Resources: [
-      { label: 'Free Floor Calculator', href: 'https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20the%20free%20calculator' },
+      { label: 'Free Floor Calculator', href: 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20the%20free%20calculator' },
       { label: 'Why It Matters', href: '#why' },
       { label: 'Global Markets', href: '#global' },
     ],

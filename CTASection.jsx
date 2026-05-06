@@ -1,7 +1,7 @@
 'use client'
 
-const WHATSAPP_URL = 'https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Oasis%20Revenue%20Lab'
-const WHATSAPP_CALC = 'https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20receive%20the%20free%20STR%20Pricing%20Floor%20Calculator'
+const WHATSAPP_URL = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Oasis%20Revenue%20Lab'
+const WHATSAPP_CALC = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20receive%20the%20free%20STR%20Pricing%20Floor%20Calculator'
 
 export default function CTASection() {
   return (

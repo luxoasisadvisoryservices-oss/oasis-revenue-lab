@@ -85,7 +85,7 @@ npm start
 Before going live, replace these placeholders:
 
 ### WhatsApp number
-Search for `971XXXXXXXXX` across all component files and replace with the real UAE WhatsApp number.
+Search for `971527604550` across all component files and replace with the real UAE WhatsApp number.
 
 ### Email address
 Replace `info@luxoasisadvisory.com` with the live business email.

@@ -211,7 +211,7 @@ export default function AIProductSection() {
             Delivered via Telegram or Slack. Pricing decisions stay with you—the agent never changes your prices automatically. Intelligence only.
           </p>
           <a
-            href="https://wa.me/971XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20the%20AI%20Revenue%20Agent"
+            href="https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20the%20AI%20Revenue%20Agent"
             target="_blank"
             rel="noopener noreferrer"
             style={{
