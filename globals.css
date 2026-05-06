@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f0e8;
+  --color-border: #e8dfd0;
+  --color-border-strong: #d5c5aa;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #5a5248;
+  --color-text-muted: #8a8076;
+  --color-accent: #c49632;
+  --color-accent-hover: #a87d22;
+  --color-dark: #0d1520;
+  --color-dark-surface: #1a2332;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.10);
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Reusable button styles */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-body font-500 text-sm tracking-wide transition-all duration-200;
+  background: var(--color-accent);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 150, 50, 0.3);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-body font-500 text-sm tracking-wide transition-all duration-200;
+  background: transparent;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.btn-dark {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-body font-500 text-sm tracking-wide transition-all duration-200;
+  background: var(--color-dark);
+  color: white;
+}
+.btn-dark:hover {
+  background: var(--color-dark-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 21, 32, 0.3);
+}
+
+/* Card system */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Section spacing */
+.section-pad {
+  @apply py-20 md:py-28;
+}
+
+/* Typography helpers */
+.heading-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.label-tag {
+  @apply inline-flex items-center gap-1.5 text-xs font-body font-500 tracking-widest uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 3px; }
