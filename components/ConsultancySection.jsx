@@ -5,12 +5,12 @@ export default function ConsultancySection() {
     {
       number: '01',
       title: 'Real operator experience',
-      body: 'This is built from active STR operations—not theory. Every signal and recommendation comes from a framework tested on live listings in one of the world's most competitive short-term rental markets.',
+      body: 'This is built from active STR operations — not theory. Every signal and recommendation comes from a framework tested on live listings in one of the most competitive short-term rental markets in the world.',
     },
     {
       number: '02',
       title: 'Strategic pricing logic',
-      body: 'Floor-price discipline. Profit over occupancy. Open pricing philosophy. These aren't settings to toggle—they're strategic positions that require judgment. That's what consultancy brings.',
+      body: 'Floor-price discipline. Profit over occupancy. Open pricing philosophy. These are not settings to toggle — they are strategic positions that require judgment. That is what consultancy brings.',
     },
     {
       number: '03',
@@ -20,7 +20,7 @@ export default function ConsultancySection() {
     {
       number: '04',
       title: 'Revenue architecture',
-      body: 'Pricing is one layer. We also look at rate structure, length-of-stay restrictions, discount logic, and the relationship between occupancy and margin—across your whole portfolio.',
+      body: 'Pricing is one layer. We also look at rate structure, length-of-stay restrictions, discount logic, and the relationship between occupancy and margin — across your whole portfolio.',
     },
   ]
 
@@ -34,7 +34,6 @@ export default function ConsultancySection() {
         overflow: 'hidden',
       }}
     >
-      {/* Background accent */}
       <div
         style={{
           position: 'absolute',
@@ -57,7 +56,6 @@ export default function ConsultancySection() {
           }}
           className="grid-cols-1 lg:grid-cols-2"
         >
-          {/* Left: copy */}
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ width: '6px', height: '6px', background: 'var(--color-accent)', borderRadius: '50%' }} />
@@ -121,7 +119,7 @@ export default function ConsultancySection() {
                   lineHeight: 1.5,
                 }}
               >
-                "Pricing tools give you data. We give you a position."
+                Pricing tools give you data. We give you a position.
               </p>
               <p
                 style={{
@@ -137,7 +135,6 @@ export default function ConsultancySection() {
             </div>
           </div>
 
-          {/* Right: pillars */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {pillars.map((pillar) => (
               <div
