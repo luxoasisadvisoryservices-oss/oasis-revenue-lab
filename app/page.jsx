@@ -2,6 +2,7 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import AIProductSection from '../components/AIProductSection'
 import TelegramSection from '../components/TelegramSection'
+import OperatorCredibility from '../components/OperatorCredibility'
 import ConsultancySection from '../components/ConsultancySection'
 import HybridSection from '../components/HybridSection'
 import ProblemSection from '../components/ProblemSection'
@@ -22,6 +23,7 @@ export default function Home() {
       <Hero />
       <AIProductSection />
       <TelegramSection />
+      <OperatorCredibility />
       <ConsultancySection />
       <HybridSection />
       <ProblemSection />
