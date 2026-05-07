@@ -18,17 +18,17 @@ export default function TelegramSection() {
               Your revenue manager, one message away.
             </h2>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', margin: '0 0 20px' }}>
-              Every morning at 9:45am Gulf time, the AI sends a full intelligence brief to your Telegram. This is what it actually looks like — real data, real actions, real pricing decisions.
+              Every morning at 9:45am Gulf time, the AI sends a full intelligence brief to your Telegram. This is what it actually looks like — real signals, real pricing decisions, real actions.
             </p>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', margin: '0 0 32px' }}>
-              Not a summary. Not a chart. A clear daily brief telling you exactly what to do, why, and when.
+              Not a summary. Not a chart. A clear daily brief telling you exactly what to do, why, and when — per listing.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '36px' }}>
               {[
                 'MPI signal — are you outperforming the market?',
                 'Floor price status — are you protected?',
-                'PriceLabs prices verified daily',
-                'Unsold nights flagged — act now or let go',
+                'PriceLabs prices verified daily per unit',
+                'Unsold nights flagged with urgency level',
                 'What is coming — events, compression, seasonality',
                 'Trigger-based actions — if this then do that',
                 'Outcome tracked automatically via Hostaway',
@@ -53,7 +53,7 @@ export default function TelegramSection() {
               <div style={{ background: 'rgba(255,255,255,0.04)', padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #c49632, #a87d22)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '14px' }}>🏝</span>
+                    <span style={{ fontSize: '14px' }}>📊</span>
                   </div>
                   <div>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 600, color: 'white', margin: 0 }}>Oasis Revenue Lab</p>
@@ -63,32 +63,32 @@ export default function TelegramSection() {
                 <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>09:45 GST</span>
               </div>
 
-              <div style={{ padding: '16px', maxHeight: '600px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ padding: '16px', maxHeight: '620px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
 
                 <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '4px 12px 12px 12px', padding: '14px 16px' }}>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 700, color: 'white', margin: '0 0 4px' }}>📊 Thu 07 May | Oasis Revenue Lab</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.6)', margin: 0 }}>2 properties — AED 2,804 secured (30d) | Occ 22% | MPI 1.05</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.5)', margin: '4px 0 0' }}>🔴 1 critical &nbsp;|&nbsp; 🟡 1 monitor &nbsp;|&nbsp; 🟢 0 healthy</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.7)', margin: '0 0 3px' }}>4 properties — AED 38,400 secured (30d) | Occ 74% | MPI 1.32</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.45)', margin: 0 }}>🔴 1 critical &nbsp;|&nbsp; 🟡 1 action &nbsp;|&nbsp; 🟠 1 opportunity &nbsp;|&nbsp; 🟢 1 on track</p>
                 </div>
 
-                <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#ef4444', margin: '0 0 6px', letterSpacing: '0.06em' }}>🗺 MARKET SITUATION</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 3px' }}>🔴 Geopolitical disruption — regional demand suppressed</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 6px' }}>🔴 UAE air travel advisories active</p>
+                <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#f59e0b', margin: '0 0 6px' }}>🗺 MARKET SITUATION</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 3px' }}>🟢 JBR demand recovering — MPI trending upward week-on-week</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 6px' }}>🟡 Marina weekend compression building — Fri-Sat filling 12d out</p>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', margin: 0 }}>Intelligence updated: 2026-05-07 05:45 GST</p>
                 </div>
 
-                <div style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#f59e0b', margin: '0 0 8px' }}>🟡 Oasis 1 — JBR Sea View 2BR</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>Occ 30% (+8pts vs market ✅) | ADR AED 271 | Rev 30d AED 1,084</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 8px' }}>MPI: 3d 2.8 / 7d 1.8 / 30d 1.4 — strongly outperforming ✅</p>
+                <div style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#4ade80', margin: '0 0 8px' }}>🟢 Luxury 2 Bedroom — Marina View</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>Occ 82% (+21pts vs market ✅) | ADR AED 920 | Rev 30d AED 14,800</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 8px' }}>MPI: 3d 1.8 / 7d 1.6 / 30d 1.61 — strongly outperforming ✅</p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '8px', marginBottom: '8px' }}>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#ef4444', margin: '0 0 3px', fontWeight: 600 }}>🚨 Unsold 3-5d out: Mon 11, Tue 12, Wed 13 May — act now</p>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', margin: 0 }}>💪 Ahead of market — hold or test +5% base</p>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', margin: '0 0 3px', fontWeight: 600 }}>💪 Weekend demand strong — MPI accelerating</p>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: 0 }}>Consider testing rate ceiling +8% next Fri-Sat. Demand can absorb it.</p>
                   </div>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '8px' }}>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.4)', margin: '0 0 4px', fontWeight: 600, letterSpacing: '0.04em' }}>PRICELABS — VERIFIED CORRECT</p>
-                    {[['Mon 11 May','AED 375'],['Tue 12 May','AED 387'],['Fri 15 May','AED 363'],['Sat 16 May','AED 363']].map(([d,p]) => (
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.4)', margin: '0 0 4px', fontWeight: 600', letterSpacing: '0.04em' }}>PRICELABS — VERIFIED CORRECT</p>
+                    {[['Fri 09 May','AED 1,050'],['Sat 10 May','AED 1,180'],['Fri 16 May','AED 1,120'],['Sat 17 May','AED 1,200']].map(([d,p]) => (
                       <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '2px 0' }}>
                         <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.45)' }}>{d}</span>
                         <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', fontWeight: 500 }}>{p} ✓</span>
@@ -97,17 +97,17 @@ export default function TelegramSection() {
                   </div>
                 </div>
 
-                <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#ef4444', margin: '0 0 8px' }}>🔴 Oasis 2 — JBR Poolfront 1BR</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>Occ 13% (6pts behind market ⚠️) | ADR AED 430 | Rev 30d AED 1,720</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 8px' }}>MPI: 3d 3.3 / 7d 2.1 / 30d 0.7 — below market ⚠️ | Last booking: 14 days ago</p>
+                <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#f59e0b', margin: '0 0 8px' }}>🟡 Stunning View 1 Bedroom — JBR</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>Occ 58% (3pts behind market ⚠️) | ADR AED 620 | Rev 30d AED 10,850</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 8px' }}>MPI: 3d 1.2 / 7d 1.1 / 30d 0.94 — slight lag vs market</p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '8px', marginBottom: '8px' }}>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#ef4444', margin: '0 0 3px', fontWeight: 600 }}>🚨 Unsold Mon–Wed 11-13 May — act now</p>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', margin: 0 }}>📈 Demand accelerating — MPI 2.1 to 3.3 in 3d</p>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', margin: '0 0 3px', fontWeight: 600 }}>🚨 3 unsold nights Mon-Wed next week — act now</p>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: 0 }}>Orphan gap Thu-Fri trapped by 3-night min stay. Adjust to 2 nights for this window.</p>
                   </div>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '8px' }}>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.4)', margin: '0 0 4px', fontWeight: 600, letterSpacing: '0.04em' }}>PRICELABS — VERIFIED CORRECT</p>
-                    {[['Mon 11 May','AED 399'],['Tue 12 May','AED 400'],['Fri 15 May','AED 413'],['Sat 16 May','AED 411']].map(([d,p]) => (
+                    {[['Mon 11 May','AED 580'],['Tue 12 May','AED 580'],['Wed 13 May','AED 595'],['Fri 15 May','AED 720']].map(([d,p]) => (
                       <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '2px 0' }}>
                         <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.45)' }}>{d}</span>
                         <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', fontWeight: 500 }}>{p} ✓</span>
@@ -118,21 +118,21 @@ export default function TelegramSection() {
 
                 <div style={{ background: 'rgba(196,150,50,0.08)', border: '1px solid rgba(196,150,50,0.2)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#c49632', margin: '0 0 8px' }}>📅 WHAT IS COMING</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Arafat Day — 18d out — IF pace recovers THEN hold AED 400+</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Eid Al Adha — 6-day GCC long weekend — 19d out — watch closely</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>• Summer low season Jun 1 — set min stay 5 nights, target AED 280-320</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Eid Al Adha 6-day long weekend — 19d out — Marina units: target AED 1,200-1,400</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Arafat Day public holiday — 18d out — JBR: hold AED 700+ if pace holds</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>• Summer low season Jun 1 — set min stay 5 nights, target ADR AED 550-700</p>
                 </div>
 
                 <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px 12px 12px 12px', padding: '12px 16px' }}>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: 'white', margin: '0 0 8px' }}>🎯 TRIGGER</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• IF no booking by 11pm GST tonight — apply floor override Mon 11 May</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• IF no booking tonight — drop Last Minute Rules to floor for 3 nights</p>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>• IF booking lands — hold rate 24h, then review MPI before next move</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: 'white', margin: '0 0 8px' }}>🎯 TRIGGERS</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Stunning View 1BR — IF no booking by 11pm GST — drop min stay to 2 nights Mon-Wed</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: '0 0 4px' }}>• Luxury 2BR Marina — IF Eid week shows 3+ bookings THEN raise ceiling to AED 1,350</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>• All units — verify Last Minute Rules active at 10-15% within 3 days</p>
                 </div>
 
-                <div style={{ background: 'rgba(74,222,128,0.05)', border: '1px solid rgba(74,222,128,0.15)', borderRadius: '4px 12px 12px 12px', padding: '10px 16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ background: 'rgba(74,222,128,0.04)', border: '1px solid rgba(74,222,128,0.12)', borderRadius: '4px 12px 12px 12px', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <div style={{ width: '6px', height: '6px', background: '#4ade80', borderRadius: '50%', flexShrink: 0 }} />
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.4)', margin: 0 }}>Outcome auto-measured in 7 days via Hostaway snapshot</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.4)', margin: 0 }}>Advisory only · Read-only mode · Outcomes auto-measured via Hostaway</p>
                 </div>
 
               </div>
