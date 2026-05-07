@@ -1,7 +1,5 @@
 'use client'
 
-const EMAIL_PORTFOLIO = 'mailto:info@luxoasisadvisory.com?subject=Portfolio%20Calculator%20%26%20Oasis%20Revenue%20Lab%20Enquiry&body=Hi%2C%0A%0AI%27d%20like%20to%20receive%20the%20Multi-Unit%20Portfolio%20Floor%20Price%20Calculator%20and%20learn%20more%20about%20Oasis%20Revenue%20Lab.%0A%0ANumber%20of%20units%3A%20%0AAreas%20and%20buildings%3A%20%0AWhat%20I%27m%20looking%20for%3A%20'
-
 const singleFeatures = [
   'Break-even nightly rate',
   'Hard pricing floor',
@@ -33,6 +31,14 @@ export default function CalculatorLeadMagnet() {
     link.click()
     document.body.removeChild(link)
   }
+
+  const handlePortfolioEmail = () => {
+    const subject = encodeURIComponent('Portfolio Calculator & Oasis Revenue Lab Enquiry')
+    const body = encodeURIComponent('Hi,\n\nI would like to receive the Multi-Unit Portfolio Floor Price Calculator and learn more about Oasis Revenue Lab.\n\nNumber of units: \nAreas and buildings: \nWhat I am looking for: \n\nLooking forward to hearing from you.')
+    window.location.href = 'mailto:info@luxoasisadvisory.com?subject=' + subject + '&body=' + body
+  }
+
+  const btnBase = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', border: 'none', cursor: 'pointer' }
 
   return (
     <section id="calculator" style={{ background: '#f4f0e8', padding: '100px 0' }}>
@@ -74,10 +80,7 @@ export default function CalculatorLeadMagnet() {
                 ))}
               </div>
             </div>
-            <button
-              onClick={handleDownload}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px 0', borderRadius: '8px', background: '#0d1520', color: 'white', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, textDecoration: 'none', width: '100%', border: 'none', cursor: 'pointer' }}
-            >
+            <button onClick={handleDownload} style={{ ...btnBase, background: '#0d1520', color: 'white' }}>
               Download Free Calculator
             </button>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#8a8076', textAlign: 'center', margin: '10px 0 0', fontStyle: 'italic' }}>Excel file — no sign-up required</p>
@@ -113,12 +116,9 @@ export default function CalculatorLeadMagnet() {
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)', margin: '0 0 20px', lineHeight: 1.6 }}>
               When you email us, we send the calculator along with a short overview of how Oasis Revenue Lab works. No pressure, just useful context for your operation.
             </p>
-            
-              href={EMAIL_PORTFOLIO}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px 0', borderRadius: '8px', background: '#c49632', color: 'white', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}
-            >
+            <button onClick={handlePortfolioEmail} style={{ ...btnBase, background: '#c49632', color: 'white' }}>
               Email Us to Request
-            </a>
+            </button>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.25)', textAlign: 'center', margin: '10px 0 0', fontStyle: 'italic' }}>Opens your email — we reply with the file and a brief intro</p>
           </div>
 
