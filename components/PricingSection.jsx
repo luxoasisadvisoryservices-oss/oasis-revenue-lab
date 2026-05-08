@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 
 const plans = [
   {
@@ -19,9 +19,9 @@ const plans = [
       'Unit-level recommendations',
       'Monthly performance summary',
     ],
-    cta: 'Start with AI Agent',
-    href: 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20start%20with%20the%20AI%20Revenue%20Agent',
     featured: false,
+    cta: 'Start with AI Agent',
+    msg: 'Hi, I would like to start with the AI Revenue Agent',
   },
   {
     name: 'Hybrid Revenue Management',
@@ -40,9 +40,9 @@ const plans = [
       'Rate structure optimisation',
       'Monthly performance review',
     ],
-    cta: 'Discuss Hybrid Support',
-    href: 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20discuss%20Hybrid%20Revenue%20Management',
     featured: true,
+    cta: 'Discuss Hybrid Support',
+    msg: 'Hi, I would like to discuss Hybrid Revenue Management',
   },
   {
     name: 'One-Time Consultancy',
@@ -61,16 +61,22 @@ const plans = [
       'Apartment-specific setup',
       'Portfolio review and recommendations',
     ],
-    cta: 'Book One-Time Consultancy',
-    href: 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20book%20a%20one-time%20revenue%20consultancy',
     featured: false,
+    cta: 'Book One-Time Consultancy',
+    msg: 'Hi, I would like to book a one-time revenue consultancy',
   },
 ]
 
 export default function PricingSection() {
+  const openWA = (msg) => {
+    const n = '971585089283'
+    window.open('https://wa.me/' + n + '?text=' + encodeURIComponent(msg), '_blank')
+  }
+
   return (
     <section id="pricing" style={{ background: '#faf8f5', padding: '100px 0' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+
         <div style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 56px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
             <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
@@ -83,9 +89,13 @@ export default function PricingSection() {
             Every enquiry is handled personally. No automated sales funnels — just a direct conversation about your portfolio.
           </p>
         </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px', alignItems: 'start' }}>
           {plans.map((plan) => (
-            <div key={plan.name} style={{ background: plan.featured ? '#0d1520' : 'white', border: plan.featured ? '1.5px solid rgba(196,150,50,0.35)' : '1px solid #e8dfd0', borderRadius: '14px', padding: '36px 32px', position: 'relative', boxShadow: plan.featured ? '0 12px 40px rgba(13,21,32,0.14)' : '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)' }}>
+            <div
+              key={plan.name}
+              style={{ background: plan.featured ? '#0d1520' : 'white', border: plan.featured ? '1.5px solid rgba(196,150,50,0.35)' : '1px solid #e8dfd0', borderRadius: '14px', padding: '36px 32px', position: 'relative', boxShadow: plan.featured ? '0 12px 40px rgba(13,21,32,0.14)' : '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)' }}
+            >
               {plan.badge && (
                 <div style={{ position: 'absolute', top: '-1px', left: '24px', background: '#c49632', padding: '4px 14px', borderRadius: '0 0 8px 8px', fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 600, color: 'white', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                   {plan.badge}
@@ -108,12 +118,16 @@ export default function PricingSection() {
               {plan.note && (
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: plan.featured ? 'rgba(255,255,255,0.3)' : '#8a8076', margin: '0 0 20px', fontStyle: 'italic', lineHeight: 1.55 }}>{plan.note}</p>
               )}
-              <a href={plan.href} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, textDecoration: 'none', background: plan.featured ? '#c49632' : 'transparent', color: plan.featured ? 'white' : '#1a1a1a', border: plan.featured ? 'none' : '1.5px solid #d5c5aa' }}>
+              <button
+                onClick={() => openWA(plan.msg)}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', cursor: 'pointer', background: plan.featured ? '#c49632' : 'transparent', color: plan.featured ? 'white' : '#1a1a1a', border: plan.featured ? 'none' : '1.5px solid #d5c5aa' }}
+              >
                 {plan.cta}
-              </a>
+              </button>
             </div>
           ))}
         </div>
+
         <p style={{ textAlign: 'center', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8a8076', marginTop: '36px' }}>
           All enquiries handled personally. VAT applies where applicable. Operated by Lux Oasis Advisory &amp; Services LLC — TRN 104722180700003.
         </p>
