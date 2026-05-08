@@ -3,15 +3,20 @@
 export default function OperatorCredibility() {
   const openWA = () => {
     const n = '971585089283'
-    const m = encodeURIComponent('Hi, I would like to talk to the Oasis Revenue Lab revenue team')
+    const m = encodeURIComponent('Hi, I would like to speak with the Oasis Revenue Lab revenue team about my operation')
     window.open('https://wa.me/' + n + '?text=' + m, '_blank')
   }
 
   return (
     <section id="about" style={{ background: '#faf8f5', padding: '100px 0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .credibility-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+      `}</style>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+        <div className="credibility-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
@@ -64,9 +69,9 @@ export default function OperatorCredibility() {
                   { name: 'Lux Oasis Advisory & Services LLC', role: 'Parent entity — UAE registered, DTCM compliant', status: 'Active' },
                 ].map((item) => (
                   <div key={item.name} style={{ padding: '14px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px', flexWrap: 'wrap', gap: '8px' }}>
                       <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white', margin: 0 }}>{item.name}</p>
-                      <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 500, color: '#4ade80', background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: '20px', padding: '2px 8px' }}>{item.status}</span>
+                      <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 500, color: '#4ade80', background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: '20px', padding: '2px 8px', whiteSpace: 'nowrap' }}>{item.status}</span>
                     </div>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.45)', margin: 0 }}>{item.role}</p>
                   </div>
@@ -84,7 +89,7 @@ export default function OperatorCredibility() {
                   { label: 'Hostaway PMS Integration', detail: 'Live booking data pipeline', color: '#4ade80' },
                   { label: 'Dubai STR Market', detail: 'Active since 2024', color: '#4ade80' },
                 ].map((item) => (
-                  <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', background: '#f4f0e8', borderRadius: '8px' }}>
+                  <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', background: '#f4f0e8', borderRadius: '8px', flexWrap: 'wrap', gap: '8px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '7px', height: '7px', background: item.color, borderRadius: '50%', flexShrink: 0 }} />
                       <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 500, color: '#1a1a1a', margin: 0 }}>{item.label}</p>
@@ -108,4 +113,3 @@ export default function OperatorCredibility() {
     </section>
   )
 }
-
