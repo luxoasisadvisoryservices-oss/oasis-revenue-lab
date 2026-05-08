@@ -26,9 +26,15 @@ export default function ConsultancySection() {
 
   return (
     <section id="consultancy" style={{ background: '#0d1520', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .consultancy-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+      `}</style>
+
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(ellipse at 90% 10%, rgba(196,150,50,0.06) 0%, transparent 60%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+        <div className="consultancy-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
