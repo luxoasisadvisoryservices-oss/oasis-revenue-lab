@@ -5,9 +5,14 @@ import Image from 'next/image'
 export default function CredentialsSection() {
   return (
     <section id="credentials" style={{ background: '#faf8f5', padding: '100px 0' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .credentials-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+      `}</style>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start', marginBottom: '64px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+        <div className="credentials-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start', marginBottom: '64px' }}>
 
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
@@ -35,7 +40,7 @@ export default function CredentialsSection() {
                 { label: 'Hostaway PMS Integration', detail: 'Live booking data pipeline', color: '#4ade80' },
                 { label: 'Active Dubai STR Portfolio', detail: 'JBR, Marina, Downtown', color: '#4ade80' },
               ].map((item) => (
-                <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'white', border: '1px solid #e8dfd0', borderRadius: '8px' }}>
+                <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'white', border: '1px solid #e8dfd0', borderRadius: '8px', flexWrap: 'wrap', gap: '8px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: '8px', height: '8px', background: item.color, borderRadius: '50%', flexShrink: 0 }} />
                     <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, color: '#1a1a1a', margin: 0 }}>{item.label}</p>
