@@ -112,8 +112,8 @@ export default function WhoWeWorkWith() {
             <path d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.7 }}>
-            <strong style={{ color: 'white', fontWeight: 500 }}>Why large operators choose AI over more headcount:</strong> A human revenue manager can actively manage 20–40 listings at best. The AI agent monitors 500 listings with the same consistency — every morning, every listing, no gaps. The cost per listing drops as you scale. The quality does not.
-          </strong></p>
+            <strong style={{ color: 'white', fontWeight: 500 }}>Why large operators choose AI over more headcount:</strong> A human revenue manager can actively manage 20 to 40 listings at best. The AI agent monitors 500 listings with the same consistency — every morning, every listing, no gaps. The cost per listing drops as you scale. The quality does not.
+          </p>
         </div>
 
         <div style={{ padding: '32px 36px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
