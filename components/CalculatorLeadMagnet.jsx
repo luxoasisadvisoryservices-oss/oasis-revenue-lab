@@ -38,10 +38,29 @@ export default function CalculatorLeadMagnet() {
     window.location.href = 'mailto:info@luxoasisadvisory.com?subject=' + subject + '&body=' + body
   }
 
-  const btnBase = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', border: 'none', cursor: 'pointer' }
+  const btnBase = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    padding: '13px 0',
+    borderRadius: '8px',
+    fontFamily: 'DM Sans, sans-serif',
+    fontSize: '13px',
+    fontWeight: 500,
+    width: '100%',
+    border: 'none',
+    cursor: 'pointer',
+  }
 
   return (
     <section id="calculator" style={{ background: '#f4f0e8', padding: '100px 0' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .calculator-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
 
         <div style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 56px' }}>
@@ -54,7 +73,7 @@ export default function CalculatorLeadMagnet() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
 
           <div style={{ background: 'white', border: '1px solid #e8dfd0', borderRadius: '14px', padding: '36px', boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
