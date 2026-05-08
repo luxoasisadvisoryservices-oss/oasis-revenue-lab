@@ -78,6 +78,12 @@ export default function HybridSection() {
 
   return (
     <section id="hybrid" style={{ background: '#f4f0e8', padding: '100px 0' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .hybrid-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
 
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 24px' }}>
@@ -93,14 +99,14 @@ export default function HybridSection() {
           </p>
         </div>
 
-        <div style={{ padding: '16px 24px', background: '#0d1520', borderRadius: '10px', marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '16px' }}>💡</span>
+        <div style={{ padding: '16px 24px', background: '#0d1520', borderRadius: '10px', marginBottom: '40px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+          <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.6 }}>
             <strong style={{ color: 'white', fontWeight: 500 }}>The AI agent is your 24/7 revenue manager:</strong> It monitors your listings, verifies PriceLabs daily, tells you exactly what prices to set, flags risks before they cost you money, and responds to any question on Telegram in seconds. Add your costs, set your goals, paste your calendar — it handles the intelligence so you handle the decisions.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+        <div className="hybrid-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
           {tiers.map((tier) => (
             <div
               key={tier.id}
@@ -118,11 +124,9 @@ export default function HybridSection() {
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#c49632', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{tier.tag}</span>
                 </div>
               </div>
-
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.7, color: tier.featured ? 'rgba(255,255,255,0.65)' : '#5a5248', margin: '0 0 20px' }}>
                 {tier.description}
               </p>
-
               <ul style={{ listStyle: 'none', margin: '0 0 20px', padding: 0 }}>
                 {tier.includes.map((item) => (
                   <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '8px' }}>
@@ -131,9 +135,7 @@ export default function HybridSection() {
                   </li>
                 ))}
               </ul>
-
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: tier.featured ? 'rgba(255,255,255,0.35)' : '#8a8076', margin: '0 0 20px', fontStyle: 'italic', lineHeight: 1.55 }}>{tier.best}</p>
-
               <button
                 onClick={() => openWA(tier.msg)}
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', cursor: 'pointer', background: tier.featured ? '#c49632' : 'transparent', color: tier.featured ? 'white' : '#1a1a1a', border: tier.featured ? 'none' : '1.5px solid #d5c5aa' }}
