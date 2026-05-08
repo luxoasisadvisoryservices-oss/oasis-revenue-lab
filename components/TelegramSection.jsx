@@ -1,8 +1,12 @@
 'use client'
 
-const WHATSAPP = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20the%20AI%20Revenue%20Agent'
-
 export default function TelegramSection() {
+  const openWA = () => {
+    const n = '971585089283'
+    const m = encodeURIComponent('Hi, I would like to ask about the AI Revenue Agent')
+    window.open('https://wa.me/' + n + '?text=' + m, '_blank')
+  }
+
   return (
     <section id="telegram" style={{ background: '#0d1520', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 30% 50%, rgba(196,150,50,0.05) 0%, transparent 55%)', pointerEvents: 'none' }} />
@@ -39,17 +43,13 @@ export default function TelegramSection() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={() => window.open(WHATSAPP, '_blank')}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#c49632', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer' }}
-            >
+            <button onClick={openWA} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#c49632', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer' }}>
               Ask About the AI Revenue Agent
             </button>
           </div>
 
           <div>
             <div style={{ background: '#1a1a2e', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.4)' }}>
-
               <div style={{ background: 'rgba(255,255,255,0.04)', padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #c49632, #a87d22)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
