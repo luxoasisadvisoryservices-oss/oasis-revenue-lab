@@ -3,62 +3,70 @@
 const tiers = [
   {
     id: 'ai',
-    label: 'AI-Only',
-    tag: 'Scalable product',
+    label: 'AI Revenue Agent',
+    tag: 'Fully autonomous',
     icon: '🤖',
-    description: 'Daily AI briefings, floor price monitoring, demand signals, and pricing recommendations — delivered to Telegram every morning. You make the final call.',
+    description: 'A 24/7 AI revenue manager that monitors your listings, verifies your PriceLabs pricing daily, flags what needs action, and tells you exactly what rates to set and why. Message it anytime on Telegram — paste your costs, set your revenue goals, ask about any unit, any date, any market signal. It responds in seconds.',
     includes: [
-      'Daily intelligence brief via Telegram',
-      'Floor price monitoring and alerts',
-      'MPI market performance tracking',
-      'Booking pace and demand signals',
-      'PriceLabs prices verified daily',
-      'Monthly performance summary',
+      'Daily intelligence brief every morning at 9:45am',
+      'PriceLabs prices verified and corrected daily',
+      'Exact rate recommendations — what to set and when',
+      'Floor price monitoring — never go below your minimum',
+      'MPI market performance vs competitors',
+      'Booking pace and demand signal alerts',
+      'Upcoming events and compression warnings',
+      'Trigger-based actions — if this then do that',
+      'Orphan gap and last-minute strategy',
+      'Revenue goal tracking and monthly summary',
+      'Paste your costs — get your floor price instantly',
+      'Ask anything on Telegram — 24/7 response',
     ],
-    best: 'For operators who understand pricing and want automated daily intelligence.',
+    best: 'For operators who want a fully autonomous AI revenue manager running in the background — without hiring anyone.',
     featured: false,
     cta: 'Start with AI Agent',
-    msg: 'Hi, I would like to start with the AI Revenue Agent',
+    msg: 'Hi, I would like to start with the AI Revenue Agent. I manage listings in ',
   },
   {
     id: 'hybrid',
     label: 'Hybrid Revenue Management',
-    tag: 'Most popular',
+    tag: 'AI plus human expertise',
     icon: '🧠',
-    description: 'AI monitoring combined with direct access to real revenue management expertise. The AI scales the intelligence. The human layer adds judgment, context, and strategy.',
+    description: 'The AI agent runs autonomously in the background — and you also get direct access to a real revenue manager for strategic decisions, market interpretation, and pricing structure that requires human judgment.',
     includes: [
-      'Everything in AI-Only',
-      'Direct revenue advisory access',
+      'Everything in AI Revenue Agent',
+      'Direct revenue manager access',
       'Strategic pricing reviews',
       'Market interpretation sessions',
-      'PriceLabs strategy guidance',
-      'Rate structure optimisation',
-      'Monthly performance review',
+      'PriceLabs strategy and setup guidance',
+      'Rate structure and floor price architecture',
+      'Seasonal strategy and event planning',
+      'Monthly performance review call',
     ],
-    best: 'For operators who want AI efficiency and human revenue management expertise working together.',
+    best: 'For operators who want the AI running autonomously plus a human revenue expert available when it matters.',
     featured: true,
     cta: 'Discuss Hybrid Support',
-    msg: 'Hi, I would like to discuss Hybrid Revenue Management',
+    msg: 'Hi, I would like to discuss Hybrid Revenue Management. My portfolio has ',
   },
   {
     id: 'consultancy',
     label: 'One-Time Setup',
     tag: 'Focused engagement',
     icon: '📋',
-    description: 'A focused revenue and pricing setup session. PriceLabs configuration, floor price architecture, rate structure, and seasonal strategy — done properly from the start.',
+    description: 'A focused revenue and pricing setup session. PriceLabs configuration, floor price architecture, rate structure, and seasonal strategy — built properly from scratch so your pricing system runs correctly from day one.',
     includes: [
-      'PriceLabs setup and review',
-      'Floor price architecture',
+      'PriceLabs full setup and review',
+      'Floor price architecture per unit',
       'Seasonal pricing strategy',
-      'Weekday and weekend logic',
-      'Event and peak strategy',
+      'Weekday and weekend rate logic',
+      'Event and peak pricing strategy',
       'Min stay optimisation',
-      'Portfolio review session',
+      'Last-minute rules configuration',
+      'Portfolio review and recommendations',
     ],
-    best: 'For operators starting fresh or needing a professional pricing structure.',
+    best: 'For operators who need a professional pricing structure built once, correctly.',
     featured: false,
     cta: 'Book Consultancy',
-    msg: 'Hi, I would like to book a one-time revenue consultancy',
+    msg: 'Hi, I would like to book a one-time revenue consultancy session',
   },
 ]
 
@@ -72,7 +80,7 @@ export default function HybridSection() {
     <section id="hybrid" style={{ background: '#f4f0e8', padding: '100px 0' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
 
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 24px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 24px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
             <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
             <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c49632' }}>How It Works</span>
@@ -81,14 +89,14 @@ export default function HybridSection() {
             The AI is not replacing revenue management expertise. It is scaling it.
           </h2>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: 0 }}>
-            Every recommendation the AI makes is built on real revenue management logic — the same logic we apply to our own listings every day. Choose the level of support that fits your operation.
+            The AI Revenue Agent runs autonomously every day — monitoring, verifying, alerting, and recommending. You stay in control. It does the work.
           </p>
         </div>
 
         <div style={{ padding: '16px 24px', background: '#0d1520', borderRadius: '10px', marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span style={{ fontSize: '16px' }}>💡</span>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.6 }}>
-            <strong style={{ color: 'white', fontWeight: 500 }}>Why the hybrid model exists:</strong> Some decisions require market context, operator judgment, and strategic thinking that no algorithm fully replaces. The hybrid model gives you both — AI speed and scale, human intelligence where it matters.
+            <strong style={{ color: 'white', fontWeight: 500 }}>The AI agent is your 24/7 revenue manager:</strong> It monitors your listings, verifies PriceLabs daily, tells you exactly what prices to set, flags risks before they cost you money, and responds to any question on Telegram in seconds. Add your costs, set your goals, paste your calendar — it handles the intelligence so you handle the decisions.
           </p>
         </div>
 
@@ -110,7 +118,11 @@ export default function HybridSection() {
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#c49632', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{tier.tag}</span>
                 </div>
               </div>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.65, color: tier.featured ? 'rgba(255,255,255,0.65)' : '#5a5248', margin: '0 0 20px' }}>{tier.description}</p>
+
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.7, color: tier.featured ? 'rgba(255,255,255,0.65)' : '#5a5248', margin: '0 0 20px' }}>
+                {tier.description}
+              </p>
+
               <ul style={{ listStyle: 'none', margin: '0 0 20px', padding: 0 }}>
                 {tier.includes.map((item) => (
                   <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '8px' }}>
@@ -119,7 +131,9 @@ export default function HybridSection() {
                   </li>
                 ))}
               </ul>
+
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: tier.featured ? 'rgba(255,255,255,0.35)' : '#8a8076', margin: '0 0 20px', fontStyle: 'italic', lineHeight: 1.55 }}>{tier.best}</p>
+
               <button
                 onClick={() => openWA(tier.msg)}
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', cursor: 'pointer', background: tier.featured ? '#c49632' : 'transparent', color: tier.featured ? 'white' : '#1a1a1a', border: tier.featured ? 'none' : '1.5px solid #d5c5aa' }}
