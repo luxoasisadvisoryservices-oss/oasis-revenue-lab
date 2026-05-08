@@ -1,7 +1,7 @@
 'use client'
 
-const WHATSAPP_AGENT = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20portfolio%20with%20Oasis%20Revenue%20Lab'
-const WHATSAPP_CALC = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20request%20the%20free%20floor%20price%20calculator'
+const WHATSAPP_AGENT = 'https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20portfolio%20with%20Oasis%20Revenue%20Lab'
+const WHATSAPP_CALC = 'https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20request%20the%20free%20floor%20price%20calculator'
 
 function DashboardMockup() {
   return (
@@ -73,7 +73,7 @@ function DashboardMockup() {
         </div>
       </div>
 
-      <div style={{ padding: '14px 20px', borderBottom: '1px solid #e8dfd0' }}>
+      <div style={{ padding: '14px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
           <div>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#1a3a5c', margin: '0 0 1px' }}>Stunning View 1 Bedroom — JBR</p>
@@ -95,15 +95,14 @@ function DashboardMockup() {
             </div>
           ))}
         </div>
-        <div style={{ padding: '8px 12px', background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '6px' }}>
+        <div style={{ padding: '8px 12px', background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '6px', marginBottom: '8px' }}>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', fontWeight: 600, margin: '0 0 2px' }}>3 unsold nights Mon-Wed next week — last-minute rules review needed</p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>MPI 7d at 1.2 — demand exists. Orphan gap Thu-Fri needs min-stay adjustment to fill.</p>
         </div>
-      </div>
-
-      <div style={{ padding: '10px 20px', background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#8a8076', margin: 0, fontStyle: 'italic' }}>Illustrative report — see live Telegram output below</p>
-        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#c49632', margin: 0, fontWeight: 500 }}>Advisory only · Read-only mode active</p>
+        <div style={{ padding: '6px 12px', background: '#f8f9fa', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <div style={{ width: '6px', height: '6px', background: '#8a8076', borderRadius: '50%', flexShrink: 0 }} />
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#8a8076', margin: 0, fontStyle: 'italic' }}>Illustrative report — see live Telegram output below</p>
+        </div>
       </div>
     </div>
   )
@@ -144,10 +143,7 @@ export default function Hero() {
             </div>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8a8076', margin: 0 }}>
               Want the free floor price calculator?{' '}
-              <button
-                onClick={() => window.open(WHATSAPP_CALC, '_blank')}
-                style={{ color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, padding: 0 }}
-              >
+              <button onClick={() => window.open(WHATSAPP_CALC, '_blank')} style={{ color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, padding: 0 }}>
                 Request it here
               </button>
             </p>
