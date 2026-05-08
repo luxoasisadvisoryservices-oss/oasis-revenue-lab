@@ -12,19 +12,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const openWhatsApp = () => {
-    const number = '971585089283'
-    const message = 'Hi, I would like to learn more about Oasis Revenue Lab'
-    const url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message)
-    window.open(url, '_blank')
+  const openWA = () => {
+    const n = '971585089283'
+    const m = encodeURIComponent('Hi, I would like to learn more about Oasis Revenue Lab')
+    window.open('https://wa.me/' + n + '?text=' + m, '_blank')
   }
-
-  const navLinks = [
-    { label: 'Features', href: '#features' },
-    { label: 'How It Works', href: '#hybrid' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'Contact', href: '#contact' },
-  ]
 
   return (
     <header style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? 'rgba(250,248,245,0.96)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none', borderBottom: scrolled ? '1px solid #e8dfd0' : '1px solid transparent', transition: 'all 0.3s ease' }}>
@@ -45,23 +37,19 @@ export default function Header() {
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => window.location.href = link.href}
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, color: '#5a5248', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#1a1a1a')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#5a5248')}
-            >
-              {link.label}
-            </button>
-          ))}
+          {['Features|#features','How It Works|#hybrid','Pricing|#pricing','Contact|#contact'].map((item) => {
+            const [label, href] = item.split('|')
+            return (
+              <button key={href} onClick={() => window.location.href = href} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, color: '#5a5248', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#1a1a1a')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#5a5248')}>
+                {label}
+              </button>
+            )
+          })}
         </div>
 
-        <button
-          onClick={openWhatsApp}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer' }}
-        >
+        <button onClick={openWA} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer' }}>
           Talk on WhatsApp
         </button>
 
