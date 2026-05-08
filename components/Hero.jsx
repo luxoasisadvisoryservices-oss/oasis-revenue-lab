@@ -1,7 +1,7 @@
 'use client'
 
-const WHATSAPP_AGENT = 'https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20portfolio%20with%20Oasis%20Revenue%20Lab'
-const WHATSAPP_CALC = 'https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20request%20the%20free%20floor%20price%20calculator'
+const WHATSAPP_AGENT = 'https://wa.me/971585089283'
+const WHATSAPP_CALC = 'https://wa.me/971585089283'
 
 function DashboardMockup() {
   return (
@@ -27,7 +27,7 @@ function DashboardMockup() {
           ].map((s) => (
             <div key={s.label} style={{ background: 'white', border: '1px solid #e8dfd0', borderRadius: '6px', padding: '10px 8px' }}>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px', color: '#8a8076', margin: '0 0 4px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{s.label}</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 700, color: s.color, margin: 0 }}>{s.value}</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 700, color: s.color, margin: 0 }}>{s.value}</p>
             </div>
           ))}
         </div>
@@ -62,14 +62,14 @@ function DashboardMockup() {
           ].map((r) => (
             <div key={r.metric} style={{ background: '#f8f9fa', borderRadius: '4px', padding: '8px' }}>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px', color: '#8a8076', margin: '0 0 2px' }}>{r.metric}</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 700, color: '#1a1a1a', margin: '0 0 2px' }}>{r.value}</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#1a1a1a', margin: '0 0 2px' }}>{r.value}</p>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px', color: '#4ade80', margin: 0 }}>{r.bench}</p>
             </div>
           ))}
         </div>
         <div style={{ padding: '8px 12px', background: 'rgba(74,222,128,0.05)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: '6px' }}>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', fontWeight: 600, margin: '0 0 2px' }}>Strong weekend demand — MPI accelerating 1.4 to 1.8 in 3d</p>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>PriceLabs AED 1,050-1,180 Fri-Sat verified correct. Consider testing ceiling +8% next weekend.</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', fontWeight: 600, margin: '0 0 2px' }}>Strong weekend demand — MPI accelerating</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>PriceLabs AED 1,050-1,180 Fri-Sat verified correct.</p>
         </div>
       </div>
 
@@ -90,14 +90,14 @@ function DashboardMockup() {
           ].map((r) => (
             <div key={r.metric} style={{ background: '#f8f9fa', borderRadius: '4px', padding: '8px' }}>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px', color: '#8a8076', margin: '0 0 2px' }}>{r.metric}</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 700, color: '#1a1a1a', margin: '0 0 2px' }}>{r.value}</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 700, color: '#1a1a1a', margin: '0 0 2px' }}>{r.value}</p>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px', color: '#f59e0b', margin: 0 }}>{r.bench}</p>
             </div>
           ))}
         </div>
         <div style={{ padding: '8px 12px', background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '6px', marginBottom: '8px' }}>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', fontWeight: 600, margin: '0 0 2px' }}>3 unsold nights Mon-Wed next week — last-minute rules review needed</p>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>MPI 7d at 1.2 — demand exists. Orphan gap Thu-Fri needs min-stay adjustment to fill.</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', fontWeight: 600, margin: '0 0 2px' }}>3 unsold nights Mon-Wed — last-minute rules review needed</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>Orphan gap Thu-Fri needs min-stay adjustment.</p>
         </div>
         <div style={{ padding: '6px 12px', background: '#f8f9fa', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
           <div style={{ width: '6px', height: '6px', background: '#8a8076', borderRadius: '50%', flexShrink: 0 }} />
@@ -109,10 +109,24 @@ function DashboardMockup() {
 }
 
 export default function Hero() {
+  const openAgent = () => {
+    window.open(WHATSAPP_AGENT + '?text=' + encodeURIComponent('Hi, I would like to discuss my STR portfolio and learn about Oasis Revenue Lab'), '_blank')
+  }
+  const openCalc = () => {
+    window.open(WHATSAPP_CALC + '?text=' + encodeURIComponent('Hi, I would like to receive the free STR Pricing Floor Calculator'), '_blank')
+  }
+
   return (
     <section style={{ paddingTop: '140px', paddingBottom: '100px', background: '#faf8f5', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .hero-trust { gap: 16px !important; }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+        <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
               <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
@@ -128,22 +142,16 @@ export default function Hero() {
               Not just software. Built by operators who actually run short-term rental portfolios in Dubai.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '28px' }}>
-              <button
-                onClick={() => window.open(WHATSAPP_AGENT, '_blank')}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, border: 'none', cursor: 'pointer' }}
-              >
+              <button onClick={openAgent} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, border: 'none', cursor: 'pointer' }}>
                 Discuss My Portfolio
               </button>
-              <button
-                onClick={() => window.location.href = '#pricing'}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: 'transparent', color: '#1a1a1a', borderRadius: '8px', border: '1.5px solid #d5c5aa', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, cursor: 'pointer' }}
-              >
+              <button onClick={() => window.location.href = '#pricing'} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: 'transparent', color: '#1a1a1a', borderRadius: '8px', border: '1.5px solid #d5c5aa', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, cursor: 'pointer' }}>
                 View Offers
               </button>
             </div>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8a8076', margin: 0 }}>
               Want the free floor price calculator?{' '}
-              <button onClick={() => window.open(WHATSAPP_CALC, '_blank')} style={{ color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, padding: 0 }}>
+              <button onClick={openCalc} style={{ color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, padding: 0 }}>
                 Request it here
               </button>
             </p>
@@ -152,7 +160,8 @@ export default function Hero() {
             <DashboardMockup />
           </div>
         </div>
-        <div style={{ marginTop: '64px', paddingTop: '32px', borderTop: '1px solid #e8dfd0', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
+
+        <div className="hero-trust" style={{ marginTop: '64px', paddingTop: '32px', borderTop: '1px solid #e8dfd0', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
           {[
             { icon: '🏙️', text: 'Built from live Dubai STR operations' },
             { icon: '🤖', text: 'AI-powered and updated daily' },
