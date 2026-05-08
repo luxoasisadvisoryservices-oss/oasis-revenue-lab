@@ -1,70 +1,107 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function CredentialsSection() {
   return (
     <section id="credentials" style={{ background: '#faf8f5', padding: '100px 0' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
 
-        <div style={{ textAlign: 'center', maxWidth: '560px', margin: '0 auto 56px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c49632' }}>Credentials and Recognition</span>
-          </div>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '-0.02em', color: '#1a1a1a', margin: '0 0 14px' }}>
-            Professional foundations. Growing recognition.
-          </h2>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: 0 }}>
-            Our credibility starts with what we actually operate. Industry recognition is being actively pursued and will be reflected here as it is achieved.
-          </p>
-        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start', marginBottom: '64px' }}>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px', marginBottom: '40px' }}>
-          {[
-            {
-              icon: '🏆',
-              title: 'HSMAI Revenue Management',
-              status: 'Certification in progress',
-              statusColor: '#c49632',
-              body: 'Hospitality Sales and Marketing Association International revenue management certification. The globally recognised standard for professional revenue managers.',
-              placeholder: 'HSMAI Badge — Arriving Soon',
-            },
-            {
-              icon: '📊',
-              title: 'PriceLabs Expert Ecosystem',
-              status: 'Active practitioner',
-              statusColor: '#4ade80',
-              body: 'Experienced with PriceLabs revenue systems — configuring strategies, floor price logic, seasonal profiles, and market intelligence for live Dubai STR portfolios.',
-              placeholder: 'PriceLabs Partner Logo — Placeholder',
-            },
-            {
-              icon: '🏙️',
-              title: 'DTCM Licensed Operations',
-              status: 'Active — UAE regulated',
-              statusColor: '#4ade80',
-              body: 'Lux Oasis Holiday Homes operates under a valid DTCM holiday homes licence. Fully compliant with Dubai tourism authority regulations.',
-              placeholder: 'DTCM Licence Badge — Placeholder',
-            },
-            {
-              icon: '🌍',
-              title: 'Industry Recognition',
-              status: 'Building — space reserved',
-              statusColor: '#8a8076',
-              body: 'Awards, case studies, client results, and industry recognition will be added here as they are achieved. We do not invent credentials — we earn them.',
-              placeholder: 'Future Awards and Badges',
-            },
-          ].map((item) => (
-            <div key={item.title} style={{ background: 'white', border: '1px solid #e8dfd0', borderRadius: '14px', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-              <div style={{ width: '52px', height: '52px', background: '#f4f0e8', border: '1px solid #d5c5aa', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', fontSize: '22px' }}>
-                {item.icon}
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+              <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c49632' }}>Who We Are</span>
+            </div>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#1a1a1a', margin: '0 0 20px' }}>
+              Revenue managers who built their own AI system.
+            </h2>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: '#5a5248', margin: '0 0 16px' }}>
+              Oasis Revenue Lab was not created by a software company. It was created by revenue managers who were frustrated with the gap between data tools and real pricing decisions.
+            </p>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: '#5a5248', margin: '0 0 16px' }}>
+              We apply HSMAI revenue management principles, hospitality pricing discipline, and real STR operational experience to every signal the AI produces. The system thinks like a revenue manager because it was built by one.
+            </p>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: '#5a5248', margin: '0 0 32px' }}>
+              We actively operate Lux Oasis Holiday Homes — a DTCM-licensed STR company in Dubai. Every recommendation we make to clients is tested on our own listings first.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {[
+                { label: 'HSMAI Revenue Management', detail: 'Certification in progress', color: '#c49632' },
+                { label: 'PriceLabs Expert Ecosystem', detail: 'Active practitioner', color: '#4ade80' },
+                { label: 'DTCM Licensed Operations', detail: 'UAE holiday homes licence', color: '#4ade80' },
+                { label: 'Hostaway PMS Integration', detail: 'Live booking data pipeline', color: '#4ade80' },
+                { label: 'Active Dubai STR Portfolio', detail: 'JBR, Marina, Downtown', color: '#4ade80' },
+              ].map((item) => (
+                <div key={item.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'white', border: '1px solid #e8dfd0', borderRadius: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '8px', height: '8px', background: item.color, borderRadius: '50%', flexShrink: 0 }} />
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, color: '#1a1a1a', margin: 0 }}>{item.label}</p>
+                  </div>
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#8a8076' }}>{item.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+            <div style={{ background: 'white', border: '1px solid #e8dfd0', borderRadius: '14px', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8a8076', margin: '0 0 20px' }}>Tools and Partnerships</p>
+
+              <div style={{ padding: '20px', background: '#f4f0e8', border: '1px solid #e8dfd0', borderRadius: '10px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ width: '52px', height: '52px', background: 'white', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 1px 4px rgba(0,0,0,0.08)' }}>
+                  <Image src="/pricelabs-logo.png" alt="PriceLabs" width={36} height={36} style={{ objectFit: 'contain' }} />
+                </div>
+                <div>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#1a1a1a', margin: '0 0 4px' }}>PriceLabs Expert Ecosystem</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#5a5248', margin: '0 0 4px', fontWeight: 300, lineHeight: 1.5 }}>We configure, manage, and optimise PriceLabs strategies daily for live Dubai STR portfolios. The AI agent is built around how professional operators actually use PriceLabs.</p>
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#4ade80', fontWeight: 500 }}>Active practitioner</span>
+                </div>
               </div>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#1a1a1a', margin: '0 0 6px' }}>{item.title}</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: item.statusColor, fontWeight: 500, margin: '0 0 8px' }}>{item.status}</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 300, color: '#5a5248', margin: 0, lineHeight: 1.6 }}>{item.body}</p>
-              <div style={{ marginTop: '16px', padding: '10px 12px', background: '#f4f0e8', border: '2px dashed #d5c5aa', borderRadius: '8px', textAlign: 'center' }}>
-                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#8a8076', margin: 0, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{item.placeholder}</p>
+
+              <div style={{ padding: '20px', background: '#f4f0e8', border: '1px solid #e8dfd0', borderRadius: '10px', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                  <div style={{ width: '36px', height: '36px', background: '#1a3a5c', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ color: 'white', fontSize: '12px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif' }}>H</span>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#1a1a1a', margin: 0 }}>HSMAI Revenue Management</p>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#c49632', fontWeight: 500 }}>Certification in progress</span>
+                  </div>
+                </div>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#5a5248', margin: 0, fontWeight: 300, lineHeight: 1.55 }}>Hospitality Sales and Marketing Association International — the globally recognised standard for professional revenue managers.</p>
+                <div style={{ marginTop: '12px', padding: '8px 12px', background: 'white', border: '2px dashed #d5c5aa', borderRadius: '6px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#8a8076', margin: 0, letterSpacing: '0.06em', textTransform: 'uppercase' }}>HSMAI Badge — Arriving Soon</p>
+                </div>
+              </div>
+
+              <div style={{ padding: '20px', background: '#f4f0e8', border: '1px solid #e8dfd0', borderRadius: '10px' }}>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: '#1a1a1a', margin: '0 0 6px' }}>DTCM Licensed — Lux Oasis Holiday Homes</p>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#5a5248', margin: '0 0 10px', fontWeight: 300, lineHeight: 1.55 }}>Active holiday homes licence under Dubai Tourism. Fully compliant with UAE short-term rental regulations.</p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {['JBR', 'Dubai Marina', 'Downtown Dubai'].map((area) => (
+                    <span key={area} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', padding: '4px 10px', background: 'white', border: '1px solid #d5c5aa', borderRadius: '20px', color: '#5a5248' }}>{area}</span>
+                  ))}
+                </div>
               </div>
             </div>
-          ))}
+
+            <div style={{ padding: '20px 24px', background: '#0d1520', borderRadius: '12px' }}>
+              <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '18px', fontStyle: 'italic', fontWeight: 400, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
+                A real revenue management company that built its own AI system.
+              </p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.4)', margin: 0 }}>— How we think about what we built</p>
+            </div>
+
+            <div style={{ padding: '20px 24px', background: 'white', border: '2px dashed #d5c5aa', borderRadius: '12px', textAlign: 'center' }}>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 600, color: '#8a8076', margin: '0 0 4px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Industry Recognition</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#8a8076', margin: 0, fontStyle: 'italic' }}>Awards, case studies, and partner logos added as achieved</p>
+            </div>
+
+          </div>
         </div>
 
         <div style={{ padding: '24px 28px', background: '#0d1520', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
