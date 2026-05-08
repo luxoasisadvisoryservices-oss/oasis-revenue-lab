@@ -11,9 +11,16 @@ export default function GlobalPositioning() {
 
   return (
     <section id="global" style={{ background: '#0d1520', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .global-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+      `}</style>
+
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 10% 80%, rgba(196,150,50,0.05) 0%, transparent 50%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="global-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
@@ -37,9 +44,10 @@ export default function GlobalPositioning() {
               ))}
             </div>
           </div>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {markets.map((market, i) => (
-              <div key={market.city} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', background: i === 0 ? 'rgba(196,150,50,0.08)' : 'rgba(255,255,255,0.03)', border: `1px solid ${i === 0 ? 'rgba(196,150,50,0.2)' : 'rgba(255,255,255,0.06)'}`, borderRadius: '12px', gap: '16px' }}>
+              <div key={market.city} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', background: i === 0 ? 'rgba(196,150,50,0.08)' : 'rgba(255,255,255,0.03)', border: `1px solid ${i === 0 ? 'rgba(196,150,50,0.2)' : 'rgba(255,255,255,0.06)'}`, borderRadius: '12px', gap: '16px', flexWrap: 'wrap' }}>
                 <div>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, color: 'white', margin: '0 0 3px' }}>
                     {market.city} <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}>{market.region}</span>
@@ -52,6 +60,7 @@ export default function GlobalPositioning() {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
