@@ -58,6 +58,12 @@ const features = [
 ]
 
 export default function AIProductSection() {
+  const openWA = () => {
+    const n = '971585089283'
+    const m = encodeURIComponent('Hi, I would like to learn more about the AI Revenue Agent')
+    window.open('https://wa.me/' + n + '?text=' + m, '_blank')
+  }
+
   return (
     <section id="features" style={{ background: '#faf8f5', padding: '100px 0 80px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
@@ -82,4 +88,27 @@ export default function AIProductSection() {
               onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.10)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{ width: '44px', height: '44px', background: '#f
+              <div style={{ width: '44px', height: '44px', background: '#f4f0e8', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', color: '#c49632' }}>
+                {feature.icon}
+              </div>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 600, color: '#1a1a1a', margin: '0 0 8px' }}>{feature.title}</h3>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: 0 }}>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '48px', padding: '24px 28px', background: '#0d1520', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.7)', margin: 0, maxWidth: '560px', lineHeight: 1.6 }}>
+            Delivered via Telegram. Pricing decisions stay with you — the agent never changes your prices automatically. Intelligence only.
+          </p>
+          <button
+            onClick={openWA}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '11px 22px', background: '#c49632', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+          >
+            Learn More About the Agent
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
