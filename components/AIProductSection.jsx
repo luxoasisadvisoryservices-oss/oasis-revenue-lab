@@ -8,8 +8,7 @@ const features = [
       </svg>
     ),
     title: 'Daily Monitoring',
-    description:
-      'Every listing is reviewed automatically each morning. Pricing health, occupancy risk, booking pace, and floor exposure—checked before your coffee.',
+    description: 'Every listing is reviewed automatically each morning. Pricing health, occupancy risk, booking pace, and floor exposure — checked before your coffee.',
   },
   {
     icon: (
@@ -18,8 +17,7 @@ const features = [
       </svg>
     ),
     title: 'Demand Signals',
-    description:
-      'The agent monitors booking window trends, market pickup velocity, and seasonal demand patterns to surface emerging opportunities before your competitors.',
+    description: 'The agent monitors booking window trends, market pickup velocity, and seasonal demand patterns to surface emerging opportunities before your competitors.',
   },
   {
     icon: (
@@ -28,8 +26,7 @@ const features = [
       </svg>
     ),
     title: 'Pricing Alerts',
-    description:
-      'When floor price is hit too frequently, when demand is spiking, or when your rate structure looks exposed—you receive a clear, actionable alert.',
+    description: 'When floor price is hit too frequently, when demand is spiking, or when your rate structure looks exposed — you receive a clear, actionable alert.',
   },
   {
     icon: (
@@ -38,8 +35,7 @@ const features = [
       </svg>
     ),
     title: 'Revenue Intelligence',
-    description:
-      'Beyond pricing—understand your ADR trajectory, RevPAR performance, and where revenue is being left on the table across your portfolio.',
+    description: 'Beyond pricing — understand your ADR trajectory, RevPAR performance, and where revenue is being left on the table across your portfolio.',
   },
   {
     icon: (
@@ -48,8 +44,7 @@ const features = [
       </svg>
     ),
     title: 'Portfolio Visibility',
-    description:
-      'Manage multiple listings without context-switching. The agent synthesises intelligence across your entire portfolio into a single daily briefing.',
+    description: 'Manage multiple listings without context-switching. The agent synthesises intelligence across your entire portfolio into a single daily briefing.',
   },
   {
     icon: (
@@ -58,184 +53,33 @@ const features = [
       </svg>
     ),
     title: 'Floor Price Protection',
-    description:
-      'Hardcoded floor logic built into every recommendation. The agent never suggests a price below your minimum—protecting profitability automatically.',
+    description: 'Hardcoded floor logic built into every recommendation. The agent never suggests a price below your minimum — protecting profitability automatically.',
   },
 ]
 
 export default function AIProductSection() {
   return (
-    <section id="features" style={{ background: 'var(--color-bg)', padding: '100px 0 80px' }}>
+    <section id="features" style={{ background: '#faf8f5', padding: '100px 0 80px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-        {/* Section header */}
         <div style={{ maxWidth: '640px', marginBottom: '64px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <div style={{ width: '6px', height: '6px', background: 'var(--color-accent)', borderRadius: '50%' }} />
-            <span
-              style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--color-accent)',
-              }}
-            >
-              The AI Revenue Agent
-            </span>
+            <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
+            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c49632' }}>The AI Revenue Agent</span>
           </div>
-          <h2
-            style={{
-              fontFamily: 'Cormorant Garamond, Georgia, serif',
-              fontSize: 'clamp(32px, 4vw, 52px)',
-              fontWeight: 500,
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              color: 'var(--color-text-primary)',
-              margin: '0 0 20px',
-            }}
-          >
+          <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#1a1a1a', margin: '0 0 20px' }}>
             Intelligence that works while you sleep.
           </h2>
-          <p
-            style={{
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '16px',
-              fontWeight: 300,
-              lineHeight: 1.65,
-              color: 'var(--color-text-secondary)',
-              margin: 0,
-            }}
-          >
-            The AI Revenue Agent runs every morning—monitoring your listings, reading market signals, and delivering clear recommendations directly to you. No dashboards to check. No data to interpret. Just decisions made easier.
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: 0 }}>
+            The AI Revenue Agent runs every morning — monitoring your listings, reading market signals, and delivering clear recommendations directly to you. No dashboards to check. No data to interpret. Just decisions made easier.
           </p>
         </div>
 
-        {/* Feature grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '20px',
-          }}
-        >
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
           {features.map((feature) => (
             <div
               key={feature.title}
-              style={{
-                background: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '12px',
-                padding: '28px',
-                boxShadow: 'var(--shadow-card)',
-                transition: 'all 0.22s ease',
-                cursor: 'default',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'
-                e.currentTarget.style.transform = 'translateY(-3px)'
-                e.currentTarget.style.borderColor = 'var(--color-border-strong)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = 'var(--shadow-card)'
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.borderColor = 'var(--color-border)'
-              }}
+              style={{ background: 'white', border: '1px solid #e8dfd0', borderRadius: '12px', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)', transition: 'all 0.22s ease', cursor: 'default' }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.10)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div
-                style={{
-                  width: '44px',
-                  height: '44px',
-                  background: 'var(--color-surface-muted)',
-                  borderRadius: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '16px',
-                  color: 'var(--color-accent)',
-                }}
-              >
-                {feature.icon}
-              </div>
-              <h3
-                style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  color: 'var(--color-text-primary)',
-                  margin: '0 0 8px',
-                }}
-              >
-                {feature.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '14px',
-                  fontWeight: 300,
-                  lineHeight: 1.65,
-                  color: 'var(--color-text-secondary)',
-                  margin: 0,
-                }}
-              >
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom note */}
-        <div
-          style={{
-            marginTop: '48px',
-            padding: '24px 28px',
-            background: 'var(--color-dark)',
-            borderRadius: '12px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '16px',
-          }}
-        >
-          <p
-            style={{
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '14px',
-              color: 'rgba(255,255,255,0.7)',
-              margin: 0,
-              maxWidth: '560px',
-              lineHeight: 1.6,
-            }}
-          >
-            Delivered via Telegram or Slack. Pricing decisions stay with you—the agent never changes your prices automatically. Intelligence only.
-          </p>
-          <a
-            href="https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20the%20AI%20Revenue%20Agent"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '11px 22px',
-              background: 'var(--color-accent)',
-              color: 'white',
-              borderRadius: '8px',
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '13px',
-              fontWeight: 500,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--color-accent-hover)')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--color-accent)')}
-          >
-            Learn More About the Agent →
-          </a>
-        </div>
-      </div>
-    </section>
-  )
-}
+              <div style={{ width: '44px', height: '44px', background: '#f
