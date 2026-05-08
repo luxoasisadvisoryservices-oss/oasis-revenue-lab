@@ -1,8 +1,12 @@
 'use client'
 
-const WHATSAPP = 'https://wa.me/971527604550?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Oasis%20Revenue%20Lab'
-
 export default function OperatorCredibility() {
+  const openWA = () => {
+    const n = '971585089283'
+    const m = encodeURIComponent('Hi, I would like to talk to the Oasis Revenue Lab revenue team')
+    window.open('https://wa.me/' + n + '?text=' + m, '_blank')
+  }
+
   return (
     <section id="about" style={{ background: '#faf8f5', padding: '100px 0' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
@@ -42,7 +46,7 @@ export default function OperatorCredibility() {
             </div>
 
             <button
-              onClick={() => window.open(WHATSAPP, '_blank')}
+              onClick={openWA}
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer' }}
             >
               Talk to the Revenue Team
@@ -93,7 +97,7 @@ export default function OperatorCredibility() {
 
             <div style={{ padding: '20px 24px', background: '#f4f0e8', border: '1px solid #d5c5aa', borderRadius: '12px' }}>
               <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '18px', fontStyle: 'italic', fontWeight: 400, color: '#1a1a1a', margin: '0 0 8px', lineHeight: 1.5 }}>
-                "A real revenue management company that built its own AI system."
+                A real revenue management company that built its own AI system.
               </p>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#8a8076', margin: 0 }}>— How we think about what we built</p>
             </div>
@@ -104,3 +108,4 @@ export default function OperatorCredibility() {
     </section>
   )
 }
+
