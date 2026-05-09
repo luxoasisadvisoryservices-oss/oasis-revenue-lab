@@ -49,11 +49,19 @@ export default function Footer() {
 
   return (
     <footer style={{ background: '#0d1520', padding: '64px 0 32px', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+          .footer-bottom-links { flex-wrap: wrap !important; gap: 12px !important; }
+        }
+      `}</style>
+
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(196,150,50,0.3), transparent)' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '48px', marginBottom: '56px' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '48px', marginBottom: '56px' }}>
 
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
@@ -119,19 +127,25 @@ export default function Footer() {
           ))}
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+        <div className="footer-bottom" style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.25)', margin: 0 }}>
             © {currentYear} Lux Oasis Advisory &amp; Services LLC. All rights reserved. TRN 104722180700003.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <button onClick={() => window.location.href = '/privacy'} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          <div className="footer-bottom-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <button
+              onClick={() => window.location.href = '/privacy'}
+              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}>
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}
+            >
               Privacy Policy
             </button>
-            <button onClick={() => window.location.href = '/terms'} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            <button
+              onClick={() => window.location.href = '/terms'}
+              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}>
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}
+            >
               Terms and Conditions
             </button>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.2)', margin: 0 }}>oasisrevenuelab.com</p>
