@@ -54,12 +54,19 @@ const audiences = [
 export default function WhoWeWorkWith() {
   const openWA = () => {
     const n = '971585089283'
-    const m = encodeURIComponent('Hi, I would like to discuss my portfolio with Oasis Revenue Lab')
+    const m = encodeURIComponent('Hi, I manage a portfolio and would like to discuss how Oasis Revenue Lab can help')
     window.open('https://wa.me/' + n + '?text=' + m, '_blank')
   }
 
   return (
     <section id="who-we-work-with" style={{ background: '#0d1520', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .who-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .who-bottom { flex-direction: column !important; align-items: flex-start !important; }
+        }
+      `}</style>
+
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 50% 100%, rgba(196,150,50,0.05) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
@@ -76,7 +83,7 @@ export default function WhoWeWorkWith() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+        <div className="who-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '24px' }}>
           {audiences.map((audience) => (
             <div
               key={audience.title}
@@ -116,12 +123,12 @@ export default function WhoWeWorkWith() {
           </p>
         </div>
 
-        <div style={{ padding: '32px 36px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="who-bottom" style={{ padding: '32px 36px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
           <div>
             <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '22px', fontWeight: 500, color: 'white', margin: '0 0 6px' }}>Managing a large portfolio? Let us talk about what scales.</p>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.4)', margin: 0 }}>Enterprise pricing available. Every enquiry handled personally.</p>
           </div>
-          <button onClick={openWA} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#c49632', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+          <button onClick={openWA} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#c49632', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}>
             Talk on WhatsApp
           </button>
         </div>
