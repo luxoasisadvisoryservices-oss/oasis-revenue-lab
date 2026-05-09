@@ -5,9 +5,9 @@ const plans = [
     name: 'AI Revenue Agent',
     price: 'AED 80',
     period: '/ listing / month',
-    badge: 'Launch Pricing',
+    badge: 'Founding Rate',
     description: 'Productized AI intelligence for STR operators who want daily monitoring and pricing support without manual effort.',
-    note: 'Launch pricing valid for the first 12 months. Standard pricing may increase after launch phase.',
+    note: 'Founding rate locked permanently for the first 20 clients. Standard pricing moves to AED 149+/listing/month after launch phase.',
     features: [
       'Daily AI briefing via Telegram',
       'Floor price monitoring and alerts',
@@ -20,8 +20,9 @@ const plans = [
       'Monthly performance summary',
     ],
     featured: false,
-    cta: 'Start with AI Agent',
-    msg: 'Hi, I would like to start with the AI Revenue Agent',
+    cta: 'Claim Founding Rate',
+    msg: 'Hi, I would like to claim the founding rate for the AI Revenue Agent. I manage listings in ',
+    urgency: true,
   },
   {
     name: 'Hybrid Revenue Management',
@@ -42,7 +43,8 @@ const plans = [
     ],
     featured: true,
     cta: 'Discuss Hybrid Support',
-    msg: 'Hi, I would like to discuss Hybrid Revenue Management',
+    msg: 'Hi, I would like to discuss Hybrid Revenue Management. My portfolio has ',
+    urgency: false,
   },
   {
     name: 'One-Time Consultancy',
@@ -63,7 +65,8 @@ const plans = [
     ],
     featured: false,
     cta: 'Book One-Time Consultancy',
-    msg: 'Hi, I would like to book a one-time revenue consultancy',
+    msg: 'Hi, I would like to book a one-time revenue consultancy session',
+    urgency: false,
   },
 ]
 
@@ -75,6 +78,12 @@ export default function PricingSection() {
 
   return (
     <section id="pricing" style={{ background: '#faf8f5', padding: '100px 0' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .pricing-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
 
         <div style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 56px' }}>
@@ -85,28 +94,52 @@ export default function PricingSection() {
           <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#1a1a1a', margin: '0 0 14px' }}>
             Start with what you need. Scale from there.
           </h2>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: 0 }}>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.65, color: '#5a5248', margin: '0 0 20px' }}>
             Every enquiry is handled personally. No automated sales funnels — just a direct conversation about your portfolio.
           </p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 20px', background: 'rgba(196,150,50,0.08)', border: '1px solid rgba(196,150,50,0.25)', borderRadius: '8px' }}>
+            <div style={{ width: '8px', height: '8px', background: '#c49632', borderRadius: '50%', flexShrink: 0 }} />
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#1a1a1a', margin: 0 }}>
+              <strong style={{ fontWeight: 600 }}>Founding rate:</strong> First 20 clients lock in AED 80/listing/month permanently. <strong style={{ color: '#c49632' }}>18 spots remaining.</strong>
+            </p>
+          </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px', alignItems: 'start' }}>
+        <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', alignItems: 'start' }}>
           {plans.map((plan) => (
             <div
               key={plan.name}
               style={{ background: plan.featured ? '#0d1520' : 'white', border: plan.featured ? '1.5px solid rgba(196,150,50,0.35)' : '1px solid #e8dfd0', borderRadius: '14px', padding: '36px 32px', position: 'relative', boxShadow: plan.featured ? '0 12px 40px rgba(13,21,32,0.14)' : '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)' }}
             >
               {plan.badge && (
-                <div style={{ position: 'absolute', top: '-1px', left: '24px', background: '#c49632', padding: '4px 14px', borderRadius: '0 0 8px 8px', fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 600, color: 'white', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                <div style={{ position: 'absolute', top: '-1px', left: '24px', background: plan.urgency ? '#c49632' : plan.featured ? '#c49632' : '#0d1520', padding: '4px 14px', borderRadius: '0 0 8px 8px', fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 600, color: 'white', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                   {plan.badge}
                 </div>
               )}
-              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: plan.featured ? '#c49632' : '#8a8076', margin: '0 0 12px' }}>{plan.name}</h3>
+
+              {plan.urgency && (
+                <div style={{ position: 'absolute', top: '-1px', right: '24px', background: '#ef4444', padding: '4px 12px', borderRadius: '0 0 8px 8px', fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 600, color: 'white', letterSpacing: '0.06em' }}>
+                  18 spots left
+                </div>
+              )}
+
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: plan.featured ? '#c49632' : '#8a8076', margin: '0 0 12px', marginTop: plan.badge ? '16px' : '0' }}>{plan.name}</h3>
+
               <div style={{ marginBottom: '16px' }}>
                 <span style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '34px', fontWeight: 500, color: plan.featured ? 'white' : '#1a1a1a' }}>{plan.price}</span>
                 <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: plan.featured ? 'rgba(255,255,255,0.4)' : '#8a8076', marginLeft: '4px' }}>{plan.period}</span>
               </div>
+
+              {plan.urgency && (
+                <div style={{ padding: '8px 12px', background: 'rgba(196,150,50,0.08)', border: '1px solid rgba(196,150,50,0.2)', borderRadius: '6px', marginBottom: '14px' }}>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#c49632', fontWeight: 500, margin: 0 }}>
+                    Standard price after launch: AED 149+/listing/month. Lock in AED 80 permanently today.
+                  </p>
+                </div>
+              )}
+
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.65, color: plan.featured ? 'rgba(255,255,255,0.6)' : '#5a5248', margin: '0 0 20px' }}>{plan.description}</p>
+
               <ul style={{ listStyle: 'none', margin: '0 0 20px', padding: 0 }}>
                 {plan.features.map((f) => (
                   <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '8px' }}>
@@ -115,12 +148,14 @@ export default function PricingSection() {
                   </li>
                 ))}
               </ul>
+
               {plan.note && (
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: plan.featured ? 'rgba(255,255,255,0.3)' : '#8a8076', margin: '0 0 20px', fontStyle: 'italic', lineHeight: 1.55 }}>{plan.note}</p>
               )}
+
               <button
                 onClick={() => openWA(plan.msg)}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', cursor: 'pointer', background: plan.featured ? '#c49632' : 'transparent', color: plan.featured ? 'white' : '#1a1a1a', border: plan.featured ? 'none' : '1.5px solid #d5c5aa' }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, width: '100%', cursor: 'pointer', background: plan.urgency ? '#c49632' : plan.featured ? '#c49632' : 'transparent', color: plan.urgency || plan.featured ? 'white' : '#1a1a1a', border: plan.urgency || plan.featured ? 'none' : '1.5px solid #d5c5aa' }}
               >
                 {plan.cta}
               </button>
@@ -131,6 +166,7 @@ export default function PricingSection() {
         <p style={{ textAlign: 'center', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8a8076', marginTop: '36px' }}>
           All enquiries handled personally. VAT applies where applicable. Operated by Lux Oasis Advisory &amp; Services LLC — TRN 104722180700003.
         </p>
+
       </div>
     </section>
   )
