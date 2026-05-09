@@ -95,13 +95,9 @@ function DashboardMockup() {
             </div>
           ))}
         </div>
-        <div style={{ padding: '8px 12px', background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '6px', marginBottom: '8px' }}>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', fontWeight: 600, margin: '0 0 2px' }}>3 unsold nights Mon-Wed — last-minute rules review needed</p>
+        <div style={{ padding: '8px 12px', background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: '6px' }}>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#f59e0b', fontWeight: 600, margin: '0 0 2px' }}>3 unsold nights Mon-Wed — act now</p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#5a5248', margin: 0 }}>Orphan gap Thu-Fri needs min-stay adjustment.</p>
-        </div>
-        <div style={{ padding: '6px 12px', background: '#f8f9fa', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <div style={{ width: '6px', height: '6px', background: '#8a8076', borderRadius: '50%', flexShrink: 0 }} />
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', color: '#8a8076', margin: 0, fontStyle: 'italic' }}>Illustrative report — see live Telegram output below</p>
         </div>
       </div>
     </div>
@@ -114,6 +110,10 @@ export default function Hero() {
   }
   const openCalc = () => {
     window.open(WHATSAPP_CALC + '?text=' + encodeURIComponent('Hi, I would like to receive the free STR Pricing Floor Calculator'), '_blank')
+  }
+  const scrollToCalc = () => {
+    const el = document.getElementById('calculator')
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -141,7 +141,8 @@ export default function Hero() {
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, lineHeight: 1.65, color: '#5a5248', margin: '0 0 32px', maxWidth: '480px' }}>
               Not just software. Built by operators who actually run short-term rental portfolios in Dubai.
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '28px' }}>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '20px' }}>
               <button onClick={openAgent} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', background: '#0d1520', color: 'white', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, border: 'none', cursor: 'pointer' }}>
                 Discuss My Portfolio
               </button>
@@ -149,13 +150,29 @@ export default function Hero() {
                 View Offers
               </button>
             </div>
+
+            <div style={{ padding: '14px 18px', background: '#f4f0e8', border: '1px solid #d5c5aa', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '28px' }}>
+              <div>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: '#1a1a1a', margin: '0 0 2px' }}>Not sure what your floor price should be?</p>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#8a8076', margin: 0 }}>Free Excel calculator — no sign-up, instant download</p>
+              </div>
+              <button
+                onClick={scrollToCalc}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '9px 16px', background: '#c49632', color: 'white', borderRadius: '7px', fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 500, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+              >
+                Get Free Calculator
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8a8076', margin: 0 }}>
-              Want the free floor price calculator?{' '}
+              Prefer to talk?{' '}
               <button onClick={openCalc} style={{ color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, padding: 0 }}>
-                Request it here
+                Request it on WhatsApp
               </button>
             </p>
           </div>
+
           <div>
             <DashboardMockup />
           </div>
