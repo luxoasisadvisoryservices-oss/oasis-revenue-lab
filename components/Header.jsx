@@ -19,17 +19,24 @@ export default function Header() {
     window.open('https://wa.me/' + n + '?text=' + m, '_blank')
   }
 
+  const scrollToCalc = () => {
+    setMenuOpen(false)
+    setTimeout(() => {
+      const el = document.getElementById('calculator')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
+  }
+
   const navLinks = [
     { label: 'Features', href: '#features' },
     { label: 'How It Works', href: '#hybrid' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Who We Are', href: '#about' },
-    { label: 'Contact', href: '#contact' },
   ]
 
   const handleNavClick = (href) => {
     setMenuOpen(false)
-    window.location.href = href
+    setTimeout(() => { window.location.href = href }, 100)
   }
 
   return (
@@ -37,8 +44,8 @@ export default function Header() {
       <style>{`
         @media (max-width: 768px) {
           .nav-links-desktop { display: none !important; }
-          .hamburger { display: flex !important; }
           .nav-wa-btn-desktop { display: none !important; }
+          .hamburger { display: flex !important; }
         }
         @media (min-width: 769px) {
           .hamburger { display: none !important; }
@@ -54,14 +61,14 @@ export default function Header() {
 
       <nav style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-        <button onClick={() => window.location.href = '/'} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-          <Image src="/Logo.jpg" alt="Oasis Revenue Lab" width={38} height={38} style={{ borderRadius: '7px', objectFit: 'contain', flexShrink: 0 }} />
+        <button onClick={() => window.location.href = '/'} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, flexShrink: 0 }}>
+          <Image src="/Logo.jpg" alt="Oasis Revenue Lab" width={38} height={38} style={{ borderRadius: '7px', objectFit: 'contain' }} />
           <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '18px', fontWeight: 600, color: '#1a1a1a', letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
             Oasis Revenue Lab
           </span>
         </button>
 
-        <div className="nav-links-desktop" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+        <div className="nav-links-desktop" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
           {navLinks.map((link) => (
             <button
               key={link.href}
@@ -73,6 +80,14 @@ export default function Header() {
               {link.label}
             </button>
           ))}
+          <button
+            onClick={scrollToCalc}
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, color: '#c49632', background: 'rgba(196,150,50,0.08)', border: '1px solid rgba(196,150,50,0.25)', borderRadius: '6px', cursor: 'pointer', padding: '6px 14px', whiteSpace: 'nowrap' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(196,150,50,0.15)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(196,150,50,0.08)' }}
+          >
+            Free Calculator
+          </button>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -99,7 +114,7 @@ export default function Header() {
 
       {menuOpen && (
         <div className="mobile-menu" style={{ background: 'rgba(250,248,245,0.98)', borderTop: '1px solid #e8dfd0', padding: '16px 24px 24px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '16px' }}>
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -109,6 +124,12 @@ export default function Header() {
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={scrollToCalc}
+              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 500, color: '#c49632', background: 'none', border: 'none', cursor: 'pointer', padding: '12px 0', textAlign: 'left', borderBottom: '1px solid #e8dfd0' }}
+            >
+              Free Calculator ↓
+            </button>
           </div>
           <button
             onClick={() => { setMenuOpen(false); openWA() }}
