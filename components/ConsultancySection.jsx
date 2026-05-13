@@ -6,67 +6,115 @@ export default function ConsultancySection() {
       number: '01',
       title: 'Real operator experience',
       body: 'This is built from active STR operations — not theory. Every signal and recommendation comes from a framework tested on live listings in one of the most competitive short-term rental markets in the world.',
+      color: '#4ade80',
     },
     {
       number: '02',
       title: 'Strategic pricing logic',
       body: 'Floor-price discipline. Profit over occupancy. Open pricing philosophy. These are not settings to toggle — they are strategic positions that require judgment. That is what consultancy brings.',
+      color: '#c49632',
     },
     {
       number: '03',
       title: 'Market interpretation',
       body: 'AI reads data. A real operator reads context. Geopolitical shifts, local events, seasonal anomalies, and comp-set behaviour all shape pricing decisions that no algorithm fully captures alone.',
+      color: '#818cf8',
     },
     {
       number: '04',
       title: 'Revenue architecture',
       body: 'Pricing is one layer. We also look at rate structure, length-of-stay restrictions, discount logic, and the relationship between occupancy and margin — across your whole portfolio.',
+      color: '#f59e0b',
     },
   ]
 
   return (
-    <section id="consultancy" style={{ background: '#0d1520', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="consultancy" style={{
+      background: 'linear-gradient(180deg, #faf8f5 0%, #0d1520 6%)',
+      padding: '100px 0',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
       <style>{`
         @media (max-width: 768px) {
           .consultancy-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
         }
+        .pillar-card {
+          transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .pillar-card:hover {
+          background: rgba(255,255,255,0.06) !important;
+          border-color: rgba(196,150,50,0.25) !important;
+          transform: translateX(4px);
+        }
       `}</style>
 
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(ellipse at 90% 10%, rgba(196,150,50,0.06) 0%, transparent 60%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 90% 20%, rgba(196,150,50,0.06) 0%, transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 10% 80%, rgba(59,130,246,0.04) 0%, transparent 50%)', pointerEvents: 'none' }} />
+
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
         <div className="consultancy-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <div style={{ width: '6px', height: '6px', background: '#c49632', borderRadius: '50%' }} />
-              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c49632' }}>Real Revenue Consultancy</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px', padding: '5px 14px', background: 'rgba(196,150,50,0.1)', border: '1px solid rgba(196,150,50,0.25)', borderRadius: '20px' }}>
+              <div style={{ width: '5px', height: '5px', background: '#c49632', borderRadius: '50%' }} />
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#c49632' }}>Real Revenue Consultancy</span>
             </div>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.02em', color: 'white', margin: '0 0 24px' }}>
-              This is not software. It is a revenue system built by someone who actually operates.
+
+            <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(30px, 3.5vw, 50px)', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.02em', color: 'white', margin: '0 0 24px' }}>
+              This is not software.<br />It is a revenue system<br />built by someone who<br />actually operates.
             </h2>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', margin: '0 0 32px' }}>
+
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, color: 'rgba(255,255,255,0.55)', margin: '0 0 36px' }}>
               Generic automation tools give you charts. Oasis Revenue Lab gives you interpretation, judgment, and a clear direction. The consultancy layer is what separates intelligence from noise.
             </p>
-            <div style={{ padding: '20px 24px', background: 'rgba(196,150,50,0.08)', border: '1px solid rgba(196,150,50,0.2)', borderRadius: '10px' }}>
-              <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '19px', fontStyle: 'italic', fontWeight: 400, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
-                Pricing tools give you data. We give you a position.
+
+            <div style={{
+              padding: '24px',
+              background: 'rgba(196,150,50,0.07)',
+              border: '1px solid rgba(196,150,50,0.2)',
+              borderRadius: '14px',
+              backdropFilter: 'blur(8px)',
+              position: 'relative',
+              overflow: 'hidden',
+            }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, #c49632, transparent)' }} />
+              <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '22px', fontStyle: 'italic', fontWeight: 400, color: 'rgba(255,255,255,0.9)', margin: '0 0 10px', lineHeight: 1.45 }}>
+                Pricing tools give you data.<br />We give you a position.
               </p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#c49632', margin: 0, letterSpacing: '0.08em' }}>— Oasis Revenue Lab</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#c49632', margin: 0, letterSpacing: '0.08em', fontWeight: 500 }}>— Oasis Revenue Lab</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {pillars.map((pillar) => (
               <div
                 key={pillar.number}
-                style={{ display: 'flex', gap: '20px', padding: '24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'rgba(196,150,50,0.25)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)' }}
+                className="pillar-card"
+                style={{
+                  display: 'flex', gap: '20px',
+                  padding: '22px 24px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '14px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
               >
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#c49632', opacity: 0.7, flexShrink: 0, marginTop: '2px' }}>{pillar.number}</span>
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px', background: `linear-gradient(180deg, ${pillar.color}, transparent)` }} />
+                <div style={{ flexShrink: 0 }}>
+                  <span style={{
+                    fontFamily: 'Cormorant Garamond, serif',
+                    fontSize: '28px',
+                    fontWeight: 300,
+                    color: pillar.color,
+                    opacity: 0.6,
+                    lineHeight: 1,
+                  }}>{pillar.number}</span>
+                </div>
                 <div>
                   <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: 'white', margin: '0 0 6px' }}>{pillar.title}</h3>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', margin: 0 }}>{pillar.body}</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 300, lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{pillar.body}</p>
                 </div>
               </div>
             ))}
