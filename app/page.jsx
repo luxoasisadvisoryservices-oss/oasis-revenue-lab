@@ -15,7 +15,6 @@ import CredentialsSection from '../components/CredentialsSection'
 import GlobalPositioning from '../components/GlobalPositioning'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
-import FloatingWhatsApp from '../components/FloatingWhatsApp'
 
 export default function Home() {
   return (
@@ -37,7 +36,6 @@ export default function Home() {
       <GlobalPositioning />
       <CTASection />
       <Footer />
-      <FloatingWhatsApp />
     </main>
   )
 }
