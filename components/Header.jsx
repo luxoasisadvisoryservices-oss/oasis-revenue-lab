@@ -72,7 +72,7 @@ export default function Header() {
       `}</style>
 
       <div style={{
-        background: 'linear-gradient(90deg, #0c1018, #161c28)',
+        background: 'linear-gradient(90deg, #0c0c0c, #141414)',
         padding: '5px 24px',
         display: 'flex',
         alignItems: 'center',
@@ -81,21 +81,43 @@ export default function Header() {
       }}>
         <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '10px', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', margin: 0 }}>
           A division of{' '}
-          <span style={{ color: '#b8903a', fontWeight: 500 }}>Lux Oasis Advisory and Services LLC</span>
+          <button
+            onClick={() => window.open('https://luxoasisadvisory.com', '_blank')}
+            style={{
+              color: '#b8903a',
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '10px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              padding: 0,
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+              textDecorationColor: 'rgba(184,144,58,0.4)',
+              transition: 'color 0.2s ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#e0b850'; e.currentTarget.style.textDecorationColor = 'rgba(224,184,80,0.6)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#b8903a'; e.currentTarget.style.textDecorationColor = 'rgba(184,144,58,0.4)' }}
+          >
+            Lux Oasis Advisory and Services LLC ↗
+          </button>
         </p>
         <button
           onClick={() => window.open('https://luxoasisadvisory.com', '_blank')}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '5px',
             fontFamily: 'DM Sans, sans-serif', fontSize: '10px', fontWeight: 500,
-            color: 'rgba(255,255,255,0.4)',
+            color: 'rgba(255,255,255,0.35)',
             background: 'none', border: 'none', cursor: 'pointer',
             letterSpacing: '0.06em',
             transition: 'color 0.2s ease',
             padding: 0,
           }}
           onMouseEnter={(e) => (e.currentTarget.style.color = '#b8903a')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.35)')}
         >
           luxoasisadvisory.com
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -155,12 +177,12 @@ export default function Header() {
               border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: '7px',
               fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 400,
-              color: 'rgba(255,255,255,0.45)',
+              color: 'rgba(255,255,255,0.4)',
               cursor: 'pointer', whiteSpace: 'nowrap',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(184,144,58,0.25)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(255,255,255,0.45)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
           >
             Lux Oasis Advisory
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -206,7 +228,7 @@ export default function Header() {
       </nav>
 
       {menuOpen && (
-        <div className="mobile-menu" style={{ background: 'rgba(12,16,24,0.98)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(184,144,58,0.12)', padding: '16px 24px 28px' }}>
+        <div className="mobile-menu" style={{ background: 'rgba(12,12,12,0.98)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(184,144,58,0.12)', padding: '16px 24px 28px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '16px' }}>
             {navLinks.map((link) => (
               <button key={link.href} onClick={() => handleNavClick(link.href)}
@@ -217,7 +239,7 @@ export default function Header() {
               style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 500, color: '#b8903a', background: 'none', border: 'none', cursor: 'pointer', padding: '13px 0', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
             >Free Calculator ↓</button>
             <button onClick={() => { setMenuOpen(false); window.open('https://luxoasisadvisory.com', '_blank') }}
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 400, color: 'rgba(255,255,255,0.45)', background: 'none', border: 'none', cursor: 'pointer', padding: '13px 0', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 400, color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '13px 0', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
             >Lux Oasis Advisory ↗</button>
           </div>
           <button
