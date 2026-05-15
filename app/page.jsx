@@ -14,6 +14,7 @@ import PricingSection from '../components/PricingSection'
 import CredentialsSection from '../components/CredentialsSection'
 import GlobalPositioning from '../components/GlobalPositioning'
 import CTASection from '../components/CTASection'
+import FAQSection from '../components/FAQSection'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
       <CredentialsSection />
       <GlobalPositioning />
       <CTASection />
+      <FAQSection />
       <Footer />
     </main>
   )
