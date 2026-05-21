@@ -44,13 +44,7 @@ function DashboardMockup() {
       border: '1px solid rgba(184,144,58,0.2)',
       boxShadow: '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)',
     }}>
-
-      <div style={{
-        background: 'linear-gradient(135deg, #1e1e1e, #141414)',
-        padding: '16px 20px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
+      <div style={{ background: 'linear-gradient(135deg, #1e1e1e, #141414)', padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{ width: '28px', height: '28px', background: 'linear-gradient(135deg, #b8903a, #96721e)', borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(184,144,58,0.3)' }}>
             <span style={{ fontSize: '13px' }}>📊</span>
@@ -173,31 +167,70 @@ export default function Hero() {
               <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b8903a' }}>AI Revenue Intelligence · Dubai</span>
             </div>
 
-            <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.03em', color: 'white', margin: '0 0 8px' }}>
-              Your daily AI
-            </h1>
             <h1 style={{
-              fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.03em', margin: '0 0 24px',
-              background: 'linear-gradient(90deg, #b8903a 0%, #e0b850 50%, #b8903a 100%)',
-              backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: 'shimmer 4s linear infinite',
-            }}>revenue manager.</h1>
+              fontFamily: 'Cormorant Garamond, Georgia, serif',
+              fontSize: 'clamp(38px, 5vw, 62px)',
+              fontWeight: 400,
+              lineHeight: 1.08,
+              letterSpacing: '-0.03em',
+              color: 'white',
+              margin: '0 0 16px',
+            }}>
+              Stop guessing whether<br />your prices are right.
+            </h1>
 
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: 300, lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', margin: '0 0 12px', maxWidth: '460px' }}>
-              Oasis Revenue Lab monitors your listings every morning — verifying pricing, reading market signals, protecting your floor, and telling you exactly what to do.
+            <p style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '15px',
+              fontWeight: 500,
+              color: '#b8903a',
+              margin: '0 0 16px',
+              letterSpacing: '0.01em',
+            }}>
+              Your Dubai revenue analyst — every morning, in your Telegram.
             </p>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 300, lineHeight: 1.65, color: 'rgba(255,255,255,0.35)', margin: '0 0 36px', maxWidth: '460px' }}>
+
+            <p style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '15px',
+              fontWeight: 300,
+              lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.55)',
+              margin: '0 0 12px',
+              maxWidth: '460px',
+            }}>
+              Daily revenue calls with reasons, confidence, and outcomes — built by a Dubai STR operator, for Dubai STR operators.
+            </p>
+
+            <p style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '13px',
+              fontWeight: 300,
+              lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.32)',
+              margin: '0 0 36px',
+              maxWidth: '460px',
+            }}>
               Not a SaaS dashboard. Built by operators who run live Dubai STR portfolios every day.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
-              <button onClick={openAgent} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', background: 'linear-gradient(135deg, #b8903a, #96721e)', color: 'white', borderRadius: '10px', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, border: 'none', cursor: 'pointer', boxShadow: '0 8px 24px rgba(184,144,58,0.3)', transition: 'all 0.25s ease' }}
+              <button
+                onClick={openAgent}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', background: 'linear-gradient(135deg, #b8903a, #96721e)', color: 'white', borderRadius: '10px', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 500, border: 'none', cursor: 'pointer', boxShadow: '0 8px 24px rgba(184,144,58,0.3)', transition: 'all 0.25s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(184,144,58,0.4)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(184,144,58,0.3)' }}
-              >Discuss My Portfolio</button>
-              <button onClick={() => window.location.href = '#pricing'} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(8px)', color: 'rgba(255,255,255,0.75)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, cursor: 'pointer', transition: 'all 0.25s ease' }}
+              >
+                Discuss My Portfolio
+              </button>
+              <button
+                onClick={() => window.location.href = '#pricing'}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(8px)', color: 'rgba(255,255,255,0.75)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 400, cursor: 'pointer', transition: 'all 0.25s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.09)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
-              >View Offers</button>
+              >
+                View Offers
+              </button>
             </div>
 
             <div style={{ padding: '14px 18px', background: 'rgba(184,144,58,0.07)', border: '1px solid rgba(184,144,58,0.18)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '36px' }}>
@@ -205,7 +238,9 @@ export default function Hero() {
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, color: 'white', margin: '0 0 2px' }}>Not sure what your floor price should be?</p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.35)', margin: 0 }}>Free Excel calculator — no sign-up required</p>
               </div>
-              <button onClick={scrollToCalc} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', background: 'rgba(184,144,58,0.14)', border: '1px solid rgba(184,144,58,0.28)', color: '#b8903a', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all 0.2s ease' }}
+              <button
+                onClick={scrollToCalc}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', background: 'rgba(184,144,58,0.14)', border: '1px solid rgba(184,144,58,0.28)', color: '#b8903a', borderRadius: '8px', fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all 0.2s ease' }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(184,144,58,0.24)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(184,144,58,0.14)' }}
               >
