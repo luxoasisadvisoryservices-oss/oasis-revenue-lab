@@ -77,11 +77,11 @@ export default function CredentialsSection() {
                     </div>
                   </div>
                   <Image
-                    src="/PriceLabs_PM_Partner_Badge.png"
-                    alt="PriceLabs Verified Revenue Management Partner"
-                    width={160}
-                    height={48}
-                    style={{ objectFit: 'contain', flexShrink: 0 }}
+                    src="/Verified_RM_Partner__11_.png"
+                    alt="PriceLabs Verified Revenue Management Partner — Lux Oasis Advisory and Services LLC"
+                    width={120}
+                    height={148}
+                    style={{ objectFit: 'contain', flexShrink: 0, borderRadius: '8px' }}
                   />
                 </div>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#504840', margin: '14px 0 0', fontWeight: 300, lineHeight: 1.55 }}>
