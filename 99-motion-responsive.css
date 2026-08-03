@@ -1,0 +1,20 @@
+/* ---------- responsive + reduced-motion guards ---------- */
+@media (max-width: 767px) {
+  .brief-timeline { flex-direction: column; align-items: stretch; gap: 18px; }
+  .bt-caption { white-space: normal; }
+  .why-chart { padding: 20px 16px 16px; }
+  #why-canvas { height: 220px; }
+  .why-chip { font-size: 10.5px; padding: 6px 9px; top: auto; bottom: 14%; }
+  .chart-label[data-chart-label="eid"] { top: 2%; left: 42% !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Safety net: even if js-scenes were present, render everything. */
+  .js-scenes .dash-scene .kpi,
+  .js-scenes .dash-scene .unit-row,
+  .js-scenes .tg-feed > *,
+  .js-scenes .chart-label,
+  .js-scenes .why-chip,
+  .js-scenes .fs-impact { opacity: 1; transform: none; }
+  .js-scenes .tg-feed > .tg-msg { clip-path: none; }
+  .js-scenes .tg-feed > .tg-msg.is-typing > * { opacity: 1; }
+}

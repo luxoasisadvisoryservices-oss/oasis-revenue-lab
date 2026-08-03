@@ -1,0 +1,17 @@
+/* ============================================================
+   GET STARTED
+   ============================================================ */
+.get-started {
+  text-align: center;
+  padding: 128px 0;
+  background:
+    radial-gradient(800px 400px at 50% 0%, rgba(52, 211, 153, 0.08), transparent 65%),
+    var(--ink);
+}
+.get-started h2 { margin: 0 auto; }
+.get-started .lead { margin: 22px auto 0; }
+.get-started .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 40px; }
+.get-started .calc-hint { margin-top: 26px; font-size: 14px; color: var(--muted-dark); }
+.get-started .calc-hint a { color: var(--green); font-weight: 600; }
+.get-started .calc-hint a:hover { text-decoration: underline; }
+

@@ -1,0 +1,61 @@
+/* ---------- dash scene pinning + staged states (js-scenes only) ---------- */
+@media (min-width: 768px) {
+  .js-scenes .dash-scene { height: 330vh; padding: 0; }
+  .js-scenes .dash-scene .dash-sticky {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 70px 0 16px;
+  }
+  .js-scenes .dash-scene .dash-sticky > .container { width: 100%; }
+  .js-scenes .dash-scene .section-head { margin-bottom: 10px; }
+  .js-scenes .dash-scene .section-head h2 { font-size: clamp(24px, 2.4vw, 30px); }
+  .js-scenes .dash-scene .dash-note { margin-top: 12px !important; }
+  .js-scenes .dash-scene .brief-timeline { margin-bottom: 18px; }
+  .js-scenes .dash-scene .bt-clock { font-size: clamp(32px, 3.4vw, 44px); }
+  .js-scenes .dash-scene .kpi { padding: 15px 20px 13px; }
+  .js-scenes .dash-scene .unit-row { padding: 13px 22px 12px; }
+}
+.js-scenes .dash-scene .kpi {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s var(--ease-o), transform 0.45s var(--ease-o);
+}
+.js-scenes .dash-scene .kpi.is-on { opacity: 1; transform: none; }
+.js-scenes .dash-scene .unit-row {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-o), transform 0.5s var(--ease-o);
+}
+.js-scenes .dash-scene .unit-row.is-on { opacity: 1; transform: none; }
+.js-scenes .dash-scene.is-live .bt-fill,
+.js-scenes .dash-scene.is-live .mg-fill { will-change: transform, stroke-dashoffset; }
+/* while the brief is still assembling, empty dashboard body shows a faint
+   "data loading" skeleton that fades away as the unit reports land */
+.js-scenes .dash-scene .dash-units { position: relative; }
+.js-scenes .dash-scene .dash-units::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(180deg,
+      rgba(255, 255, 255, 0.05) 0 10px,
+      transparent 10px 34px);
+  background-size: 62% 100%;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.45s var(--ease-o);
+  pointer-events: none;
+}
+.js-scenes .dash-scene .dash-units.is-filled::after { opacity: 0; }
+/* brief timestamp only appears once the brief is delivered */
+.js-scenes .dash-scene .dash-timestamp {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s var(--ease-o), transform 0.4s var(--ease-o);
+}
+.js-scenes .dash-scene.is-done .dash-timestamp { opacity: 1; transform: none; }
+

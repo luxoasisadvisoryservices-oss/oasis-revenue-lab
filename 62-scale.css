@@ -1,0 +1,44 @@
+/* ============================================================
+   WHO WE WORK WITH
+   ============================================================ */
+.scale-rows { display: grid; gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
+.scale-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 26px 30px;
+  background: var(--panel);
+  transition: background 0.2s var(--ease);
+}
+.scale-row:hover { background: var(--panel-2); }
+.scale-count { font-family: var(--mono); font-size: clamp(19px, 2vw, 24px); font-weight: 600; color: var(--green); letter-spacing: -0.02em; }
+.scale-count small { display: block; font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-dark); margin-top: 3px; }
+.scale-row h3 { font-size: 17px; color: #fff; letter-spacing: -0.015em; }
+.scale-fit { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.fit-chip {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--body-dark);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 100px;
+  padding: 6px 13px;
+}
+.scale-key {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: flex-start;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 30px 34px;
+  background: linear-gradient(120deg, rgba(52, 211, 153, 0.06), rgba(255,255,255,0.02) 60%);
+}
+.scale-key svg { color: var(--green); margin-top: 4px; }
+.scale-key p { font-size: clamp(16px, 1.9vw, 19px); font-weight: 550; color: #E7EDF6; letter-spacing: -0.01em; max-width: 56ch; }
+.scale-key p strong { color: var(--green); font-weight: 650; }
+.scale-cta { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
+.scale-cta p { font-size: 15px; color: var(--muted-dark); }
+.scale-cta p strong { color: #fff; font-weight: 600; }
+

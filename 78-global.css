@@ -1,0 +1,25 @@
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+.global-rows { display: grid; gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
+.global-row {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 30px;
+  background: var(--panel);
+  transition: background 0.2s var(--ease);
+}
+.global-row:hover { background: var(--panel-2); }
+.global-row h3 { font-size: 16px; color: #fff; letter-spacing: -0.01em; }
+.global-row .areas { font-family: var(--mono); font-size: 12.5px; color: var(--muted-dark); }
+.global-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  border-radius: 100px; padding: 6px 14px;
+}
+.global-status--live { color: var(--green); border: 1px solid rgba(52, 211, 153, 0.35); background: var(--green-dim); }
+.global-status--expanding { color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.35); background: var(--amber-dim); }
+.global-status--planned { color: var(--muted-dark); border: 1px solid var(--hairline-strong); }
+

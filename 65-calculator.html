@@ -1,0 +1,156 @@
+  <!-- ============ FREE TOOLS / CALCULATOR (flagship) ============ -->
+  <section class="section section--light" id="calculator" aria-labelledby="calc-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Free Tools</p>
+        <h2 id="calc-title">STR Pricing Floor Calculators</h2>
+        <p class="lead">Know the exact rate below which a booking costs you money. Try the live calculator below — it mirrors our free Excel tool. No sign-up required.</p>
+      </div>
+
+      <div class="calc-layout reveal">
+        <div class="calc-inputs">
+          <h3>Your unit costs</h3>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-fixed">Monthly fixed costs</label><span class="unit">AED / month</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-fixed-range" min="1000" max="30000" step="100" value="8000" aria-label="Monthly fixed costs slider">
+              <input type="number" class="calc-num" id="in-fixed" min="0" step="100" value="8000" inputmode="numeric">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-cleaning">Cleaning cost per stay</label><span class="unit">AED / stay</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-cleaning-range" min="0" max="800" step="10" value="200" aria-label="Cleaning cost per stay slider">
+              <input type="number" class="calc-num" id="in-cleaning" min="0" step="10" value="200" inputmode="numeric">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-stay">Average stay</label><span class="unit">nights</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-stay-range" min="1" max="14" step="0.5" value="3" aria-label="Average stay length slider">
+              <input type="number" class="calc-num" id="in-stay" min="1" max="60" step="0.5" value="3" inputmode="decimal">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-fees">OTA / management fees</label><span class="unit">% of rate</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-fees-range" min="0" max="50" step="1" value="18" aria-label="OTA and management fees percentage slider">
+              <input type="number" class="calc-num" id="in-fees" min="0" max="80" step="1" value="18" inputmode="numeric">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-var">Other variable cost per night</label><span class="unit">AED / night</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-var-range" min="0" max="300" step="5" value="35" aria-label="Other variable cost per night slider">
+              <input type="number" class="calc-num" id="in-var" min="0" step="5" value="35" inputmode="numeric">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-occ">Expected occupancy</label><span class="unit">%</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-occ-range" min="30" max="100" step="1" value="70" aria-label="Expected occupancy percentage slider">
+              <input type="number" class="calc-num" id="in-occ" min="5" max="100" step="1" value="70" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-outputs" aria-live="polite">
+          <div class="calc-outputs-bar">
+            <span class="title">Floor Price Output</span>
+            <span class="live"><span class="dot dot--green dot--pulse" aria-hidden="true"></span>Live</span>
+          </div>
+          <div class="calc-hero-output">
+            <p class="label">Hard pricing floor</p>
+            <p class="value"><small>AED</small> <span id="out-floor" data-out>0</span> <small>/ night</small></p>
+            <span class="calc-bar calc-bar--hero" aria-hidden="true"><i data-bar="floor"></i></span>
+            <p class="hint">Never price below this. Your protected minimum at your expected occupancy, with a safety margin.</p>
+          </div>
+          <div class="calc-out-grid">
+            <div class="calc-out calc-out--breakeven">
+              <p class="label">Break-even nightly rate</p>
+              <p class="value">AED <span id="out-breakeven" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="breakeven"></i></span>
+            </div>
+            <div class="calc-out">
+              <p class="label">Last-minute floor</p>
+              <p class="value">AED <span id="out-lastmin" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="lastmin"></i></span>
+            </div>
+            <div class="calc-out">
+              <p class="label">Orphan gap fill rate</p>
+              <p class="value">AED <span id="out-orphan" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="orphan"></i></span>
+            </div>
+            <div class="calc-out">
+              <p class="label">Weekend floor</p>
+              <p class="value">AED <span id="out-weekend" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="weekend"></i></span>
+            </div>
+            <div class="calc-out">
+              <p class="label">Low-season base</p>
+              <p class="value">AED <span id="out-lowseason" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="lowseason"></i></span>
+            </div>
+            <div class="calc-out">
+              <p class="label">Peak season minimum</p>
+              <p class="value">AED <span id="out-peak" data-out>0</span></p>
+              <span class="calc-bar" aria-hidden="true"><i data-bar="peak"></i></span>
+            </div>
+          </div>
+          <details class="calc-explain">
+            <summary>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              How this is calculated
+            </summary>
+            <div class="calc-explain-body">
+              <p><code>Break-even = (fixed cost per occupied night + cleaning ÷ avg stay + other variable cost) ÷ (1 − fees%)</code> — occupied nights per month = 30.4 × expected occupancy.</p>
+              <p><code>Hard floor = break-even ÷ 0.90</code> (10% occupancy-safety buffer) · <code>Last-minute floor = hard floor × 0.85</code>, never below marginal cost · <code>Orphan gap fill = marginal cost × 1.10</code> — any rate above true variable cost beats an empty night · <code>Weekend floor = hard floor × 1.15</code> · <code>Low-season base = hard floor × 1.05</code> · <code>Peak minimum = hard floor × 1.50</code>.</p>
+              <p>This mirrors the logic of our free Excel tool. Results are estimates for guidance only — not financial advice.</p>
+            </div>
+          </details>
+          <div class="calc-cta-row">
+            <!-- Excel file not hosted yet: request flows via email. TODO: replace mailto with direct .xlsx download link when the file is hosted. -->
+            <a class="btn btn--ghost btn--sm" href="mailto:info@luxoasisadvisory.com?subject=Free%20Floor%20Price%20Calculator%20(Excel)&body=Hi%2C%20please%20send%20me%20the%20free%20single-unit%20floor%20price%20calculator.">Get the Full Excel Version</a>
+            <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%20used%20the%20floor%20price%20calculator%20and%20would%20like%20to%20talk%20about%20my%20pricing." target="_blank" rel="noopener">Talk on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="excel-cards">
+        <article class="excel-card reveal">
+          <p class="excel-flag"><span class="dot dot--green" aria-hidden="true"></span>Free · Instant download</p>
+          <h3>Single-Unit Calculator</h3>
+          <p class="sub">Excel file — no sign-up required.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Break-even nightly rate</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Hard pricing floor</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Last-minute floor rate</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap fill rate</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Low-season base price</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekend floor</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Peak season minimum</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>6 PriceLabs settings, ready to paste</li>
+          </ul>
+          <!-- TODO: point this at the hosted .xlsx when available; using prefilled mailto request meanwhile. -->
+          <a class="btn btn--dark" href="mailto:info@luxoasisadvisory.com?subject=Free%20Single-Unit%20Floor%20Price%20Calculator&body=Hi%2C%20please%20send%20me%20the%20free%20single-unit%20floor%20price%20calculator%20(Excel).">Download Free Calculator</a>
+        </article>
+        <article class="excel-card reveal" style="--reveal-delay:60ms">
+          <p class="excel-flag"><span class="dot dot--green" aria-hidden="true"></span>Free · Email to receive</p>
+          <h3>Portfolio Version</h3>
+          <p class="sub">For operators running multiple units.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Up to 20 units</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Per-unit cost breakdown</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Overhead split</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Break-even per unit</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor per unit</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs settings per unit</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portfolio summary tab</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Profit view</li>
+          </ul>
+          <a class="btn btn--ghost" href="mailto:info@luxoasisadvisory.com?subject=Portfolio%20Floor%20Price%20Calculator%20Request&body=Hi%2C%20please%20send%20me%20the%20free%20portfolio%20floor%20price%20calculator%20(Excel).%20I%20manage%20___%20units.">Email Us to Request</a>
+        </article>
+      </div>
+    </div>
+  </section>
+

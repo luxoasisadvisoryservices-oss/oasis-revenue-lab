@@ -1,0 +1,103 @@
+  <!-- ============ DAILY REVENUE INTELLIGENCE (dashboard mock) ============ -->
+  <!-- Pinned scroll scene: the morning brief assembles itself from 05:45 to 09:45.
+       Without JS (or with reduced motion / narrow viewports) this renders as the
+       complete static dashboard — the scene styles only apply under html.js-scenes. -->
+  <section class="section section--dark dash-section dash-scene" id="dashboard" aria-labelledby="dash-title">
+    <div class="dash-sticky">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Daily Revenue Intelligence</p>
+        <h2 id="dash-title">Every listing, read like an analyst would read it.</h2>
+        <p class="dash-note" style="margin-top:22px"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative — see live Telegram output below</p>
+      </div>
+      <div class="brief-timeline reveal" aria-hidden="true">
+        <div class="bt-clockwrap">
+          <span class="bt-clock mono" id="bt-clock">09:45</span>
+          <span class="bt-zone mono">GST · while you slept</span>
+        </div>
+        <div class="bt-mid">
+          <div class="bt-captions" id="bt-captions">
+            <span class="bt-caption mono">Reading PriceLabs…</span>
+            <span class="bt-caption mono">Verifying floors…</span>
+            <span class="bt-caption mono">Checking pace…</span>
+            <span class="bt-caption mono">Composing your brief…</span>
+            <span class="bt-caption mono is-active">Brief delivered — 09:45 GST</span>
+          </div>
+          <div class="bt-track"><span class="bt-fill" id="bt-fill"></span></div>
+          <div class="bt-ticks mono" aria-hidden="true"><span>05:45</span><span>06:45</span><span>07:45</span><span>08:45</span><span>09:45</span></div>
+        </div>
+      </div>
+      <div class="dashboard reveal" role="img" aria-label="Illustrative revenue dashboard showing portfolio KPIs and two unit reports">
+        <div class="dash-bar">
+          <span class="dash-bar-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-7 4 4 8-10"/><path d="M17 4h4v4"/></svg>
+            Oasis Revenue Lab — Portfolio Brief
+          </span>
+          <span class="dash-timestamp">Thu 07 May 2026 · 09:45 GST</span>
+        </div>
+        <div class="dash-kpis">
+          <div class="kpi" data-scene-kpi>
+            <p class="kpi-label">Revenue 30d</p>
+            <p class="kpi-value">AED <span data-countup="38400" data-format="int">38,400</span></p>
+            <p class="kpi-delta up">▲ 12% vs last month</p>
+          </div>
+          <div class="kpi" data-scene-kpi>
+            <p class="kpi-label">Avg Occupancy</p>
+            <p class="kpi-value"><span data-countup="74" data-format="int">74</span>%</p>
+            <p class="kpi-delta up">Market 61%</p>
+          </div>
+          <div class="kpi kpi--gauge" data-scene-kpi>
+            <p class="kpi-label">MPI 30d</p>
+            <div class="kpi-gauge-row">
+              <svg class="mpi-gauge" viewBox="0 0 48 48" aria-hidden="true">
+                <circle class="mg-track" cx="24" cy="24" r="20"/>
+                <line class="mg-parity" x1="24" y1="2.5" x2="24" y2="8.5" transform="rotate(180 24 24)"/>
+                <circle class="mg-fill" id="mpi-gauge-fill" cx="24" cy="24" r="20"/>
+              </svg>
+              <div>
+                <p class="kpi-value"><span data-countup="1.32" data-format="dec2">1.32</span></p>
+                <p class="kpi-delta up">Outperforming</p>
+              </div>
+            </div>
+          </div>
+          <div class="kpi" data-scene-kpi>
+            <p class="kpi-label">Portfolio</p>
+            <p class="kpi-value"><span data-countup="4" data-format="int">4</span> units</p>
+            <p class="kpi-delta neutral">All monitored</p>
+          </div>
+        </div>
+        <div class="dash-units">
+          <article class="unit-row" data-scene-unit>
+            <div class="unit-head">
+              <h3 class="unit-name">Luxury 2BR Marina View</h3>
+              <span class="unit-meta">Dubai Marina · Floor 28 · 2BR</span>
+              <span class="status-pill status-pill--ok"><span class="dot dot--green" aria-hidden="true"></span>ON TRACK</span>
+            </div>
+            <div class="unit-stats">
+              <div class="ustat"><p class="ustat-label">Occupancy</p><p class="ustat-value">82% <span class="sub">| Market 61%</span></p></div>
+              <div class="ustat"><p class="ustat-label">ADR</p><p class="ustat-value">AED 920 <span class="sub">| Floor AED 680</span></p></div>
+              <div class="ustat"><p class="ustat-label">MPI 30d</p><p class="ustat-value">1.61 <span class="sub pos">Outperforming</span></p></div>
+              <div class="ustat"><p class="ustat-label">Rev 30d</p><p class="ustat-value">AED 14,800 <span class="sub pos">| YoY +18%</span></p></div>
+            </div>
+            <div class="unit-notes">
+              <p class="unit-note unit-note--alert"><span class="dot dot--amber" aria-hidden="true"></span><span><strong>Alert</strong> — Weekend demand strong — MPI accelerating</span></p>
+              <p class="unit-note unit-note--rec"><span class="dot dot--green" aria-hidden="true"></span><span><strong>Recommendation</strong> — <span class="mono">PriceLabs AED 1,050–1,180 Fri–Sat verified.</span> Consider ceiling +8% next Fri.</span></p>
+            </div>
+          </article>
+          <article class="unit-row" data-scene-unit>
+            <div class="unit-head">
+              <h3 class="unit-name">Stunning View 1BR JBR</h3>
+              <span class="unit-meta">JBR · Beachfront · 1BR</span>
+              <span class="status-pill status-pill--warn"><span class="dot dot--amber" aria-hidden="true"></span>ACTION NEEDED</span>
+            </div>
+            <div class="unit-notes">
+              <p class="unit-note unit-note--alert"><span class="dot dot--amber" aria-hidden="true"></span><span><strong>Alert</strong> — 3 unsold nights Mon–Wed — act now</span></p>
+              <p class="unit-note unit-note--rec"><span class="dot dot--green" aria-hidden="true"></span><span><strong>Note</strong> — Orphan gap Thu–Fri needs min-stay adjustment to 2 nights.</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    </div><!-- /.dash-sticky -->
+  </section>
+

@@ -1,0 +1,71 @@
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(11, 18, 32, 0.72);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.site-header.is-scrolled { border-bottom-color: var(--hairline); background: rgba(11, 18, 32, 0.86); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: 24px;
+}
+
+.brand { display: flex; align-items: center; gap: 11px; color: #fff; font-weight: 700; letter-spacing: -0.02em; font-size: 16.5px; }
+/* Official circular brand badge. logo-light.png is the near-white tint — every
+   lockup on this site (header, footer, legal header) sits on a dark background.
+   width/height are set on the <img> too so nothing shifts while it loads. */
+.brand-logo {
+  width: 36px; height: 36px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+/* Lockup line is longer than it used to be ("Revenue Management · Dubai"), so the
+   tracking is tuned to keep the brand block the same width as before — the header
+   layout and nav must stay on one line exactly as approved. */
+.brand small { display: block; font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; white-space: nowrap; }
+
+.main-nav { display: flex; align-items: center; gap: 30px; }
+.main-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--body-dark);
+  transition: color 0.18s var(--ease);
+}
+.main-nav a:hover { color: #fff; }
+.main-nav a.nav-external { display: inline-flex; align-items: center; gap: 5px; color: var(--muted-dark); }
+.main-nav a.nav-external:hover { color: #fff; }
+
+.header-cta { display: flex; align-items: center; gap: 12px; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 8px;
+  width: 42px; height: 42px;
+  place-items: center;
+  color: #fff;
+}
+.nav-toggle .bars { display: block; width: 18px; height: 12px; position: relative; }
+.nav-toggle .bars::before, .nav-toggle .bars::after, .nav-toggle .bars span {
+  content: ""; position: absolute; left: 0; width: 100%; height: 1.6px; background: #fff; border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.2s;
+}
+.nav-toggle .bars::before { top: 0; }
+.nav-toggle .bars span { top: 5.2px; }
+.nav-toggle .bars::after { bottom: 0; }
+.nav-toggle[aria-expanded="true"] .bars::before { transform: translateY(5.2px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .bars span { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .bars::after { transform: translateY(-5.2px) rotate(-45deg); }
+
