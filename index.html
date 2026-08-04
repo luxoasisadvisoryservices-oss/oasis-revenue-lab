@@ -468,6 +468,20 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); max-width: 21ch; }
 .tick-up { color: var(--green); }
 .tick-warn { color: var(--amber); }
 
+
+/* ---- headline emphasis (owner: "a bit plain … more catchy, the font and the
+   colour") -------------------------------------------------------------- */
+.hero h1 .h1-accent {
+  font-style: normal;
+  color: var(--green);
+  text-shadow: 0 0 46px rgba(52, 211, 153, 0.34);
+}
+.hero h1 .h1-mono {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.86em;
+  letter-spacing: -0.02em;
+}
 /* ============================================================
    CREDENTIALS STRIP (high on the page, under the hero)
    ============================================================ */
@@ -2297,7 +2311,11 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <p class="hero-card-foot">Advisory only · Read-only mode</p>
       </aside>
       <p class="hero-badge reveal"><span class="dot dot--green dot--pulse" aria-hidden="true"></span> Your revenue analyst — every morning, in your Telegram</p>
-      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Stop guessing whether your prices are&nbsp;right.</h1>
+      <!-- Owner: the headline read too flat. "guessing" now carries the site's signal
+           green with a soft glow, and the closing "right." is set in the mono face —
+           the same voice the dashboards and briefings speak in — so the sentence
+           lands on the two words that matter. No new colours introduced. -->
+      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Stop <em class="h1-accent">guessing</em> whether your prices are&nbsp;<span class="h1-mono">right.</span></h1>
       <p class="hero-sub reveal" style="--reveal-delay:120ms">Daily revenue briefings with reasoning and outcomes — created by a Dubai STR operator, for STR operators everywhere.</p>
       <p class="hero-identity reveal" style="--reveal-delay:150ms"><strong>A revenue management company.</strong> We set your pricing strategy, manage it in PriceLabs, and run an AI agent that watches it every day.</p>
       <p class="hero-body reveal" style="--reveal-delay:180ms">This is not a SaaS dashboard. It is built by operators who run live Dubai STR portfolios every single day.</p>
