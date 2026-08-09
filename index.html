@@ -2400,8 +2400,12 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <article class="cstrip-item reveal" style="--reveal-delay:120ms">
           <!-- LOGO SLOT: replace this lockup with the official DTCM licence mark, drop the file in as assets/dtcm-licensed.svg -->
           <span class="cstrip-lockup" aria-hidden="true"><span class="cl-name">DTCM</span><span class="cl-tag">Licensed</span></span>
-          <h3>DTCM Licensed Operations</h3>
-          <p>Active UAE holiday homes licence. Live portfolio in JBR, Dubai Marina and Downtown.</p>
+          <!-- The licence is NOT Oasis Revenue Lab's. It belongs to Lux Oasis Holiday
+               Homes, a separate UAE company. Owner confirmed 9 Aug 2026: "Oasis Revenue
+               Lab is not a DTCM holiday home company." The heading must carry the
+               attribution on its own, because a heading is what gets skim-read. -->
+          <h3>DTCM Licensed Operations — Lux Oasis Holiday Homes</h3>
+          <p>Licence held by our operating partner, a separate UAE company. Live portfolio in JBR, Dubai Marina and Downtown.</p>
         </article>
 
       </div>
@@ -2679,15 +2683,15 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <div class="story-side reveal">
           <p class="eyebrow">Who We Are</p>
           <h2 id="story-title">Built by real operators. Not by developers who read about hospitality.</h2>
-          <p class="lead">Oasis Revenue Lab was built inside an actual STR operation managing live Dubai listings. We operate Lux Oasis Holiday Homes — DTCM-licensed and active in JBR, Dubai Marina, and Downtown. Every signal, every recommendation, every floor-price rule is tested on our own portfolio first.</p>
+          <p class="lead">Oasis Revenue Lab was built inside an actual STR operation managing live Dubai listings. We work daily inside Lux Oasis Holiday Homes, our operating partner — a separate UAE company, DTCM-licensed and active in JBR, Dubai Marina, and Downtown. Every signal, every recommendation, every floor-price rule is tested on that portfolio first.</p>
           <a class="btn btn--dark" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20the%20revenue%20team." target="_blank" rel="noopener">Talk to the Revenue Team</a>
         </div>
         <div class="story-points">
           <article class="story-point reveal">
             <span class="story-index mono">/01</span>
             <div>
-              <h3>Active STR operator</h3>
-              <p>We run Lux Oasis Holiday Homes with live Dubai listings. This is operations, not theory.</p>
+              <h3>Inside a live STR operation</h3>
+              <p>We run revenue for Lux Oasis Holiday Homes, our operating partner in Dubai. This is operations, not theory.</p>
             </div>
           </article>
           <article class="story-point reveal" style="--reveal-delay:60ms">
@@ -2721,13 +2725,14 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     <div class="container">
       <div class="section-head reveal" style="margin-bottom:40px">
         <p class="eyebrow">The Ecosystem</p>
-        <h2 id="eco-title">One operation. Three connected entities.</h2>
+        <h2 id="eco-title">Two separate companies. One live portfolio.</h2>
+        <p class="lead">Oasis Revenue Lab is a division of Lux Oasis Advisory &amp; Services LLC. Lux Oasis Holiday Homes is a separate UAE company and our operating partner. Neither company owns the other.</p>
       </div>
       <div class="eco-grid">
         <article class="eco-card reveal">
           <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Live</p>
           <h3>Lux Oasis Holiday Homes</h3>
-          <p>Active STR operations in JBR, Dubai Marina, and Downtown.</p>
+          <p>Our operating partner — a separate UAE company, and the holder of the DTCM licence. Live STR portfolio in JBR, Dubai Marina, and Downtown.</p>
         </article>
         <article class="eco-card reveal" style="--reveal-delay:60ms">
           <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Live</p>
@@ -2737,14 +2742,17 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <article class="eco-card reveal" style="--reveal-delay:120ms">
           <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Active</p>
           <h3>Lux Oasis Advisory &amp; Services LLC</h3>
-          <p>Parent entity — UAE registered, DTCM compliant.</p>
+          <p>Registered in the Sharjah Free Zone, TRN 104722180700003. Builds the technology and the services. Not a parent of Holiday Homes, and not the DTCM licence holder.</p>
         </article>
       </div>
       <div class="eco-foundations reveal" aria-label="Foundations">
-        <!-- OWNER CONFIRM: original site said "certification in progress". Damiano stated certified. Verify before this goes live. -->
+        <!-- OWNER DECIDED: "in progress" is the settled, deliberate wording for HSMAI across
+             this site (here, 22-credentials-strip.html and 75-credentials.html) and the hub.
+             It is the safer claim and it is not a placeholder — do not "upgrade" it to
+             "certified" without the owner saying the certification has actually been awarded. -->
         <span class="eco-chip"><span class="dot dot--amber" aria-hidden="true"></span>HSMAI Revenue Management — in progress</span>
         <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>PriceLabs Expert Ecosystem — active practitioner</span>
-        <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>DTCM Licensed Operations</span>
+        <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>DTCM Licensed Operations — Lux Oasis Holiday Homes</span>
         <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>Hostaway PMS Integration — live</span>
         <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>Dubai STR Market — active since 2024</span>
       </div>
@@ -3347,6 +3355,47 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     </div>
   </section>
 
+  <!-- ============ THE OTHER HALF (ecosystem cross-sell) ============ -->
+  <!-- Deliberately placed AFTER pricing (70-pricing.html) and before the credentials
+       and closing sections. Land first, expand second: a visitor who arrived with a
+       pricing problem finishes deciding about pricing before a second product is
+       introduced. Never move this above #pricing and never into the hero.
+
+       Not a duplicate of #ecosystem (42-ecosystem.html). That section is corporate:
+       which companies exist and how they relate. This one is commercial: the other
+       product lines a client can buy, and the fact that running more than one is
+       quoted as a package.
+
+       No new component, colour or band: section--panel is the same band as
+       #rm-services and #ecosystem, and .rms-note / .rms-cta are the note and
+       call-to-action components from 47-rm-services.css, reused unchanged.
+
+       Truth rules held: no bundle price, no discount percentage, no invented tier
+       name, no onboarding or service-level promise. Nest Match is in private beta —
+       "opening city by city" is the approved wording and there is no link to it. -->
+  <section class="section section--panel" id="two-jobs" aria-labelledby="crosssell-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">The Other Half</p>
+        <h2 id="crosssell-title">Pricing is one half of the job.</h2>
+        <p class="lead">We price your nights. LIA answers your guests: she is the AI agent that runs on Oasis Guest Lab, our sibling platform, and she replies in the guest's own language around the clock, handing over to your team when a situation needs a person. Between them they cover the two jobs that keep most operators on their phone at midnight — which is how you get your attention back for finding the next unit.</p>
+      </div>
+
+      <div class="rms-note reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <p><strong>Nest Match</strong> — our marketplace for landlords, operators and suppliers — is opening city by city.</p>
+      </div>
+
+      <div class="rms-cta reveal">
+        <p><strong>Operators running more than one part of the ecosystem are quoted as a package rather than as separate subscriptions.</strong> Ask us what that looks like for your portfolio.</p>
+        <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20know%20what%20a%20package%20across%20more%20than%20one%20part%20of%20the%20ecosystem%20would%20look%20like%20for%20my%20portfolio." target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          Ask About a Package
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CREDENTIALS ============ -->
   <section class="section section--light" id="credentials" aria-labelledby="creds-title">
     <div class="container">
@@ -3512,7 +3561,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         </details>
         <details class="faq-item">
           <summary>Who is behind Oasis Revenue Lab?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">Oasis Revenue Lab is a division of Lux Oasis Advisory &amp; Services LLC, a UAE-registered company. We operate Lux Oasis Holiday Homes, a DTCM-licensed operation — and every system runs on our own portfolio first.</p>
+          <p class="faq-answer">Oasis Revenue Lab is a division of Lux Oasis Advisory &amp; Services LLC, registered in the Sharjah Free Zone, UAE. Our operating partner is Lux Oasis Holiday Homes, a separate UAE company that holds the DTCM licence — and every system runs on that live portfolio before it reaches a client.</p>
         </details>
       </div>
       <div class="faq-close reveal">
