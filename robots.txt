@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oasisrevenuelab.com/sitemap.xml
+Sitemap: https://www.oasisrevenuelab.com/sitemap.xml
