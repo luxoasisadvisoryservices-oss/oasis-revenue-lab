@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -927,18 +927,9 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); max-width: 21ch; }
 
 /* ecosystem strip */
 .eco-band { padding: 88px 0; }
-.eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.eco-card {
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: 26px 26px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), background 0.2s var(--ease);
-}
-.eco-card:hover { border-color: rgba(52, 211, 153, 0.35); transform: translateY(-3px); background: rgba(255,255,255,0.035); }
-.eco-status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
-.eco-card h3 { font-size: 17px; color: #fff; margin-bottom: 8px; letter-spacing: -0.015em; }
-.eco-card p { font-size: 13.5px; color: var(--muted-dark); }
+/* The three corporate cards this section used to carry (.eco-grid / .eco-card)
+   are gone: they held the LLC registration, the free zone, the TRN and the
+   ownership disclaimers, which now live only in the footer and terms.html. */
 .eco-foundations {
   margin-top: 30px;
   display: flex;
@@ -1057,7 +1048,11 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); max-width: 21ch; }
 .rms-cta p { font-size: 15px; color: var(--muted-dark); }
 .rms-cta p strong { color: #fff; font-weight: 600; }
 /* ============================================================
-   HOW IT WORKS (tiers)
+   TIER CARDS
+   The three-tile component. It used to belong to a separate #how-it-works
+   section; that section and the old #pricing section were merged, so these
+   tiles now live in #pricing (70-pricing.html) and carry the price under
+   their bullets. The file keeps its number to keep the cascade order.
    ============================================================ */
 .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
 .tier {
@@ -1482,33 +1477,20 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   display: inline-flex; align-items: center; gap: 8px;
 }
 
-.price-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
-.price-card {
-  border: 1px solid var(--hairline);
-  border-radius: 18px;
-  padding: 36px 32px;
-  background: rgba(255, 255, 255, 0.02);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
-}
-.price-card:hover { border-color: rgba(255,255,255,0.26); transform: translateY(-3px); }
-.price-card--featured {
-  background: linear-gradient(180deg, rgba(52, 211, 153, 0.08), rgba(255, 255, 255, 0.02) 50%);
-  border-color: rgba(52, 211, 153, 0.45);
-}
-.price-card--featured:hover { border-color: rgba(52, 211, 153, 0.65); }
-.price-card h3 { font-size: 19px; color: #fff; letter-spacing: -0.02em; }
-.price-value { margin: 20px 0 4px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+/* The price block now lives inside the .tier card (50-how-it-works.css), under
+   that tile's bullet list — the two duplicate tier sections were merged into
+   one. The .price-card grid that used to hold a second copy of the three
+   products is gone with it; these are the price components it left behind. */
+.price-value { margin: 0 0 6px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .price-value .amount { font-family: var(--mono); font-size: clamp(32px, 3.4vw, 42px); font-weight: 600; color: #fff; letter-spacing: -0.03em; }
 .price-value .per { font-family: var(--mono); font-size: 13px; color: var(--muted-dark); }
 .price-fine { font-size: 12.5px; color: var(--muted-dark); margin-bottom: 4px; }
 .price-fine strong { color: var(--green); font-weight: 600; }
-.price-card ul { list-style: none; margin: 24px 0 30px; display: grid; gap: 10px; }
-.price-card li { display: flex; gap: 11px; align-items: flex-start; font-size: 13.8px; color: var(--body-dark); line-height: 1.5; }
-.price-card li svg { flex: 0 0 auto; margin-top: 3.5px; color: var(--green); }
-.price-card .btn { margin-top: auto; width: 100%; }
+/* the tile's button keeps its margin-top:auto, so a gap is needed above it
+   rather than below the price block */
+.tier .price-value { margin-bottom: 6px; }
+.tier .price-fine { margin-bottom: 0; }
+.tier .price-value + .btn, .tier .price-fine + .btn { margin-top: 24px; }
 .pricing-footnote {
   margin-top: 40px;
   text-align: center;
@@ -1780,11 +1762,10 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   .features-grid, .problems, .sources, .rms-grid { grid-template-columns: repeat(2, 1fr); }
   /* keeps the longer lockup line inside the same brand width as the approved header */
   .brand small { font-size: 8px; letter-spacing: 0.04em; }
-  .tiers, .price-cards { grid-template-columns: 1fr; max-width: 620px; margin-left: auto; margin-right: auto; }
-  .tier--featured, .price-card--featured { order: -1; }
+  .tiers { grid-template-columns: 1fr; max-width: 620px; margin-left: auto; margin-right: auto; }
+  .tier--featured { order: -1; }
   .telegram-layout, .story-layout, .tower-layout { grid-template-columns: 1fr; gap: 56px; }
   .story-side { position: static; }
-  .eco-grid { grid-template-columns: 1fr; max-width: 560px; }
   .calc-layout { grid-template-columns: 1fr; }
   .calc-outputs { border-left: 0; border-top: 1px solid var(--hairline-light); }
   .scale-row { grid-template-columns: 110px 1fr; }
@@ -2361,7 +2342,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     </a>
     <nav class="main-nav" id="main-nav" aria-label="Main navigation">
       <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">How It Works</a>
       <a href="#pricing">Pricing</a>
       <a href="#who-we-are">Who We Are</a>
       <a href="#calculator">Free Calculator</a>
@@ -2689,7 +2670,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       </div>
       <div class="features-note reveal">
         <p><strong>Delivered via Telegram every morning at 9:45am GST.</strong> The agent never changes your prices — intelligence and recommendations only.</p>
-        <a class="btn btn--dark btn--sm" href="#how-it-works">Learn More About the Agent</a>
+        <a class="btn btn--dark btn--sm" href="#pricing">Learn More About the Agent</a>
       </div>
     </div>
   </section>
@@ -2854,29 +2835,29 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   </section>
 
   <!-- ============ ECOSYSTEM ============ -->
+  <!-- This section describes what the ecosystem IS, commercially: which line of
+       work does what, and where all of it is proven. It deliberately does NOT
+       discuss the corporate relationship between the companies. The LLC name,
+       the free zone, the TRN and the ownership disclaimers that used to sit here
+       were removed on the owner's instruction — that detail lives in the footer
+       and in terms.html, which is where a buyer expects to find it and where it
+       still exists (site footer, legal-page footer, terms.html section 1).
+
+       Removing the old mutual-independence disclaimer must never be allowed to
+       read as the opposite claim. Nothing here states or implies any ownership in
+       either direction: Lux Oasis Holiday Homes is named only as "our operating
+       partner", exactly as it is named in 40-story.html and 85-faq.html. Do not
+       add a sentence that puts one company above the other.
+
+       The credential chips below are unchanged and stay: CRME, PriceLabs, the
+       DTCM chip with its Lux Oasis Holiday Homes attribution, Hostaway, market. -->
   <section class="section section--panel eco-band" id="ecosystem" aria-labelledby="eco-title">
     <div class="container">
       <div class="section-head reveal" style="margin-bottom:40px">
         <p class="eyebrow">The Ecosystem</p>
-        <h2 id="eco-title">Two separate companies. One live portfolio.</h2>
-        <p class="lead">Oasis Revenue Lab is a division of Lux Oasis Advisory &amp; Services LLC. Lux Oasis Holiday Homes is a separate UAE company and our operating partner. Neither company owns the other.</p>
-      </div>
-      <div class="eco-grid">
-        <article class="eco-card reveal">
-          <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Live</p>
-          <h3>Lux Oasis Holiday Homes</h3>
-          <p>Our operating partner — a separate UAE company, and the holder of the DTCM licence. Live STR portfolio in JBR, Dubai Marina, and Downtown.</p>
-        </article>
-        <article class="eco-card reveal" style="--reveal-delay:60ms">
-          <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Live</p>
-          <h3>Oasis Revenue Lab</h3>
-          <p>AI revenue intelligence plus real consultancy.</p>
-        </article>
-        <article class="eco-card reveal" style="--reveal-delay:120ms">
-          <p class="eco-status"><span class="dot dot--green" aria-hidden="true"></span>Active</p>
-          <h3>Lux Oasis Advisory &amp; Services LLC</h3>
-          <p>Registered in the Sharjah Free Zone, TRN 104722180700003. Builds the technology and the services. Not a parent of Holiday Homes, and not the DTCM licence holder.</p>
-        </article>
+        <h2 id="eco-title">Oasis Revenue Lab prices your nights.</h2>
+        <p class="lead"><a class="text-link" href="https://www.oasisguestlab.ai" target="_blank" rel="noopener">Oasis Guest Lab</a> handles guest communication. Nest Match is the network app connecting landlords, operators and suppliers. Lux Oasis Interiors &amp; Renovation gets a unit ready to earn.</p>
+        <p class="lead">All of it runs first inside Lux Oasis Holiday Homes, our operating partner's live Dubai portfolio, before it reaches a client.</p>
       </div>
       <div class="eco-foundations reveal" aria-label="Foundations">
         <!-- OWNER CONFIRMED 9 Aug 2026: the HSMAI CRME has been AWARDED and is held. The
@@ -3021,74 +3002,6 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     </div>
   </section>
 
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="section section--dark" id="how-it-works" aria-labelledby="how-title">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">How It Works</p>
-        <h2 id="how-title">The AI is not replacing revenue management expertise. It is scaling it.</h2>
-      </div>
-      <div class="tiers">
-        <article class="tier reveal">
-          <p class="tier-num">TIER 01</p>
-          <h3>AI Revenue Agent</h3>
-          <p class="tier-mode">Fully autonomous</p>
-          <p class="tier-desc">A 24/7 AI revenue manager. For operators who want autonomous AI without hiring.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief at 9:45am</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs verified and corrected daily</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Exact rate recommendations</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor monitoring</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>MPI vs competitors</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace and demand alerts</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Events and compression warnings</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Trigger-based actions</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap and last-minute strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Revenue goal tracking and monthly summary</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Paste your costs — get your floor price instantly</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ask anything on Telegram, 24/7</li>
-          </ul>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20start%20with%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Start with AI Agent</a>
-        </article>
-        <article class="tier tier--featured reveal" style="--reveal-delay:60ms">
-          <p class="tier-flag">Recommended</p>
-          <p class="tier-num">TIER 02</p>
-          <h3>Hybrid Revenue Management</h3>
-          <p class="tier-mode">AI plus human expertise</p>
-          <p class="tier-desc">Everything in the AI Revenue Agent, plus a human revenue manager working your strategy.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Everything in Tier 1</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Direct revenue manager access</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Strategic pricing reviews</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Market interpretation sessions</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs strategy and setup guidance</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rate structure and floor architecture</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal strategy and event planning</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review call</li>
-          </ul>
-          <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20Hybrid%20Revenue%20Management." target="_blank" rel="noopener">Discuss Hybrid Support</a>
-        </article>
-        <article class="tier reveal" style="--reveal-delay:120ms">
-          <p class="tier-num">TIER 03</p>
-          <h3>One-Time Setup</h3>
-          <p class="tier-mode">Focused engagement</p>
-          <p class="tier-desc">A focused consultancy engagement to get your pricing foundations right.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs full setup or review</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor price architecture per unit</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal pricing strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekday and weekend rate logic</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Event and peak strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Min-stay optimisation</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Last-minute rules</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portfolio review</li>
-          </ul>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20book%20a%20one-time%20consultancy." target="_blank" rel="noopener">Book Consultancy</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ WHY THIS EXISTS ============ -->
   <section class="section section--light" id="why" aria-labelledby="why-title">
     <div class="container">
@@ -3153,7 +3066,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       <div class="problems-close reveal">
         <p class="big">These are not technology problems. They are discipline problems.</p>
         <p class="small">The right system makes these disciplines automatic — every morning, every listing, without relying on willpower.</p>
-        <a class="btn btn--dark" href="#how-it-works">See how Oasis Revenue Lab solves this</a>
+        <a class="btn btn--dark" href="#pricing">See how Oasis Revenue Lab solves this</a>
       </div>
     </div>
   </section>
@@ -3430,101 +3343,145 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     </div>
   </section>
 
-  <!-- ============ PRICING ============ -->
+  <!-- ============ THE OFFER: TIERS + PRICING (merged) ============ -->
+  <!-- This section is the merge of what used to be two sections: the old
+       #how-it-works tier section (three tiers, full bullet lists, no prices) and
+       the old #pricing section (the same three products again, prices, a second
+       and shorter bullet list). A visitor met the same three products twice with
+       two different feature lists; that duplication is gone.
+
+       What was kept: the tier component (.tiers / .tier) and the longer bullet
+       list from the tier section, with every capability that only appeared in the
+       pricing list folded in — "Tower-level comp intelligence" (tier 1),
+       "Ongoing advisory" (tier 2), "Dubai-specific logic" and
+       "Apartment-specific setup" (tier 3). Nothing was invented and no capability
+       was dropped. The price now sits under the bullets inside the same tile,
+       using the .price-value / .price-fine components from the old pricing
+       section, so there is one place to read what you get and what it costs.
+
+       The section keeps id="pricing": it is the destination of the header nav
+       "Pricing" item, the hero "View Offers" button and two footer links. The
+       removed section's id (#how-it-works) is repointed here in the header nav,
+       the legal-page nav, the features section, the why section and the footer. -->
   <section class="section section--dark" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Pricing</p>
-        <h2 id="pricing-title">Start with what you need. Scale from there.</h2>
+        <p class="eyebrow">How It Works &amp; Pricing</p>
+        <h2 id="pricing-title">The AI is not replacing revenue management expertise. It is scaling it.</h2>
+        <p class="lead">Start with what you need. Scale from there.</p>
       </div>
       <div class="founding-banner reveal">
-        <p class="fb-text">First 20 clients lock in <strong>AED 80/listing/month</strong> permanently.</p>
-        <span class="fb-count"><span class="dot dot--green dot--pulse" aria-hidden="true"></span>18 spots remaining</span>
+        <p class="fb-text">First 50 seats: <strong>AED 99/listing/month</strong>. Standard price after launch: AED 149/listing/month.</p>
       </div>
-      <div class="price-cards">
-        <article class="price-card reveal">
+      <div class="tiers">
+        <article class="tier reveal">
+          <p class="tier-num">TIER 01</p>
           <h3>AI Revenue Agent</h3>
-          <div class="price-value"><span class="amount">AED 80</span><span class="per">/ listing / month</span></div>
-          <p class="price-fine">Standard price after launch: AED 149+/listing/month. <strong>Lock in AED 80 permanently today.</strong></p>
+          <p class="tier-mode">Fully autonomous</p>
+          <p class="tier-desc">A 24/7 AI revenue manager. For operators who want autonomous AI without hiring.</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily AI briefing via Telegram</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor price monitoring and alerts</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Demand signal tracking</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace analysis</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>MPI market performance index</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief at 9:45am</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs verified and corrected daily</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Exact rate recommendations</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor monitoring</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>MPI vs competitors</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Tower-level comp intelligence</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Market compression alerts</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Unit-level recommendations</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance summary</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace and demand alerts</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Events and compression warnings</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Trigger-based actions</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap and last-minute strategy</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Revenue goal tracking and monthly summary</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Paste your costs — get your floor price instantly</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ask anything on Telegram, 24/7</li>
           </ul>
-          <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20claim%20the%20AED%2080%20founding%20rate%20for%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Claim Founding Rate</a>
+          <div class="price-value"><span class="amount">AED 99</span><span class="per">/ listing / month</span></div>
+          <p class="price-fine"><strong>For the first 50 seats.</strong> Standard price after launch: AED 149/listing/month.</p>
+          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20start%20with%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Start with AI Agent</a>
         </article>
-        <article class="price-card price-card--featured reveal" style="--reveal-delay:60ms">
-          <p class="tier-flag">Most Popular</p>
+        <article class="tier tier--featured reveal" style="--reveal-delay:60ms">
+          <p class="tier-flag">Recommended</p>
+          <p class="tier-num">TIER 02</p>
           <h3>Hybrid Revenue Management</h3>
-          <div class="price-value"><span class="amount">Custom</span><span class="per">based on portfolio size</span></div>
-          <p class="price-fine">AI plus human expertise, sized to your portfolio.</p>
+          <p class="tier-mode">AI plus human expertise</p>
+          <p class="tier-desc">Everything in the AI Revenue Agent, plus a human revenue manager working your strategy.</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Everything in AI Agent, plus human RM support</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Everything in Tier 1</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Direct revenue manager access</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Strategic pricing reviews</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ongoing advisory</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Market interpretation calls</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs strategy guidance</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rate structure optimisation</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Market interpretation sessions</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs strategy and setup guidance</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rate structure and floor architecture</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal strategy and event planning</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review call</li>
           </ul>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20Hybrid%20Revenue%20Management%20pricing." target="_blank" rel="noopener">Discuss Hybrid Support</a>
+          <div class="price-value"><span class="amount">Custom</span><span class="per">based on portfolio size</span></div>
+          <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20Hybrid%20Revenue%20Management." target="_blank" rel="noopener">Discuss Hybrid Support</a>
         </article>
-        <article class="price-card reveal" style="--reveal-delay:120ms">
+        <article class="tier reveal" style="--reveal-delay:120ms">
+          <p class="tier-num">TIER 03</p>
           <h3>One-Time Consultancy</h3>
-          <div class="price-value"><span class="amount">Custom</span><span class="per">one-time</span></div>
-          <p class="price-fine">A focused engagement to set your pricing foundations right.</p>
+          <p class="tier-mode">Focused engagement</p>
+          <p class="tier-desc">A focused consultancy engagement to get your pricing foundations right.</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs setup or review</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal pricing customisation</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Dubai-specific logic</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekday / weekend structure</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Event and peak strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor architecture</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs full setup or review</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor price architecture per unit</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Apartment-specific setup</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal pricing strategy</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekday and weekend rate logic</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Event and peak strategy</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Dubai-specific logic</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Min-stay optimisation</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Last-minute rules</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portfolio review</li>
           </ul>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20book%20a%20one-time%20consultancy." target="_blank" rel="noopener">Book One-Time Consultancy</a>
+          <div class="price-value"><span class="amount">Custom</span><span class="per">one-time</span></div>
+          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20book%20a%20one-time%20consultancy." target="_blank" rel="noopener">Book Consultancy</a>
         </article>
       </div>
-      <p class="pricing-footnote">All enquiries handled personally. VAT applies where applicable.<br><span class="mono">Operated by Lux Oasis Advisory &amp; Services LLC — TRN 104722180700003.</span></p>
+      <p class="pricing-footnote">All enquiries handled personally. Excludes VAT.<br><span class="mono">Operated by Lux Oasis Advisory &amp; Services LLC — TRN 104722180700003.</span></p>
     </div>
   </section>
 
-  <!-- ============ THE OTHER HALF (ecosystem cross-sell) ============ -->
+  <!-- ============ ACROSS THE ECOSYSTEM (cross-link, not cross-sell) ============ -->
   <!-- Deliberately placed AFTER pricing (70-pricing.html) and before the credentials
        and closing sections. Land first, expand second: a visitor who arrived with a
-       pricing problem finishes deciding about pricing before a second product is
+       pricing problem finishes deciding about pricing before anything else is
        introduced. Never move this above #pricing and never into the hero.
 
-       Not a duplicate of #ecosystem (42-ecosystem.html). That section is corporate:
-       which companies exist and how they relate. This one is commercial: the other
-       product lines a client can buy, and the fact that running more than one is
-       quoted as a package.
+       CROSS-LINK RULE — do not break it. This site sells revenue management. It
+       NAMES Oasis Guest Lab as the part of the ecosystem that handles guest
+       communication and links to it, and stops there. It does not explain how
+       Guest Lab works and it does not mention LIA: a visitor either wants revenue
+       management or wants guest replies, and the second one should be given the
+       link, not the other product's pitch. Selling Guest Lab is Guest Lab's job on
+       Guest Lab's site, which mirrors this by naming and linking Revenue Lab.
+
+       #ecosystem (42-ecosystem.html) is the map of the ecosystem. This section is
+       the commercial consequence of it: the link out, and the fact that running
+       more than one part is quoted as a package.
 
        No new component, colour or band: section--panel is the same band as
        #rm-services and #ecosystem, and .rms-note / .rms-cta are the note and
        call-to-action components from 47-rm-services.css, reused unchanged.
 
        Truth rules held: no bundle price, no discount percentage, no invented tier
-       name, no onboarding or service-level promise. Nest Match is in private beta —
-       "opening city by city" is the approved wording and there is no link to it. -->
+       name, no onboarding or service-level promise. Nest Match is an app that is
+       opening city by city — that is the approved wording. NO App Store or Google
+       Play badge, mark or download link goes here or anywhere on this site: the
+       app is not on either store, the badges are licensed only as links to a live
+       listing, and a badge that links to nothing reads as vapourware. -->
   <section class="section section--panel" id="two-jobs" aria-labelledby="crosssell-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">The Other Half</p>
-        <h2 id="crosssell-title">Pricing is one half of the job.</h2>
-        <p class="lead">We price your nights. LIA answers your guests: she is the AI agent that runs on Oasis Guest Lab, our sibling platform, and she replies in the guest's own language around the clock, handing over to your team when a situation needs a person. Between them they cover the two jobs that keep most operators on their phone at midnight — which is how you get your attention back for finding the next unit.</p>
+        <p class="eyebrow">Across the Ecosystem</p>
+        <h2 id="crosssell-title">One part of a larger ecosystem.</h2>
+        <p class="lead">Oasis Revenue Lab does the pricing. Guest communication is handled by <a class="text-link" href="https://www.oasisguestlab.ai" target="_blank" rel="noopener">Oasis Guest Lab</a>, the part of the ecosystem built for that job.</p>
       </div>
 
       <div class="rms-note reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <p><strong>Nest Match</strong> — our marketplace for landlords, operators and suppliers — is opening city by city.</p>
+        <p><strong>Nest Match</strong> — the network app for the growth and scale of every player in it: landlords, operators and suppliers — is opening city by city.</p>
       </div>
 
       <div class="rms-cta reveal">
@@ -3687,7 +3644,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         </details>
         <details class="faq-item">
           <summary>How much does it cost?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">AED 80 per listing per month at the founding rate, locked in permanently for the first 20 clients. The standard price rises after launch. Hybrid and consultancy engagements are priced custom to your portfolio.</p>
+          <p class="faq-answer">AED 99 per listing per month for the first 50 seats. The standard price after launch is AED 149 per listing per month. Hybrid and consultancy engagements are priced custom to your portfolio.</p>
         </details>
         <details class="faq-item">
           <summary>Do you only cover Dubai?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -3711,7 +3668,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         </details>
         <details class="faq-item">
           <summary>Who is behind Oasis Revenue Lab?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">Oasis Revenue Lab is a division of Lux Oasis Advisory &amp; Services LLC, registered in the Sharjah Free Zone, UAE. Our operating partner is Lux Oasis Holiday Homes, a separate UAE company that holds the DTCM licence — and every system runs on that live portfolio before it reaches a client.</p>
+          <p class="faq-answer">Oasis Revenue Lab — a division of Lux Oasis Advisory &amp; Services LLC, registered in the Sharjah Free Zone, UAE. Our operating partner is Lux Oasis Holiday Homes, a separate UAE company that holds the DTCM licence — and every system runs on that live portfolio before it reaches a client.</p>
         </details>
       </div>
       <div class="faq-close reveal">
@@ -3751,7 +3708,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       <nav class="footer-col" aria-label="Product links">
         <h4>Product</h4>
         <ul>
-          <li><a href="#how-it-works">AI Revenue Agent</a></li>
+          <li><a href="#pricing">AI Revenue Agent</a></li>
           <li><a href="#consultancy">Consultancy</a></li>
           <li><a href="#pricing">Hybrid Model</a></li>
           <li><a href="#pricing">Pricing</a></li>
