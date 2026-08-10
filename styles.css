@@ -2203,3 +2203,108 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   .js-scenes .tg-feed > .tg-msg { clip-path: none; }
   .js-scenes .tg-feed > .tg-msg.is-typing > * { opacity: 1; }
 }
+/* ============================================================
+   PHONE CHOREOGRAPHY + PHONE RHYTHM  (< 768px)
+
+   Two jobs in this file, kept apart on purpose:
+
+     1. Vertical rhythm. The desktop spacing was being applied almost
+        unchanged to a 390px screen, which turned every section into a
+        long static run. These rules are plain responsive CSS — they
+        apply with or without JS, with or without motion.
+
+     2. The phone choreography's own furniture: the Telegram chapter
+        index, and the snapping behaviour of the thread it indexes.
+        All of it is scoped to html.js-steps, which scripts/30-motion-
+        engine.js sets only when motion is allowed AND the viewport is
+        below 768px AND IntersectionObserver exists — so the desktop,
+        the no-JS page and reduced motion never render any of it.
+
+   THE DIVISION THAT MATTERS: nothing describing a scene's PIN (the
+   330vh/280vh heights, position: sticky, the compacted scene type)
+   appears here — that stays in styles/94 and styles/95 inside
+   @media (min-width: 768px), where it belongs to the scrub engine
+   alone. Everything describing a VISUAL STATE already hangs off the
+   shared .js-scenes class, which both engines set, so both engines
+   paint the same states and the desktop is untouched by this file.
+   ============================================================ */
+
+/* The chapter index exists only for the phone engine. Declared outside every
+   media query so that the desktop, the no-JS page and reduced motion never
+   render it, whatever else happens. */
+.tg-dots { display: none; }
+.tg-dot-row { display: flex; align-items: center; justify-content: center; gap: 2px; }
+.tg-dot {
+  width: 30px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.tg-dot i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  transition: width 0.3s var(--ease-o), background 0.3s ease;
+}
+.tg-dot.is-on i { width: 22px; border-radius: 4px; background: var(--green); }
+.tg-chapter {
+  text-align: center;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+  margin-top: 7px;
+}
+
+@media (max-width: 767px) {
+  /* ---------- vertical rhythm ----------
+     80px of padding above and below every section, plus a 40px section head,
+     is desktop breathing room on a phone: it pushed the mocks that carry the
+     argument below the fold and made the page read as a long static brochure. */
+  .section { padding: 56px 0; }
+  .section-head { margin-bottom: 28px; }
+  .hero { padding-top: 114px; }
+  .dash-note { margin-bottom: 14px; }
+  .creds-strip { padding: 24px 0 26px; }
+  .features-note, .problems-close, .rms-cta { margin-top: 28px; }
+  .site-footer { padding-top: 50px; }
+  /* decorative-only fixed heights, sized for a desktop column */
+  .tower-art { height: 280px; }
+  /* the thread gives back the room the chapter index takes */
+  .tg-feed { height: 430px; }
+
+  /* ---------- TELEGRAM: the thread is a snapping track ----------
+     Six chapters, each snapping square to the top of the screen, with the dot
+     row below as index and tap control. The feed is a native overflow
+     scroller, so the browser arbitrates horizontal-vs-vertical and feed-vs-
+     page; nothing here captures a gesture. Scroll chaining is deliberately
+     left on (auto, not contain) so a swipe that runs the thread out carries
+     on scrolling the page instead of dead-ending under the thumb. */
+  html.js-steps .tg-feed {
+    scroll-snap-type: y proximity;
+    /* keep each chapter's divider label on screen above it when it snaps;
+       TG_PAD in scripts/80-mobile-scenes.js must match this */
+    scroll-padding-top: 42px;
+    overscroll-behavior-y: auto;
+  }
+  html.js-steps .tg-feed > .tg-msg { scroll-snap-align: start; }
+  html.js-steps .tg-dots { display: block; max-width: 400px; margin: 16px auto 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Safety net only. The phone engine is never constructed under reduced
+     motion — the class is not set, so no observer and no timer exists — but if
+     the preference is switched on after load the classes are already on the
+     element, so pin every state this file can reach to its finished value. */
+  html.js-steps .tg-dot i { transition: none !important; }
+  .js-scenes .dash-scene .dash-units::after { opacity: 0 !important; }
+  .js-scenes .dash-scene .dash-timestamp { opacity: 1 !important; transform: none !important; }
+}

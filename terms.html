@@ -2229,6 +2229,111 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   .js-scenes .tg-feed > .tg-msg { clip-path: none; }
   .js-scenes .tg-feed > .tg-msg.is-typing > * { opacity: 1; }
 }
+/* ============================================================
+   PHONE CHOREOGRAPHY + PHONE RHYTHM  (< 768px)
+
+   Two jobs in this file, kept apart on purpose:
+
+     1. Vertical rhythm. The desktop spacing was being applied almost
+        unchanged to a 390px screen, which turned every section into a
+        long static run. These rules are plain responsive CSS — they
+        apply with or without JS, with or without motion.
+
+     2. The phone choreography's own furniture: the Telegram chapter
+        index, and the snapping behaviour of the thread it indexes.
+        All of it is scoped to html.js-steps, which scripts/30-motion-
+        engine.js sets only when motion is allowed AND the viewport is
+        below 768px AND IntersectionObserver exists — so the desktop,
+        the no-JS page and reduced motion never render any of it.
+
+   THE DIVISION THAT MATTERS: nothing describing a scene's PIN (the
+   330vh/280vh heights, position: sticky, the compacted scene type)
+   appears here — that stays in styles/94 and styles/95 inside
+   @media (min-width: 768px), where it belongs to the scrub engine
+   alone. Everything describing a VISUAL STATE already hangs off the
+   shared .js-scenes class, which both engines set, so both engines
+   paint the same states and the desktop is untouched by this file.
+   ============================================================ */
+
+/* The chapter index exists only for the phone engine. Declared outside every
+   media query so that the desktop, the no-JS page and reduced motion never
+   render it, whatever else happens. */
+.tg-dots { display: none; }
+.tg-dot-row { display: flex; align-items: center; justify-content: center; gap: 2px; }
+.tg-dot {
+  width: 30px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.tg-dot i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  transition: width 0.3s var(--ease-o), background 0.3s ease;
+}
+.tg-dot.is-on i { width: 22px; border-radius: 4px; background: var(--green); }
+.tg-chapter {
+  text-align: center;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+  margin-top: 7px;
+}
+
+@media (max-width: 767px) {
+  /* ---------- vertical rhythm ----------
+     80px of padding above and below every section, plus a 40px section head,
+     is desktop breathing room on a phone: it pushed the mocks that carry the
+     argument below the fold and made the page read as a long static brochure. */
+  .section { padding: 56px 0; }
+  .section-head { margin-bottom: 28px; }
+  .hero { padding-top: 114px; }
+  .dash-note { margin-bottom: 14px; }
+  .creds-strip { padding: 24px 0 26px; }
+  .features-note, .problems-close, .rms-cta { margin-top: 28px; }
+  .site-footer { padding-top: 50px; }
+  /* decorative-only fixed heights, sized for a desktop column */
+  .tower-art { height: 280px; }
+  /* the thread gives back the room the chapter index takes */
+  .tg-feed { height: 430px; }
+
+  /* ---------- TELEGRAM: the thread is a snapping track ----------
+     Six chapters, each snapping square to the top of the screen, with the dot
+     row below as index and tap control. The feed is a native overflow
+     scroller, so the browser arbitrates horizontal-vs-vertical and feed-vs-
+     page; nothing here captures a gesture. Scroll chaining is deliberately
+     left on (auto, not contain) so a swipe that runs the thread out carries
+     on scrolling the page instead of dead-ending under the thumb. */
+  html.js-steps .tg-feed {
+    scroll-snap-type: y proximity;
+    /* keep each chapter's divider label on screen above it when it snaps;
+       TG_PAD in scripts/80-mobile-scenes.js must match this */
+    scroll-padding-top: 42px;
+    overscroll-behavior-y: auto;
+  }
+  html.js-steps .tg-feed > .tg-msg { scroll-snap-align: start; }
+  html.js-steps .tg-dots { display: block; max-width: 400px; margin: 16px auto 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Safety net only. The phone engine is never constructed under reduced
+     motion — the class is not set, so no observer and no timer exists — but if
+     the preference is switched on after load the classes are already on the
+     element, so pin every state this file can reach to its finished value. */
+  html.js-steps .tg-dot i { transition: none !important; }
+  .js-scenes .dash-scene .dash-units::after { opacity: 0 !important; }
+  .js-scenes .dash-scene .dash-timestamp { opacity: 1 !important; transform: none !important; }
+}
 </style>
 </head>
 <body>
@@ -2375,6 +2480,13 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   /* Scene mode: pinned scroll-scrub choreography. Only on wide viewports with
      motion allowed — everywhere else the page renders its complete static state. */
   var sceneMode = !prefersReducedMotion && window.innerWidth >= 768;
+  /* The dashboard KPI count-ups belong to whichever motion engine owns the dash
+     scene: the pinned scrub scene above 768px, the timed phone sequence below
+     it. Only when neither engine runs does the plain IntersectionObserver
+     count-up take them. Must stay in step with scripts/30-motion-engine.js. */
+  var dashDriven = !prefersReducedMotion &&
+    ("requestAnimationFrame" in window) &&
+    (window.innerWidth >= 768 || ("IntersectionObserver" in window));
 
   /* ---------- sticky header border on scroll ---------- */
   var header = document.querySelector(".site-header");
@@ -2444,11 +2556,12 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     }
     requestAnimationFrame(step);
   }
-  /* In scene mode, KPI count-ups inside the pinned dashboard scene are driven
-     by scroll scrub (see motion engine below), not by IntersectionObserver. */
+  /* KPI count-ups inside the dashboard scene are driven by the motion engine —
+     scroll scrub on a desktop, the timed phone sequence below 768px — so they
+     are excluded here whenever either engine is going to own them. */
   var countEls = Array.prototype.filter.call(
     document.querySelectorAll("[data-countup]"),
-    function (el) { return !(sceneMode && el.closest(".dash-scene")); }
+    function (el) { return !(dashDriven && el.closest(".dash-scene")); }
   );
   if ("IntersectionObserver" in window) {
     var countObserver = new IntersectionObserver(function (entries) {
@@ -2649,15 +2762,41 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
    MOTION ENGINE — Apple-style scroll choreography.
    Single rAF loop, scroll position read once per frame, all
    animation via transform / opacity / clip-path / canvas.
-   Scene scrubbing only runs when motion is allowed and the
-   viewport is >= 768px; otherwise the page stays fully static
-   (canvases are still painted in their final state).
+
+   Two engines drive the SAME five scenes:
+
+     html.js-scenes  — the shared VISUAL STATE class. Everything a
+                       scene can look like (which tile has landed,
+                       which message has typed, whether the impact
+                       ring has popped) is gated on this, so both
+                       engines paint identical states.
+     sceneMode       — the pinned scroll-scrub engine. Wide viewports
+                       only; every PIN rule (330vh/280vh heights,
+                       position: sticky, compacted type) lives inside
+                       @media (min-width: 768px) and belongs to it.
+     html.js-steps   — the phone engine (scripts/80-mobile-scenes.js).
+                       Reading position picks WHICH scene plays; time
+                       then walks the states inside it, once, and the
+                       scene rests on its last state. No pin, no
+                       scrubbing, no scroll hijack under a thumb.
+
+   Without either class every scene renders its complete final state,
+   so reduced motion and a JS-less page are both correct by default.
+
+   NOTE: the mode is decided once at load; resizing across the 768px
+   boundary keeps the current mode until reload.
    ============================================================ */
 (function () {
   "use strict";
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var sceneMode = !reduced && window.innerWidth >= 768 && "requestAnimationFrame" in window;
+  /* the phone engine additionally needs IntersectionObserver; without it the
+     page simply keeps its static final states, which are complete and readable */
+  var stepsMode = !reduced && !sceneMode &&
+    "requestAnimationFrame" in window && "IntersectionObserver" in window;
+  if (sceneMode || stepsMode) document.documentElement.classList.add("js-scenes");
+  if (stepsMode) document.documentElement.classList.add("js-steps");
   var dpr = Math.min(2, window.devicePixelRatio || 1);
 
   function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -2753,6 +2892,9 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   });
 
   var NIGHTS = 30;
+  /* how much of the two lines is currently drawn. 1 = the finished chart, which
+     is what a resize repaint must restore when no engine is driving the scene. */
+  var whyT = 1;
   var staticLine = [], managedLine = [];
   (function buildChartData() {
     for (var i = 0; i < NIGHTS; i++) {
@@ -2834,6 +2976,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   function whyUpdate(p) {
     /* linear: the line draws in lockstep with the scroll, Pudding-style */
     var t = clamp01(p);
+    whyT = t;
     drawWhyChart(t);
     if (chartLabels.wkd) chartLabels.wkd.classList.toggle("is-on", t > 0.22);
     if (chartLabels.eid) chartLabels.eid.classList.toggle("is-on", t > 0.62);
@@ -2940,6 +3083,11 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   var tgFeed = tgScene ? tgScene.querySelector(".tg-feed") : null;
   var tgItems = [];
   var tgTargetScroll = 0, tgDrive = false, tgFeedH = 0;
+  /* Entrance tilt of the phone mock, in degrees. A 400px mock rotated 8deg is
+     ~86px wider than its own box; on a 390px screen that hangs past the
+     viewport edge, so the phone engine sets this to 0 and the mock simply
+     rises into place (scripts/80-mobile-scenes.js). */
+  var tgTilt = 8;
 
   function initTgItems() {
     if (!tgFeed) return;
@@ -2970,7 +3118,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     if (!tgPhone) return;
     /* phone settles from 8deg tilt to upright while it centres */
     var rt = easeOut(band(p, 0, 0.3));
-    tgPhone.style.transform = "rotate(" + (8 * (1 - rt)).toFixed(2) + "deg) translateY(" + (26 * (1 - rt)).toFixed(1) + "px)";
+    tgPhone.style.transform = "rotate(" + (tgTilt * (1 - rt)).toFixed(2) + "deg) translateY(" + (26 * (1 - rt)).toFixed(1) + "px)";
     var target = 0;
     tgItems.forEach(function (it) {
       var local = band(p, it.start, it.width);
@@ -3050,21 +3198,350 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     sizeCanvas(whyCanvas);
   }
 
+  /* ============================================================
+     PHONE CHOREOGRAPHY (html.js-steps, below 768px)
+
+     The five scenes on this page are pinned and scroll-scrubbed on a
+     desktop. That is the wrong instrument under a thumb: a sticky pin
+     fights the mobile browser chrome collapsing and expanding, and a
+     scrubbed scene means several swipes produce no page movement,
+     which reads as a broken page. So below 768px the scrub engine
+     never runs and this one does instead.
+
+     Reading position decides WHICH scene plays. Time then walks the
+     states inside it, once, and the scene rests on its final state.
+     It does not loop and it does not replay on the next pass.
+
+     Every scene here is driven by handing progress 0..1 to the SAME
+     update function the scrub engine calls — dashUpdate, tgUpdate,
+     whyUpdate, floorUpdate — so the two engines cannot drift apart:
+     only the clock differs, not the choreography.
+
+     Rules kept: transform, opacity and canvas only; passive
+     listeners; every play-once observer disconnects the moment its
+     scene has fired; and nothing here is even constructed under
+     prefers-reduced-motion or without JS, because in both of those
+     cases the CSS final states are already correct.
+     ============================================================ */
+
+  function startStepEngine() {
+
+    /* fire `run` the first time `el` is on screen, then stop watching it.
+
+       `cut` is how far up the screen the element's top edge has to travel
+       before its scene starts, as a percentage of the viewport. It is tuned
+       per scene rather than shared, because the thing that must not happen on
+       a phone is a scene playing itself out while the part you are meant to
+       watch is still below the fold — which is the same failure as arriving at
+       a finished picture. threshold 0 with a bottom root margin, rather than a
+       visibility ratio, so an element taller than the screen still fires. */
+    function playOnce(el, cut, run) {
+      if (!el) return;
+      var io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (!entries[i].isIntersecting) continue;
+          io.disconnect();
+          run();
+          return;
+        }
+      }, { threshold: 0, rootMargin: "0px 0px -" + cut + "% 0px" });
+      io.observe(el);
+    }
+
+    /* one scene timeline: progress `from` -> `to` over `ms`, handed frame by
+       frame to the scene's own update function */
+    function ramp(from, to, ms, fn, done) {
+      var t0 = null;
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var k = ms > 0 ? Math.min(1, (ts - t0) / ms) : 1;
+        fn(from + (to - from) * k);
+        if (k < 1) requestAnimationFrame(step);
+        else if (done) done();
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ---------- 1. HERO: the revenue line draws itself ----------
+       Same 1150ms left-to-right draw the desktop plays on load, with the
+       glowing head. It is the hero card's whole argument — the line goes up —
+       so it must be watched being drawn, not found already finished. */
+    playOnce(document.querySelector(".hero-card"), 0, function () { heroIntro(); });
+
+    /* ---------- 2. DASHBOARD: the morning brief assembles itself ----------
+       05:45 to 09:45 on the clock, the progress rail filling, the caption
+       track moving through "Reading PriceLabs / Verifying floors / Checking
+       pace / Composing your brief / Brief delivered", the four KPI tiles
+       populating one at a time with the MPI dial sweeping to 1.32, and the
+       two unit reports landing last onto what was an empty skeleton. The
+       point of the scene is that it was built while the owner slept, so on a
+       phone it has to be caught in the act.
+
+       On a phone this scene is two screens tall, so one trigger cannot work:
+       fired at the section it would finish while the dashboard was still below
+       the fold, and fired at the dashboard the clock would already have run.
+       So it is played in the two halves it already has. The brief assembles
+       (0 -> 0.84) when the clock strip is properly on screen; the two unit
+       reports land (0.84 -> 1) when the empty report skeleton reaches the
+       reader. Progress is a single monotonic value chased at a constant rate,
+       so the halves cannot fight each other and nothing already delivered is
+       ever taken back — a fast scroller who reaches the reports first simply
+       gets the whole brief assembled at once. */
+    if (dashScene) {
+      var dashP = 0;
+      var dashTarget = 0;
+      var dashRaf = null;
+      var dashLast = 0;
+      var DASH_RATE = 1 / 5000;      /* progress per millisecond */
+
+      function dashChase(ts) {
+        var dt = ts - dashLast;
+        dashLast = ts;
+        dashP = Math.min(dashTarget, dashP + dt * DASH_RATE);
+        dashUpdate(dashP);
+        if (dashP < dashTarget) dashRaf = requestAnimationFrame(dashChase);
+        else dashRaf = null;
+      }
+      function dashAim(p) {
+        if (p <= dashTarget) return;
+        dashTarget = p;
+        if (dashRaf) return;
+        dashLast = performance.now();
+        dashRaf = requestAnimationFrame(dashChase);
+      }
+
+      dashUpdate(0);
+      playOnce(dashScene.querySelector(".brief-timeline"), 50, function () { dashAim(0.84); });
+      playOnce(dashScene.querySelector(".dash-units"), 25, function () { dashAim(1); });
+    }
+
+    /* ---------- 3. WHY THIS EXISTS: static vs managed, drawn ----------
+       Two 30-night lines racing each other. Drawing them beats showing them:
+       the flat static line and the managed line pulling away at the weekend
+       and again at Eid is the argument, and the RevPAR chip is its receipt. */
+    if (whyWrap && whyCanvas) {
+      playOnce(whyWrap, 35, function () { ramp(0, 1, 2400, whyUpdate); });
+    }
+
+    /* ---------- 4. FLOOR PROTECTION: the price bounces off the floor ----------
+       The shield draws, the tick lands inside it, and the falling price line
+       hits the floor line and turns back up with an impact ring. Static, it is
+       a diagram; drawn, it is the promise — the agent never goes below your
+       minimum. */
+    if (floorScene) {
+      initFloorScene();
+      floorUpdate(0);
+      playOnce(floorScene, 30, function () { ramp(0, 1, 2100, floorUpdate); });
+    }
+
+    /* ---------- 5. TELEGRAM: six chapters you can actually drive ----------
+       The daily brief is not one blob, it is six chapters — the portfolio
+       header, Market, 2BR Marina, 1BR JBR, Events, Triggers — and a person
+       reading it on a phone plausibly wants to go back to one of them. So the
+       feed becomes a snapping track with a dot index underneath.
+
+       It auto-advances from the moment the section arrives, typing one chapter
+       in at a time and scrolling the thread to it, so the brief tells itself
+       unprompted. The first touch anywhere on the feed or the dots hands
+       control over permanently: the timer is dropped and never rescheduled.
+       The feed is a native overflow scroller, so the browser — not this code —
+       decides whether a gesture is a feed scroll or a page scroll; there is no
+       gesture logic here to get that wrong.
+
+       Progress only ever moves forward. A chapter that has been revealed is
+       never hidden again, so no tap and no scroll can leave a hole in a thread
+       the visitor has already read. */
+    var tgDotEls = [].slice.call(document.querySelectorAll("#tgDots .tg-dot"));
+    var tgCaption = document.getElementById("tgChapter");
+    if (tgScene && tgFeed && tgPhone) {
+      /* a 400px mock rotated 8deg is ~86px wider than its own box; on a 390px
+         screen that hangs past the viewport edge, so the phone simply rises */
+      tgTilt = 0;
+      initTgItems();
+      measureFeed();
+
+      var tgChapters = tgItems.filter(function (it) { return it.isMsg; });
+      var tgP = 0;                 /* monotonic scene progress */
+      var tgIdx = -1;
+      var tgAuto = true;
+      var tgTimer = null;
+      var tgRaf = null;
+      var tgMoveUntil = 0;         /* until then the feed is being moved by this
+                                      code, not by a thumb, so its scroll events
+                                      must not be read back as a selection */
+      var TG_TYPE = 1000;          /* time to type one chapter in */
+      var TG_DWELL = 950;          /* time to read it before the next starts */
+      var TG_PAD = 42;             /* scroll-padding-top of the thread: enough to
+                                      keep a chapter's divider label above it */
+
+      /* progress at which chapter i is fully delivered; the last one runs the
+         scene out to 1 so it rests on a completed thread */
+      function tgEnd(i) {
+        if (i >= tgChapters.length - 1) return 1;
+        var c = tgChapters[i];
+        return c ? Math.min(1, c.start + c.width) : 1;
+      }
+
+      /* which chapter the current progress belongs to */
+      function tgIndexAt(p) {
+        var i = 0;
+        for (var k = 0; k < tgChapters.length; k++) {
+          if (p >= tgChapters[k].start) i = k;
+        }
+        return i;
+      }
+
+      function tgMark(i) {
+        if (i === tgIdx) return;
+        tgIdx = i;
+        tgDotEls.forEach(function (d, k) { d.classList.toggle("is-on", k === i); });
+        if (tgCaption && tgDotEls[i]) {
+          tgCaption.textContent = tgDotEls[i].getAttribute("data-tg-label") || "";
+        }
+      }
+
+      function tgSet(p) {
+        if (p <= tgP) return;
+        tgP = p;
+        tgUpdate(p);
+        tgMark(tgIndexAt(p));
+      }
+
+      /* where the track rests when chapter i is current. This is the snap
+         position the browser itself would choose: the chapter's own top, less
+         the scroll padding that keeps its divider label on screen above it
+         (matched to scroll-padding-top in styles/99a-mobile-steps.css). The
+         thread is a snap container, so nothing else can be aimed at — a
+         per-frame pixel lerp gets snapped straight back. */
+      function tgSnapTop(i) {
+        var c = tgChapters[i];
+        return c ? Math.max(0, c.top - TG_PAD) : 0;
+      }
+
+      function tgScrollToChapter(i) {
+        if (!tgChapters[i]) return;
+        var top = tgSnapTop(i);
+        tgMoveUntil = performance.now() + 1200;
+        if (tgFeed.scrollTo) tgFeed.scrollTo({ top: top, behavior: "smooth" });
+        else tgFeed.scrollTop = top;
+      }
+
+      function tgStopAuto() {
+        tgAuto = false;
+        if (tgTimer) { window.clearTimeout(tgTimer); tgTimer = null; }
+        if (tgRaf) { cancelAnimationFrame(tgRaf); tgRaf = null; }
+      }
+
+      /* ramp progress up to chapter i: it types itself in */
+      function tgRampTo(i, ms, done) {
+        var from = tgP;
+        var to = Math.max(from, tgEnd(i));
+        var t0 = null;
+        function frame(ts) {
+          if (t0 === null) t0 = ts;
+          var k = ms > 0 ? Math.min(1, (ts - t0) / ms) : 1;
+          tgSet(from + (to - from) * k);
+          if (k < 1) { tgRaf = requestAnimationFrame(frame); return; }
+          tgRaf = null;
+          if (done) done();
+        }
+        tgRaf = requestAnimationFrame(frame);
+      }
+
+      /* the thread brings the arriving chapter to the top, then types it in —
+         a chat scrolling to its newest message, one snap at a time */
+      function tgQueue(i) {
+        if (!tgAuto || i >= tgChapters.length) return;
+        if (i > 0) tgScrollToChapter(i);
+        tgRampTo(i, TG_TYPE, function () {
+          if (!tgAuto) return;
+          tgTimer = window.setTimeout(function () {
+            tgTimer = null;
+            if (!tgAuto) return;
+            tgQueue(i + 1);
+          }, TG_DWELL);
+        });
+      }
+
+      /* after takeover the thread is the source of truth: whatever chapter the
+         visitor has scrolled to is revealed, and the scene stays where they
+         left it */
+      function tgSyncFromFeed() {
+        /* the chapter whose snap position is nearest the top of the thread is
+           the current one — the same rule the snap points themselves use */
+        var y = tgFeed.scrollTop;
+        var best = 0;
+        var bestD = Infinity;
+        for (var i = 0; i < tgChapters.length; i++) {
+          var d = Math.abs(tgSnapTop(i) - y);
+          if (d < bestD) { bestD = d; best = i; }
+        }
+        tgSet(tgEnd(best));
+        tgMark(best);
+      }
+
+      var tgTick = false;
+      tgFeed.addEventListener("scroll", function () {
+        if (tgTick) return;
+        tgTick = true;
+        requestAnimationFrame(function () {
+          tgTick = false;
+          if (tgAuto || performance.now() < tgMoveUntil) return;
+          tgSyncFromFeed();
+        });
+      }, { passive: true });
+
+      /* any touch on the thread is the visitor taking over, permanently */
+      tgFeed.addEventListener("pointerdown", tgStopAuto, { passive: true });
+      tgFeed.addEventListener("touchstart", tgStopAuto, { passive: true });
+
+      tgDotEls.forEach(function (dot, i) {
+        dot.addEventListener("click", function () {
+          tgStopAuto();
+          tgMark(i);
+          /* revealing is cumulative; scrolling back is not — a tap always takes
+             the thread to that chapter, forwards or backwards */
+          if (tgEnd(i) > tgP) {
+            tgRampTo(i, 420, function () { tgScrollToChapter(i); });
+          } else {
+            tgScrollToChapter(i);
+          }
+        });
+      });
+
+      tgUpdate(0);
+      tgMark(0);
+      playOnce(tgScene.querySelector(".phone-stage") || tgScene, 40, function () { tgQueue(0); });
+
+      window.addEventListener("load", measureFeed);
+      var tgResize = null;
+      window.addEventListener("resize", function () {
+        window.clearTimeout(tgResize);
+        tgResize = window.setTimeout(measureFeed, 160);
+      }, { passive: true });
+    }
+  }
+
   /* ---------------- boot ---------------- */
   if (!sceneMode) {
-    /* Final states only: paint canvases fully drawn; CSS already shows everything. */
+    /* Below 768px, or without rAF/IntersectionObserver, or under reduced
+       motion. The canvases are repainted at whatever the current engine has
+       reached — which is 1 (fully drawn) when no engine is running at all, so
+       reduced motion and the no-observer fallback still get a complete page. */
+    if (stepsMode) { heroT = 0; whyT = 0; }
+    else { heroT = 1; whyT = 1; }
     var paintStatic = function () {
       sizeAllCanvases();
-      drawHeroSpark(1);
-      drawWhyChart(1);
+      drawHeroSpark(heroT);
+      drawWhyChart(whyT);
     };
     paintStatic();
     window.addEventListener("resize", function () { paintStatic(); });
     window.addEventListener("load", paintStatic);
+    if (stepsMode) startStepEngine();
     return;
   }
 
-  document.documentElement.classList.add("js-scenes");
   initFloorScene();
   initTgItems();
   sizeAllCanvases();
