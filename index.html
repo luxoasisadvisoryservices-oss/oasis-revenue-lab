@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -1737,6 +1737,121 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
 }
 .legal-back { margin-top: 56px; }
 
+/* ============================================================
+   LEGAL DOCUMENTS — elements used by the full document set
+   (dpa.html, subprocessors.html, cookies.html, tools.html and the
+   longer terms.html). Scoped to .legal-body so nothing else moves.
+   ============================================================ */
+
+.legal-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 26px 0 10px;
+  color: var(--ink);
+}
+.legal-body h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin: 20px 0 8px;
+  color: var(--ink-body);
+}
+.legal-body ol {
+  margin: 12px 0 0 20px;
+  padding-left: 6px;
+  display: grid;
+  gap: 9px;
+}
+.legal-body ol li { list-style: decimal; }
+.legal-body ol li::before { content: none; }
+.legal-body blockquote {
+  margin: 16px 0;
+  padding: 2px 0 2px 18px;
+  border-left: 3px solid #0B8F63;
+  color: var(--ink-body);
+}
+.legal-body blockquote p + p { margin-top: 10px; }
+.legal-body hr {
+  border: 0;
+  border-top: 1px solid var(--hairline-light);
+  margin: 32px 0;
+}
+.legal-body code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  word-break: break-word;
+  color: var(--ink-muted);
+}
+.legal-body .legal-flag {
+  background: #FFF3C4;
+  color: var(--ink);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.legal-body .legal-choices li::before {
+  content: "";
+  flex: none;
+  width: 13px;
+  height: 13px;
+  margin-top: 5px;
+  border: 1.5px solid #0B8F63;
+  border-radius: 3px;
+  background: none;
+}
+
+/* Tables. The wrapper scrolls on a phone rather than forcing the page wide. */
+.legal-table-wrap {
+  margin: 18px 0 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.65;
+  min-width: 460px;
+}
+.legal-table th,
+.legal-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 13px;
+  border: 1px solid var(--hairline-light);
+  color: var(--ink-body);
+}
+.legal-table thead th {
+  background: rgba(11, 143, 99, 0.07);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.legal-table tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.015); }
+
+@media (max-width: 640px) {
+  .legal-table { font-size: 13px; min-width: 380px; }
+  .legal-table th, .legal-table td { padding: 8px 10px; }
+}
+
+/* ---------- legal document index ----------
+   A client landing on any legal page can see and reach every other document
+   for that service. The documents stay separately versioned, which is why
+   this is a set of links rather than one merged page. */
+.legal-nav { margin: 0 0 8px; padding: 26px 0 4px; }
+.legal-nav-head { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; opacity: .62; margin: 0 0 14px; }
+.legal-nav-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: currentColor; border: 1px solid; border-radius: 10px; overflow: hidden; }
+.legal-nav-item { margin: 0; padding: 0; background: var(--paper, #fff); }
+.legal-nav-item > a, .legal-nav-item.is-current { display: block; padding: 14px 16px; text-decoration: none; color: inherit; }
+.legal-nav-item > a:hover { background: rgba(127,127,127,.08); }
+.legal-nav-name { display: block; font-weight: 600; font-size: .96rem; }
+.legal-nav-desc { display: block; font-size: .86rem; opacity: .68; margin-top: 3px; line-height: 1.45; }
+.legal-nav-item.is-current { opacity: .72; }
+.legal-nav-here { display: inline-block; margin-top: 5px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.legal-nav-foot { font-size: .84rem; opacity: .62; margin: 12px 0 0; line-height: 1.5; }
+@media (max-width: 767px) { .legal-nav { padding-top: 18px; } .legal-nav-desc { font-size: .82rem; } }
 /* ============================================================
    REVEAL ANIMATIONS
    ============================================================ */
@@ -3728,6 +3843,10 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <ul>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="dpa.html">Data Processing Addendum</a></li>
+          <li><a href="subprocessors.html">Sub-processors</a></li>
+          <li><a href="tools.html">Tool Terms of Use</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
         </ul>
       </nav>
     </div>
