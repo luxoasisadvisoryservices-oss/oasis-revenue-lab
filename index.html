@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -2442,6 +2442,88 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       .why-chart { display: none; } /* canvas illustration needs JS; page copy stands alone */
     </style>
   </noscript>
+
+  <!-- STRUCTURED DATA (schema.org JSON-LD)
+       All four sites declare the SAME Organization @id, so search engines and
+       answer engines resolve them to one company instead of four unrelated sites.
+       Deliberately NOT included: any price (pricing decisions are still open and a
+       machine-readable price that contradicts the FAQ is worse than none), any
+       rating or review (none exist), and any relationship to Lux Oasis Holiday Homes
+       (it is a separate company; every schema.org relation property would misstate it). -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://luxoasisadvisory.com/#organization",
+      "name": "Lux Oasis Advisory & Services",
+      "legalName": "Lux Oasis Advisory & Services LLC",
+      "url": "https://luxoasisadvisory.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://luxoasisadvisory.com/assets/logo.png"
+      },
+      "email": "info@luxoasisadvisory.com",
+      "description": "Lux Oasis Advisory & Services builds technology and services for the short-term rental industry: revenue management, AI guest communication, a B2B network app, and renovation project management.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Sharjah",
+        "addressCountry": "AE"
+      },
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "UAE Trade Licence (SHAMS)",
+          "value": "2645909"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "UAE Tax Registration Number",
+          "value": "104722180700003"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "info@luxoasisadvisory.com",
+          "telephone": "+971585089283",
+          "availableLanguage": [
+            "en"
+          ],
+          "areaServed": "AE"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.oasisrevenuelab.com/#website",
+      "url": "https://www.oasisrevenuelab.com/",
+      "name": "Oasis Revenue Lab",
+      "publisher": {
+        "@id": "https://luxoasisadvisory.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.oasisrevenuelab.com/#service",
+      "name": "Oasis Revenue Lab",
+      "url": "https://www.oasisrevenuelab.com/",
+      "serviceType": "Revenue management for short-term rentals",
+      "description": "Revenue management for short-term rental operators: pricing strategy, floor price architecture, length of stay and seasonal strategy, competitor analysis, and a daily AI briefing.",
+      "provider": {
+        "@id": "https://luxoasisadvisory.com/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United Arab Emirates"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
