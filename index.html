@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -3438,6 +3438,20 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
               <input type="number" class="calc-num" id="in-occ" min="5" max="100" step="1" value="70" inputmode="numeric">
             </div>
           </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-td">Tourism Dirham per night</label><span class="unit">AED / night</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-td-range" min="0" max="40" step="1" value="15" aria-label="Tourism Dirham per night slider">
+              <input type="number" class="calc-num" id="in-td" min="0" max="40" step="1" value="15" inputmode="numeric">
+            </div>
+          </div>
+          <div class="calc-field">
+            <div class="calc-field-head"><label for="in-vat">VAT absorbed in listed price</label><span class="unit">%</span></div>
+            <div class="calc-controls">
+              <input type="range" id="in-vat-range" min="0" max="10" step="0.1" value="4.8" aria-label="VAT absorbed percentage slider">
+              <input type="number" class="calc-num" id="in-vat" min="0" max="10" step="0.1" value="4.8" inputmode="decimal">
+            </div>
+          </div>
         </div>
 
         <div class="calc-outputs" aria-live="polite">
@@ -3489,14 +3503,14 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
               How this is calculated
             </summary>
             <div class="calc-explain-body">
-              <p><code>Break-even = (fixed cost per occupied night + cleaning ÷ avg stay + other variable cost) ÷ (1 − fees%)</code> — occupied nights per month = 30.4 × expected occupancy.</p>
-              <p><code>Hard floor = break-even ÷ 0.90</code> (10% occupancy-safety buffer) · <code>Last-minute floor = hard floor × 0.85</code>, never below marginal cost · <code>Orphan gap fill = marginal cost × 1.10</code> — any rate above true variable cost beats an empty night · <code>Weekend floor = hard floor × 1.15</code> · <code>Low-season base = hard floor × 1.05</code> · <code>Peak minimum = hard floor × 1.50</code>.</p>
+              <p><code>Break-even = fixed cost per occupied night + cleaning ÷ avg stay + other variable cost</code> — what must land in your account. Occupied nights per month = 30.4 × expected occupancy.</p>
+              <p><code>Listed pricing floor = (break-even × 1.15 + Tourism Dirham) ÷ (1 − commission% − VAT%)</code> — the 15% safety buffer, then grossed up for what never reaches you. This is the number to set as your PriceLabs minimum.</p>
+              <p><code>Last-minute floor = listed floor × 0.85</code>, never below marginal cost · <code>Orphan gap fill = marginal cost × 1.10</code> — any rate above true variable cost beats an empty night · <code>Weekend floor = listed floor × 1.15</code> · <code>Low-season base = listed floor × 1.05</code> · <code>Peak minimum = listed floor × 1.50</code>.</p>
               <p>This mirrors the logic of our free Excel tool. Results are estimates for guidance only — not financial advice.</p>
             </div>
           </details>
           <div class="calc-cta-row">
-            <!-- Excel file not hosted yet: request flows via email. TODO: replace mailto with direct .xlsx download link when the file is hosted. -->
-            <a class="btn btn--ghost btn--sm" href="mailto:info@luxoasisadvisory.com?subject=Free%20Floor%20Price%20Calculator%20(Excel)&body=Hi%2C%20please%20send%20me%20the%20free%20single-unit%20floor%20price%20calculator.">Get the Full Excel Version</a>
+            <a class="btn btn--ghost btn--sm" href="mailto:info@luxoasisadvisory.com?subject=Portfolio%20Floor%20Price%20Calculator%20(Excel)&body=Hi%2C%20please%20send%20me%20the%20portfolio%20version%20of%20the%20floor%20price%20calculator.">Get the Full Excel Version</a>
             <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%20used%20the%20floor%20price%20calculator%20and%20would%20like%20to%20talk%20about%20my%20pricing." target="_blank" rel="noopener">Talk on WhatsApp</a>
           </div>
         </div>
@@ -3518,7 +3532,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>6 PriceLabs settings, ready to paste</li>
           </ul>
           <!-- TODO: point this at the hosted .xlsx when available; using prefilled mailto request meanwhile. -->
-          <a class="btn btn--dark" href="mailto:info@luxoasisadvisory.com?subject=Free%20Single-Unit%20Floor%20Price%20Calculator&body=Hi%2C%20please%20send%20me%20the%20free%20single-unit%20floor%20price%20calculator%20(Excel).">Download Free Calculator</a>
+          <a class="btn btn--dark" href="oasis-revenue-lab-floor-calculator.xlsx" download="Oasis Revenue Lab - Floor Price Calculator.xlsx">Download Free Calculator</a>
         </article>
         <article class="excel-card reveal" style="--reveal-delay:60ms">
           <p class="excel-flag"><span class="dot dot--green" aria-hidden="true"></span>Free · Email to receive</p>
@@ -4051,19 +4065,25 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   }
 
   /* ============================================================
-     FLOOR PRICE CALCULATOR
-     Formulas (mirrors the free Excel tool; estimates only):
-       occupied nights / month = 30.4 x occupancy
-       net cost per occupied night =
-         fixed / occupied nights + cleaning / avg stay + other variable
-       break-even nightly rate  = net cost / (1 - fees%)
-       hard floor               = break-even / 0.90   (10% safety buffer)
-       last-minute floor        = hard floor x 0.85 (never below marginal)
-       marginal (variable) rate = (cleaning/stay-night + other var)/(1-fees)
-       orphan gap fill          = marginal x 1.10
-       weekend floor            = hard floor x 1.15
-       low-season base          = hard floor x 1.05
-       peak season minimum      = hard floor x 1.50
+     FLOOR PRICE CALCULATOR — mirrors the free Excel tool exactly.
+     Both must stay in step: the page says they mirror each other, and a
+     prospect who runs both and gets two answers stops trusting either.
+
+       break-even (net)  = fixed/night + cleaning/stay + other variable
+                           this is what must LAND IN YOUR ACCOUNT
+       your floor        = break-even x 1.15        (15% safety buffer)
+       sell factor       = 1 - commission% - VAT absorbed%
+       LISTED FLOOR      = (your floor + Tourism Dirham) / sell factor
+                           set THIS as the PriceLabs minimum
+
+       last-minute floor = listed floor x 0.85, never below grossed marginal
+       orphan gap fill   = grossed marginal x 1.10
+       weekend floor     = listed floor x 1.15
+       low-season base   = listed floor x 1.05
+       peak minimum      = listed floor x 1.50
+
+     Previously this used a 10% buffer and ignored Tourism Dirham and VAT,
+     which understated the floor by roughly 10% against the Excel.
      ============================================================ */
   var calc = {
     fields: [
@@ -4072,7 +4092,9 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       { num: "in-stay",     range: "in-stay-range" },
       { num: "in-fees",     range: "in-fees-range" },
       { num: "in-var",      range: "in-var-range" },
-      { num: "in-occ",      range: "in-occ-range" }
+      { num: "in-occ",      range: "in-occ-range" },
+      { num: "in-td",       range: "in-td-range" },
+      { num: "in-vat",      range: "in-vat-range" }
     ],
     outputs: {
       breakeven: document.getElementById("out-breakeven"),
@@ -4112,16 +4134,29 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     var feesPct = Math.min(80, Math.max(0, readInput("in-fees", 18))) / 100;
     var otherVar = Math.max(0, readInput("in-var", 35));
     var occPct = Math.min(100, Math.max(5, readInput("in-occ", 70))) / 100;
+    var tourismDirham = Math.max(0, readInput("in-td", 15));
+    var vatPct = Math.min(20, Math.max(0, readInput("in-vat", 4.8))) / 100;
 
     var occupiedNights = 30.4 * occPct;
     var fixedPerNight = fixed / occupiedNights;
     var cleaningPerNight = cleaning / stay;
-    var netCostPerNight = fixedPerNight + cleaningPerNight + otherVar;
-    var feeFactor = 1 - feesPct;
 
-    var breakeven = netCostPerNight / feeFactor;
-    var hardFloor = breakeven / 0.90;
-    var marginal = (cleaningPerNight + otherVar) / feeFactor;
+    /* break-even is NET: what must actually land in your account per booked night */
+    var breakeven = fixedPerNight + cleaningPerNight + otherVar;
+
+    /* your floor: break-even plus the safety buffer */
+    var floorNet = breakeven * 1.15;
+
+    /* what never reaches you: OTA commission and any VAT absorbed in the listed rate */
+    var sellFactor = Math.max(0.05, 1 - feesPct - vatPct);
+
+    /* the LISTED floor: grossed up for commission, Tourism Dirham and VAT.
+       This is the number to set as the PriceLabs minimum. */
+    function gross(net) { return (net + tourismDirham) / sellFactor; }
+
+    var hardFloor = gross(floorNet);
+    var marginalNet = cleaningPerNight + otherVar;
+    var marginal = gross(marginalNet);
     var lastMinute = Math.max(hardFloor * 0.85, marginal);
     var orphan = marginal * 1.10;
     var weekend = hardFloor * 1.15;
