@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -2432,6 +2432,87 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   .js-scenes .dash-scene .dash-units::after { opacity: 0 !important; }
   .js-scenes .dash-scene .dash-timestamp { opacity: 1 !important; transform: none !important; }
 }
+
+/* =====================================================================
+   TOP MARKET WIRE + HEADER REPAIR
+   Appended last so these rules win over the equivalents defined above.
+   ===================================================================== */
+
+/* --- the wire itself: the hero ticker component, 30px, pinned to the top --- */
+.marketwire {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
+  height: 30px;
+  overflow: hidden;
+  background: #080D18;
+  border-bottom: 1px solid var(--hairline);
+}
+.marketwire::before, .marketwire::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 56px; z-index: 2; pointer-events: none;
+}
+.marketwire::before { left: 0; background: linear-gradient(90deg, #080D18, transparent); }
+.marketwire::after { right: 0; background: linear-gradient(270deg, #080D18, transparent); }
+.marketwire .ticker { animation-duration: 68s; }
+.marketwire .ticker-item {
+  padding: 0 20px;
+  font-size: 11px;
+  line-height: 30px;
+  letter-spacing: 0.02em;
+}
+.marketwire:hover .ticker { animation-play-state: paused; }
+
+/* everything fixed or offset from the top moves down by the height of the wire */
+.site-header { top: 30px; }
+html { scroll-padding-top: 114px; }
+.hero { padding-top: 198px; }
+@media (max-width: 767px) { .hero { padding-top: 166px; } }
+
+/* Reduce Motion removes the animation, it must not make the content unreachable:
+   the wire becomes a swipeable strip rather than a wrapped block clipped to 30px. */
+@media (prefers-reduced-motion: reduce) {
+  .marketwire { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+  .marketwire::-webkit-scrollbar { display: none; }
+  .marketwire::before { display: none; }
+  .marketwire .ticker { flex-wrap: nowrap; width: max-content; animation: none; }
+  .marketwire .ticker-group + .ticker-group { display: none; }
+}
+
+/* --- header repair ---
+   The desktop nav needed about 1070px to hold one line, but the drawer only took
+   over at 767px, so every width in between broke the labels across two lines and
+   pushed the brand lockup onto two lines with it. The drawer now takes over at
+   1023px, and nothing in the header is allowed to break mid-label. */
+.brand > span:last-child { white-space: nowrap; }
+.main-nav a { white-space: nowrap; }
+
+@media (max-width: 1023px) {
+  .main-nav {
+    position: fixed;
+    /* .site-header has a backdrop-filter, which makes it the containing block for
+       its position:fixed children, so this 68px is measured from the header box,
+       not from the viewport. It stays 68px even though the header sits at 30px. */
+    top: 68px; left: 0; right: 0;
+    background: #0B1220;
+    border-bottom: 1px solid var(--hairline);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px 24px 22px;
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease), visibility 0.25s;
+  }
+  .main-nav.is-open { transform: translateY(0); opacity: 1; visibility: visible; }
+  .main-nav a { padding: 15px 2px; font-size: 16px; border-bottom: 1px solid var(--hairline); white-space: normal; }
+  .main-nav a:last-child { border-bottom: 0; }
+  .nav-toggle { display: grid; }
+  .header-cta .btn { display: none; }
+  .header-cta .btn.btn--nav-mobile { display: inline-flex; }
+  .cta-long { display: none; }
+}
+
 </style>
   <noscript>
     <style>
@@ -2531,6 +2612,39 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
 
+<!-- ============ TOP MARKET WIRE ============ -->
+<!-- The hero's ticker component, pinned above the header. Decorative (aria-hidden),
+     and deliberately carries no figure that is not already published further down
+     the page, where it is labelled illustrative. Do NOT drop unverified live market
+     ADR or occupancy in here: if real market figures are wanted, they have to come
+     from the PriceLabs market data and be dated. -->
+<div class="marketwire" aria-hidden="true">
+  <div class="ticker">
+    <div class="ticker-group">
+          <span class="ticker-item">MARKET WATCH <span class="tick-up">ILLUSTRATIVE</span></span>
+          <span class="ticker-item">DUBAI MARINA ADR <strong>AED 920</strong> · FLOOR <strong>AED 680</strong></span>
+          <span class="ticker-item">JBR OCC <strong>74%</strong> <span class="tick-up">MKT 61%</span></span>
+          <span class="ticker-item">DOWNTOWN MPI 30D <strong>1.32</strong> <span class="tick-up">OUTPERFORMING</span></span>
+          <span class="ticker-item">BUSINESS BAY <span class="tick-up">COMP SET TRACKED AT TOWER LEVEL</span></span>
+          <span class="ticker-item">PALM JUMEIRAH <span class="tick-warn">EVENT COMPRESSION MONITORED</span></span>
+          <span class="ticker-item">PRICELABS <span class="tick-up">VERIFIED DAILY</span></span>
+          <span class="ticker-item">GCC · EUROPE · US · ASIA <strong>ON THE ROADMAP</strong></span>
+          <span class="ticker-item">FLOOR PRICES <span class="tick-up">PROTECTED</span></span>
+    </div>
+    <div class="ticker-group">
+          <span class="ticker-item">MARKET WATCH <span class="tick-up">ILLUSTRATIVE</span></span>
+          <span class="ticker-item">DUBAI MARINA ADR <strong>AED 920</strong> · FLOOR <strong>AED 680</strong></span>
+          <span class="ticker-item">JBR OCC <strong>74%</strong> <span class="tick-up">MKT 61%</span></span>
+          <span class="ticker-item">DOWNTOWN MPI 30D <strong>1.32</strong> <span class="tick-up">OUTPERFORMING</span></span>
+          <span class="ticker-item">BUSINESS BAY <span class="tick-up">COMP SET TRACKED AT TOWER LEVEL</span></span>
+          <span class="ticker-item">PALM JUMEIRAH <span class="tick-warn">EVENT COMPRESSION MONITORED</span></span>
+          <span class="ticker-item">PRICELABS <span class="tick-up">VERIFIED DAILY</span></span>
+          <span class="ticker-item">GCC · EUROPE · US · ASIA <strong>ON THE ROADMAP</strong></span>
+          <span class="ticker-item">FLOOR PRICES <span class="tick-up">PROTECTED</span></span>
+    </div>
+  </div>
+</div>
+
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="Oasis Revenue Lab — home">
@@ -2538,10 +2652,9 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       <span>Oasis Revenue Lab<small>Revenue Management</small></span>
     </a>
     <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-      <a href="#features">Features</a>
-      <a href="#pricing">How It Works</a>
+      <a href="#rm-services">Revenue Management</a>
+      <a href="#features">AI Agent</a>
       <a href="#pricing">Pricing</a>
-      <a href="#who-we-are">Who We Are</a>
       <a href="#calculator">Free Calculator</a>
       <a class="nav-external" href="https://luxoasisadvisory.com" target="_blank" rel="noopener">Lux Oasis Advisory
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
@@ -2590,17 +2703,17 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <div class="hero-card-spark">
           <i style="--h:34%"></i><i style="--h:46%"></i><i style="--h:40%"></i><i style="--h:58%"></i><i style="--h:52%"></i><i style="--h:72%"></i><i style="--h:64%"></i><i style="--h:86%"></i><i style="--h:78%"></i><i style="--h:100%"></i>
         </div>
-        <p class="hero-card-foot">Advisory only · Read-only mode</p>
+        <p class="hero-card-foot">Approved by you · Executed in PriceLabs</p>
       </aside>
-      <p class="hero-badge reveal"><span class="dot dot--green dot--pulse" aria-hidden="true"></span> Your revenue analyst — every morning, in your Telegram</p>
-      <!-- Owner: the headline read too flat. "guessing" now carries the site's signal
-           green with a soft glow, and the closing "right." is set in the mono face —
-           the same voice the dashboards and briefings speak in — so the sentence
-           lands on the two words that matter. No new colours introduced. -->
-      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Stop <em class="h1-accent">guessing</em> whether your prices are&nbsp;<span class="h1-mono">right.</span></h1>
-      <p class="hero-sub reveal" style="--reveal-delay:120ms">Daily revenue briefings with reasoning and outcomes — created by a Dubai STR operator, for STR operators everywhere.</p>
-      <p class="hero-identity reveal" style="--reveal-delay:150ms"><strong>A revenue management company.</strong> We set your pricing strategy, manage it in PriceLabs, and run an AI agent that watches it every day.</p>
-      <p class="hero-body reveal" style="--reveal-delay:180ms">This is not a SaaS dashboard. It is built by operators who run live Dubai STR portfolios every single day.</p>
+      <p class="hero-badge reveal"><span class="dot dot--green dot--pulse" aria-hidden="true"></span> Revenue managers running your pricing, with our own AI</p>
+      <!-- The headline states the positioning outright: we are revenue managers who
+           built the AI, not a software company selling one. "revenue management"
+           carries the site's signal green; the closing "AI." is set in the mono face —
+           the same voice the dashboard and the briefings speak in. No new colours. -->
+      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Expert <em class="h1-accent">revenue management</em>, powered by our own&nbsp;<span class="h1-mono">AI.</span></h1>
+      <p class="hero-sub reveal" style="--reveal-delay:120ms">We set and manage your pricing strategy in PriceLabs, and our own AI revenue manager works your portfolio around the clock.</p>
+      <p class="hero-identity reveal" style="--reveal-delay:150ms"><strong>We are revenue managers.</strong> Certified revenue management for STR operators, executed in PriceLabs, with an AI revenue manager available 24/7 on Telegram.</p>
+      <p class="hero-body reveal" style="--reveal-delay:180ms">Strategy set by people, watched by our AI, shown in a live dashboard. Built by operators who run live Dubai STR portfolios every single day.</p>
       <div class="hero-ctas reveal" style="--reveal-delay:240ms">
         <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20STR%20portfolio%20with%20Oasis%20Revenue%20Lab." target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
@@ -2704,6 +2817,126 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     </div>
   </section>
 
+  <!-- ============ REVENUE MANAGEMENT SERVICES ============ -->
+  <!-- The primary offering, so it sits directly under the hero and the credentials
+       strip. The AI sections follow it: people set the strategy, the AI watches it.
+       Moving this above the dashboard is deliberate — do not push it back down. -->
+  <section class="section section--panel rms-section" id="rm-services" aria-labelledby="rms-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Revenue Management Services</p>
+        <h2 id="rms-title">Your pricing strategy, set and managed by revenue managers.</h2>
+        <p class="lead">Certified revenue managers own the strategy: pricing, cost floors, minimum stays, competitor position, the seasonal calendar and the monthly review. It is configured and executed in PriceLabs. Our AI watches the result every single day.</p>
+      </div>
+
+      <div class="rms-grid">
+
+        <article class="rms-cell reveal">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 15.5l4.5-4.5 3 3 4-5 6.5 6.5"/><circle cx="8.5" cy="8.8" r="1.2"/></svg></span>
+          <h3>Listing optimisation</h3>
+          <p>Title, description, photo order, amenities and content reviewed and improved, so the listing converts the traffic it already gets.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:60ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M20.5 20.5l-4.6-4.6"/><path d="M7.4 11.4l2-2.6 2.1 2.1 2.5-3.4"/></svg></span>
+          <h3>Listing health checks</h3>
+          <p>A regular audit of each listing against its market: visibility, conversion, review performance and the ranking factors that move it.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:120ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21v-6M5 11V3M12 21v-9M12 8V3M19 21v-4M19 13V3"/><path d="M2.5 15h5M9.5 8h5M16.5 13h5"/></svg></span>
+          <h3>PriceLabs setup and management</h3>
+          <p>Full configuration and ongoing management of the pricing engine: base prices, min prices, seasonal profiles, day-of-week adjustments and discounts.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:180ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19.5h18"/><path d="M7 19.5v-6M12 19.5V8M17 19.5v-9"/><path d="M3 15.5h18" stroke-dasharray="3 3" opacity="0.55"/></svg></span>
+          <h3>Floor price architecture</h3>
+          <p>A properly calculated minimum for every unit, built from its real cost structure, so no night is ever sold below profitability.</p>
+        </article>
+
+        <article class="rms-cell reveal">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M7.5 15.5h9"/></svg></span>
+          <h3>Rate structure and length of stay</h3>
+          <p>Weekday and weekend logic, minimum-stay rules, orphan gap handling and the last-minute strategy that closes the remaining nights.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:60ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.6M12 19.4V22M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2 12h2.6M19.4 12H22M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg></span>
+          <h3>Seasonal and event strategy</h3>
+          <p>The Dubai calendar priced deliberately: peak season, low season, Eid, DSF, major events and the compression periods around them.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:120ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.5" width="7" height="12.5" rx="1.4"/><rect x="14" y="3" width="7" height="18" rx="1.4"/><path d="M6 12.5h1M6 16.5h1M17 7h1M17 11h1M17 15h1"/></svg></span>
+          <h3>Competitor and tower analysis</h3>
+          <p>The comp set defined properly — including the competitors inside your own building — and then monitored, not set once and forgotten.</p>
+        </article>
+
+        <article class="rms-cell reveal" style="--reveal-delay:180ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18a8.5 8.5 0 1 1 17 0"/><path d="M12 18l4.2-5.2"/><circle cx="12" cy="18" r="1.3"/><path d="M3.5 18h2M18.5 18h2"/></svg></span>
+          <h3>Performance review</h3>
+          <p>A monthly review of ADR, occupancy, RevPAR and MPI against the market — with the strategy adjusted from what the result actually says.</p>
+        </article>
+
+      </div>
+
+      <div class="rms-note reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        <p><strong>Revenue managers do this work. The AI watches it every day.</strong> The agent flags what moved overnight; the strategy behind it is set, reviewed and defended by people.</p>
+      </div>
+
+      <div class="rms-cta reveal">
+        <p><strong>Want this run properly on your listings?</strong> Every conversation starts with your actual units, rates and cost structure.</p>
+        <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20revenue%20management%20for%20my%20listings." target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          Talk on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONSULTANCY POSITIONING ============ -->
+  <section class="section section--light" id="consultancy" aria-labelledby="consult-title">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:0">
+        <p class="eyebrow">Consultancy</p>
+        <h2 id="consult-title">This is not software. It is a revenue system built by someone who actually operates.</h2>
+      </div>
+      <p class="consult-key reveal">Pricing tools give you data. <em>We give you a position.</em></p>
+      <div class="pillars">
+        <article class="pillar reveal">
+          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></span>
+          <div>
+            <h3>Real operator experience</h3>
+            <p>Strategy grounded in live Dubai STR operations — the same decisions we make on our own units every day.</p>
+          </div>
+        </article>
+        <article class="pillar reveal" style="--reveal-delay:60ms">
+          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 13l4-4 3 3 6-6"/></svg></span>
+          <div>
+            <h3>Strategic pricing logic</h3>
+            <p>Floor discipline, profit over occupancy, and open pricing treated as strategic positions — not defaults.</p>
+          </div>
+        </article>
+        <article class="pillar reveal" style="--reveal-delay:120ms">
+          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></span>
+          <div>
+            <h3>Market interpretation</h3>
+            <p>Geopolitics, events, seasonal anomalies, and competitor behaviour — the context algorithms cannot read.</p>
+          </div>
+        </article>
+        <article class="pillar reveal" style="--reveal-delay:180ms">
+          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+          <div>
+            <h3>Revenue architecture</h3>
+            <p>Rate structure, LOS restrictions, discount logic, and the occupancy-margin relationship — designed, not guessed.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ DAILY REVENUE INTELLIGENCE (dashboard mock) ============ -->
   <!-- Pinned scroll scene: the morning brief assembles itself from 05:45 to 09:45.
        Without JS (or with reduced motion / narrow viewports) this renders as the
@@ -2712,9 +2945,10 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
     <div class="dash-sticky">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Daily Revenue Intelligence</p>
-        <h2 id="dash-title">Every listing, read like an analyst would read it.</h2>
-        <p class="dash-note" style="margin-top:22px"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative — see live Telegram output below</p>
+        <p class="eyebrow">Your Live Dashboard</p>
+        <h2 id="dash-title">A live dashboard, and the brief that explains it.</h2>
+        <p class="lead">Monthly revenue goals, booking updates, forecasts, a property map, ranking position, market trends and listing health, in one place and updated daily. The morning brief tells you what changed and what to do about it.</p>
+        <p class="dash-note" style="margin-top:22px"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative view — see live Telegram output below</p>
       </div>
       <div class="brief-timeline reveal" aria-hidden="true">
         <div class="bt-clockwrap">
@@ -2811,46 +3045,46 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
   <section class="section section--light" id="features" aria-labelledby="features-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">AI Agent Features</p>
-        <h2 id="features-title">Intelligence that works while you sleep.</h2>
-        <p class="lead">The agent runs every morning. It monitors your listings, reads the signals, and delivers recommendations straight to your Telegram. No dashboards to check. No manual work.</p>
+        <p class="eyebrow">The AI Revenue Manager</p>
+        <h2 id="features-title">Your revenue manager, awake around the clock.</h2>
+        <p class="lead">Included at AED 89 per listing per month. It reads your live data every morning, answers you on Telegram in your own language, and comes back with specific pricing proposals for you to approve.</p>
       </div>
       <div class="features-grid">
         <article class="feature-cell reveal">
           <span class="feature-num">01</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-          <h3>Daily Monitoring</h3>
-          <p>Each listing is reviewed every morning for pricing health, occupancy risk, booking pace, and floor exposure — before business hours.</p>
+          <h3>Ask it anything, 24/7</h3>
+          <p>Questions on Telegram in your own language, answered from your live data. Every listing is also reviewed each morning for pricing health, pace and floor exposure before business hours.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:60ms">
           <span class="feature-num">02</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 3-10 2 3h5"/></svg></span>
-          <h3>Demand Signals</h3>
-          <p>Booking window trends, market pickup velocity, and seasonal demand — surfaced before your competitors react.</p>
+          <h3>Documents, screenshots and voice notes</h3>
+          <p>Send it a competitor screenshot, an owner statement, a PDF or a voice note. It reads them against your live data and tells you what it actually means for your rates.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:120ms">
           <span class="feature-num">03</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
-          <h3>Pricing Alerts</h3>
-          <p>Floor-price hits, demand spikes, and exposed rate structures are flagged as actionable alerts — before revenue is lost.</p>
+          <h3>Local event intelligence</h3>
+          <p>Events, holidays, school calendars and city-wide demand read against your own dates, so compression windows are priced before they close.</p>
         </article>
         <article class="feature-cell reveal">
           <span class="feature-num">04</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="0.5"/><rect x="12" y="8" width="3" height="9" rx="0.5"/><rect x="17" y="5" width="3" height="12" rx="0.5"/></svg></span>
-          <h3>Revenue Intelligence</h3>
-          <p>ADR trajectory, RevPAR performance, and optimisation opportunities across every listing you run.</p>
+          <h3>Drafts your communications and reports</h3>
+          <p>Owner updates, monthly property reports and the message you were putting off, drafted from real numbers: ADR, RevPAR, occupancy and MPI across every listing you run.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:60ms">
           <span class="feature-num">05</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-          <h3>Portfolio Visibility</h3>
-          <p>One daily briefing covers all your listings — no context switching, no listing left unwatched.</p>
+          <h3>Airbnb visibility tracking</h3>
+          <p>Where each listing actually appears in Airbnb search, tracked over time, so a ranking drop is caught while there is still time to fix it.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:120ms">
           <span class="feature-num">06</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <h3>Floor Price Protection</h3>
-          <p>Your floor logic is hardcoded. The agent never suggests pricing below your minimum — ever.</p>
+          <h3>Specific pricing proposals, floor protected</h3>
+          <p>Exact rates for exact dates, never below the floor you set. Nothing is applied until you approve it.</p>
           <!-- Micro-scene: shield draws itself; a falling price line bounces off the floor line.
                Fully drawn by default; scrub-driven only under html.js-scenes. Illustrative. -->
           <div class="floor-scene" data-floor-scene aria-hidden="true">
@@ -2866,8 +3100,8 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         </article>
       </div>
       <div class="features-note reveal">
-        <p><strong>Delivered via Telegram every morning at 9:45am GST.</strong> The agent never changes your prices — intelligence and recommendations only.</p>
-        <a class="btn btn--dark btn--sm" href="#pricing">Learn More About the Agent</a>
+        <p><strong>Delivered via Telegram every morning at 9:45am GST.</strong> Price changes are proposed to you, approved by you, kept inside your guardrails, executed in PriceLabs and verified afterwards.</p>
+        <a class="btn btn--dark btn--sm" href="#pricing">See What AED 89 Includes</a>
       </div>
     </div>
   </section>
@@ -2942,7 +3176,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
                   <p><span class="mono" style="font-size:11.5px">1BR JBR — IF no booking by 11pm → drop min stay to 2 nights</span></p>
                   <p style="margin-top:7px"><span class="mono" style="font-size:11.5px">2BR Marina — IF Eid shows 3+ bookings → raise ceiling AED 1,350</span></p>
                 </div>
-                <p class="tg-footer-note">Advisory only · Read-only mode · Outcomes tracked via Hostaway</p>
+                <p class="tg-footer-note">Approved by you · Executed in PriceLabs · Verified and tracked via Hostaway</p>
               </div>
             </div>
           </div>
@@ -3076,126 +3310,6 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <span class="eco-chip"><span class="dot dot--green" aria-hidden="true"></span>Dubai STR Market — active since 2024</span>
       </div>
       <p class="eco-tagline reveal">A real revenue management company <em>that built its own AI system.</em></p>
-    </div>
-  </section>
-
-  <!-- ============ CONSULTANCY POSITIONING ============ -->
-  <section class="section section--light" id="consultancy" aria-labelledby="consult-title">
-    <div class="container">
-      <div class="section-head reveal" style="margin-bottom:0">
-        <p class="eyebrow">Consultancy</p>
-        <h2 id="consult-title">This is not software. It is a revenue system built by someone who actually operates.</h2>
-      </div>
-      <p class="consult-key reveal">Pricing tools give you data. <em>We give you a position.</em></p>
-      <div class="pillars">
-        <article class="pillar reveal">
-          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></span>
-          <div>
-            <h3>Real operator experience</h3>
-            <p>Strategy grounded in live Dubai STR operations — the same decisions we make on our own units every day.</p>
-          </div>
-        </article>
-        <article class="pillar reveal" style="--reveal-delay:60ms">
-          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 13l4-4 3 3 6-6"/></svg></span>
-          <div>
-            <h3>Strategic pricing logic</h3>
-            <p>Floor discipline, profit over occupancy, and open pricing treated as strategic positions — not defaults.</p>
-          </div>
-        </article>
-        <article class="pillar reveal" style="--reveal-delay:120ms">
-          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></span>
-          <div>
-            <h3>Market interpretation</h3>
-            <p>Geopolitics, events, seasonal anomalies, and competitor behaviour — the context algorithms cannot read.</p>
-          </div>
-        </article>
-        <article class="pillar reveal" style="--reveal-delay:180ms">
-          <span class="pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
-          <div>
-            <h3>Revenue architecture</h3>
-            <p>Rate structure, LOS restrictions, discount logic, and the occupancy-margin relationship — designed, not guessed.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ REVENUE MANAGEMENT SERVICES ============ -->
-  <!-- The classic, hands-on revenue management work. Sits between the consultancy
-       positioning and "how it works" so the human discipline is established before
-       the AI tiers are explained. -->
-  <section class="section section--panel rms-section" id="rm-services" aria-labelledby="rms-title">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Revenue Management Services</p>
-        <h2 id="rms-title">The revenue management work itself.</h2>
-        <p class="lead">This is the hands-on discipline — listings, pricing structure, and market strategy, done by revenue managers. The AI agent monitors the result every single day.</p>
-      </div>
-
-      <div class="rms-grid">
-
-        <article class="rms-cell reveal">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 15.5l4.5-4.5 3 3 4-5 6.5 6.5"/><circle cx="8.5" cy="8.8" r="1.2"/></svg></span>
-          <h3>Listing optimisation</h3>
-          <p>Title, description, photo order, amenities and content reviewed and improved, so the listing converts the traffic it already gets.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:60ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M20.5 20.5l-4.6-4.6"/><path d="M7.4 11.4l2-2.6 2.1 2.1 2.5-3.4"/></svg></span>
-          <h3>Listing health checks</h3>
-          <p>A regular audit of each listing against its market: visibility, conversion, review performance and the ranking factors that move it.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:120ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21v-6M5 11V3M12 21v-9M12 8V3M19 21v-4M19 13V3"/><path d="M2.5 15h5M9.5 8h5M16.5 13h5"/></svg></span>
-          <h3>PriceLabs setup and management</h3>
-          <p>Full configuration and ongoing management of the pricing engine: base prices, min prices, seasonal profiles, day-of-week adjustments and discounts.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:180ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19.5h18"/><path d="M7 19.5v-6M12 19.5V8M17 19.5v-9"/><path d="M3 15.5h18" stroke-dasharray="3 3" opacity="0.55"/></svg></span>
-          <h3>Floor price architecture</h3>
-          <p>A properly calculated minimum for every unit, built from its real cost structure, so no night is ever sold below profitability.</p>
-        </article>
-
-        <article class="rms-cell reveal">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M7.5 15.5h9"/></svg></span>
-          <h3>Rate structure and length of stay</h3>
-          <p>Weekday and weekend logic, minimum-stay rules, orphan gap handling and the last-minute strategy that closes the remaining nights.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:60ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.6M12 19.4V22M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2 12h2.6M19.4 12H22M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg></span>
-          <h3>Seasonal and event strategy</h3>
-          <p>The Dubai calendar priced deliberately: peak season, low season, Eid, DSF, major events and the compression periods around them.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:120ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.5" width="7" height="12.5" rx="1.4"/><rect x="14" y="3" width="7" height="18" rx="1.4"/><path d="M6 12.5h1M6 16.5h1M17 7h1M17 11h1M17 15h1"/></svg></span>
-          <h3>Competitor and tower analysis</h3>
-          <p>The comp set defined properly — including the competitors inside your own building — and then monitored, not set once and forgotten.</p>
-        </article>
-
-        <article class="rms-cell reveal" style="--reveal-delay:180ms">
-          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18a8.5 8.5 0 1 1 17 0"/><path d="M12 18l4.2-5.2"/><circle cx="12" cy="18" r="1.3"/><path d="M3.5 18h2M18.5 18h2"/></svg></span>
-          <h3>Performance review</h3>
-          <p>A monthly review of ADR, occupancy, RevPAR and MPI against the market — with the strategy adjusted from what the result actually says.</p>
-        </article>
-
-      </div>
-
-      <div class="rms-note reveal">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
-        <p><strong>Revenue managers do this work. The AI watches it every day.</strong> The agent flags what moved overnight; the strategy behind it is set, reviewed and defended by people.</p>
-      </div>
-
-      <div class="rms-cta reveal">
-        <p><strong>Want this run properly on your listings?</strong> Every conversation starts with your actual units, rates and cost structure.</p>
-        <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20revenue%20management%20for%20my%20listings." target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
-          Talk on WhatsApp
-        </a>
-      </div>
     </div>
   </section>
 
@@ -3588,25 +3702,29 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
         <article class="tier reveal">
           <p class="tier-num">TIER 01</p>
           <h3>AI Revenue Agent</h3>
-          <p class="tier-mode">Fully autonomous</p>
-          <p class="tier-desc">A 24/7 AI revenue manager. For operators who want autonomous AI without hiring.</p>
+          <p class="tier-mode">AI subscription</p>
+          <p class="tier-desc">Our AI revenue manager on your portfolio around the clock. It proposes, you approve, we execute in PriceLabs.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief at 9:45am</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Live dashboard: goals, pace, forecasts, ranking, listing health</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs verified and corrected daily</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Exact rate recommendations</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Specific pricing proposals, applied only on your approval</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor monitoring</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>MPI vs competitors</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Tower-level comp intelligence</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace and demand alerts</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Events and compression warnings</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Local event intelligence and compression warnings</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Airbnb visibility and ranking tracking</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Trigger-based actions</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap and last-minute strategy</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Revenue goal tracking and monthly summary</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Draft owner updates and property reports</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Paste your costs — get your floor price instantly</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ask anything on Telegram, 24/7</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ask anything on Telegram, 24/7, in your own language</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Send documents, screenshots and voice notes for analysis</li>
           </ul>
           <div class="price-value"><span class="amount">AED 89</span><span class="per">/ listing / month</span></div>
-          <p class="price-fine"><strong>For the first 50 seats.</strong> Standard price after launch: AED 149/listing/month.</p>
+          <p class="price-fine"><strong>For the first 50 seats.</strong> Standard price after launch: AED 149/listing/month. This covers the AI revenue manager. Human revenue management and consultancy are priced separately.</p>
           <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20start%20with%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Start with AI Agent</a>
         </article>
         <article class="tier tier--featured reveal" style="--reveal-delay:60ms">
@@ -3614,7 +3732,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
           <p class="tier-num">TIER 02</p>
           <h3>Hybrid Revenue Management</h3>
           <p class="tier-mode">AI plus human expertise</p>
-          <p class="tier-desc">Everything in the AI Revenue Agent, plus a human revenue manager working your strategy.</p>
+          <p class="tier-desc">Everything in the AI Revenue Agent, plus certified revenue managers running your pricing strategy. Quoted separately from the AED 89 subscription.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Everything in Tier 1</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Direct revenue manager access</li>
@@ -3633,7 +3751,7 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
           <p class="tier-num">TIER 03</p>
           <h3>One-Time Consultancy</h3>
           <p class="tier-mode">Focused engagement</p>
-          <p class="tier-desc">A focused consultancy engagement to get your pricing foundations right.</p>
+          <p class="tier-desc">A focused consultancy engagement to get your pricing foundations right. Priced as a one-time fee, separate from the AI subscription.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs full setup or review</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor price architecture per unit</li>
@@ -3846,8 +3964,8 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
           <p class="faq-answer">PriceLabs adjusts rates algorithmically, but it cannot tell you whether your strategy is working, whether your floor is correct, or what the market is actually doing. Oasis Revenue Lab sits on top: daily monitoring, market interpretation, floor verification, and clear recommendations. We also configure and manage PriceLabs for you.</p>
         </details>
         <details class="faq-item">
-          <summary>Do you change my prices automatically?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">Not yet. Today the agent runs in advisory mode — it recommends, you decide. A supervised autopilot is in development in collaboration with PriceLabs, with operator-defined guardrails (your floor, your ceiling, your rules). Existing clients get it first.</p>
+          <summary>Do you change my prices?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p class="faq-answer">Not without your approval. The AI proposes a specific rate for specific dates, you approve it, and the change is executed in PriceLabs inside the guardrails you set (your floor, your ceiling, your rules), then verified afterwards. Nothing moves on your calendar that you have not agreed to. Existing clients get it first.</p>
         </details>
         <details class="faq-item">
           <summary>What do I need to get started?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -3919,9 +4037,9 @@ input[type="range"]:focus-visible { outline: 2px solid #0B8F63; outline-offset: 
       <nav class="footer-col" aria-label="Product links">
         <h4>Product</h4>
         <ul>
-          <li><a href="#pricing">AI Revenue Agent</a></li>
+          <li><a href="#rm-services">Revenue Management</a></li>
+          <li><a href="#features">AI Revenue Agent</a></li>
           <li><a href="#consultancy">Consultancy</a></li>
-          <li><a href="#pricing">Hybrid Model</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
       </nav>
