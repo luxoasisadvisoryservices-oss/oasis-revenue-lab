@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -2513,6 +2513,57 @@ html { scroll-padding-top: 114px; }
   .cta-long { display: none; }
 }
 
+
+/* =====================================================================
+   WHAT WE FETCH, SCAN AND COMPARE  (#intelligence)
+   Reuses the dashboard card and the rms-cell grid; only layout is new.
+   ===================================================================== */
+.intel-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+.intel-h3 { font-size: clamp(22px, 2.3vw, 28px); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 14px; }
+.intel-side .tg-bullets li { color: var(--body-dark); }
+.intel-side .tg-bullets li strong { color: #fff; }
+.intel-kpis { grid-template-columns: repeat(3, 1fr); }
+.intel-of { font-size: 0.55em; color: var(--muted-dark); font-weight: 500; letter-spacing: 0; }
+.intel-chart { padding: 18px 22px 8px; }
+.intel-chart-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-dark); margin-bottom: 10px; }
+.intel-chart svg { display: block; width: 100%; height: 150px; overflow: visible; }
+.intel-chart .ic-line { fill: none; stroke: var(--green); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.intel-chart .ic-dot { fill: var(--green); stroke: var(--panel); stroke-width: 2; }
+.intel-chart .ic-page { stroke: rgba(255,255,255,0.22); stroke-width: 1; stroke-dasharray: 4 4; }
+.intel-chart text { font-family: var(--mono); font-size: 10px; fill: var(--muted-dark); }
+.intel-chart .ic-end { fill: var(--green); font-weight: 600; text-anchor: end; }
+.intel-serp { border-top: 1px solid var(--hairline); }
+.intel-serp-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 11px 22px;
+  font-size: 13.5px; color: var(--muted-dark);
+  border-bottom: 1px solid var(--hairline);
+}
+.intel-serp-row .mono { font-size: 12px; min-width: 30px; }
+.intel-serp-row.is-you { color: #fff; background: rgba(52, 211, 153, 0.06); }
+.intel-serp-row.is-you em { font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--green); margin-left: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+.intel-serp-row .status-pill { margin-left: auto; }
+.intel-note { padding: 12px 22px 14px; }
+.intel-grid { grid-template-columns: repeat(2, 1fr); }
+.intel-grid .rms-cell p { font-size: 14.5px; }
+@media (max-width: 1020px) {
+  .intel-layout { grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
+  .intel-rank { max-width: 620px; }
+}
+@media (max-width: 767px) {
+  .intel-kpis { grid-template-columns: 1fr 1fr; }
+  .intel-kpis .kpi:nth-child(3) { grid-column: 1 / -1; border-top: 1px solid var(--hairline); border-right: 0; }
+  .intel-kpis .kpi:nth-child(2) { border-right: 0; }
+  .intel-grid { grid-template-columns: 1fr; }
+  .intel-serp-row .status-pill { display: none; }
+}
+
 </style>
   <noscript>
     <style>
@@ -3085,8 +3136,8 @@ html { scroll-padding-top: 114px; }
         <article class="feature-cell reveal" style="--reveal-delay:60ms">
           <span class="feature-num">05</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-          <h3>Airbnb visibility tracking</h3>
-          <p>Where each listing actually appears in Airbnb search, tracked over time, so a ranking drop is caught while there is still time to fix it.</p>
+          <h3>Airbnb rank tracking, daily</h3>
+          <p>Real scraping of Airbnb search, not estimates: your position and page in your true local segment, tracked daily with history, so a drop is caught before bookings fall. <a href="#intelligence">See how it works</a>.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:120ms">
           <span class="feature-num">06</span>
@@ -3110,6 +3161,107 @@ html { scroll-padding-top: 114px; }
       <div class="features-note reveal">
         <p><strong>Delivered via Telegram every morning at 9:45am GST.</strong> Price changes are proposed to you, approved by you, kept inside your guardrails, executed in PriceLabs and verified afterwards.</p>
         <a class="btn btn--dark btn--sm" href="#pricing">See What AED 89 Includes</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ WHAT WE FETCH, SCAN AND COMPARE ============ -->
+  <!-- The data layer under the AI: daily Airbnb search scraping, live PriceLabs
+       market data, the PMS reservation feed, geo-matched events and news. The rank
+       tracker card is illustrative and reuses the dashboard card styles. -->
+  <section class="section section--panel intel-section" id="intelligence" aria-labelledby="intel-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">What We Fetch, Scan and Compare</p>
+        <h2 id="intel-title">Every day, the system goes and looks. It does not estimate.</h2>
+        <p class="lead">Airbnb search results scraped daily. Live PriceLabs market data. Your PMS reservation feed. Event calendars and city news matched to each building. This is what the AI reasons from, and what you see in your dashboard.</p>
+      </div>
+
+      <div class="intel-layout">
+        <div class="intel-side">
+          <h3 class="intel-h3 reveal">Airbnb rank tracking. Real scraping, daily.</h3>
+          <ul class="tg-bullets" role="list">
+            <li class="reveal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>We scan Airbnb&rsquo;s actual search results every day.</strong> Not estimates, not a paid add-on.</span></li>
+            <li class="reveal" style="--reveal-delay:40ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Checked in your true local segment:</strong> a guest search in the streets around your building, your bedroom count, entire home. Exactly how a real guest finds you.</span></li>
+            <li class="reveal" style="--reveal-delay:80ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Your position and page,</strong> &ldquo;page 1, #14 of 20&rdquo;, tracked daily with history, so you see rank rising or falling before bookings do.</span></li>
+            <li class="reveal" style="--reveal-delay:120ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Your live listing page read too:</strong> rating, review count, Superhost status, title. And what to improve.</span></li>
+          </ul>
+        </div>
+
+        <div class="dashboard intel-rank reveal" role="img" aria-label="Illustrative Airbnb rank tracker showing a listing rising from position 53 to position 14 over fourteen days">
+          <div class="dash-bar">
+            <span class="dash-bar-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              Airbnb Rank Tracker
+            </span>
+            <span class="dash-timestamp">Scanned today · 06:10 local</span>
+          </div>
+          <div class="dash-kpis intel-kpis">
+            <div class="kpi">
+              <p class="kpi-label">Position</p>
+              <p class="kpi-value">#14 <span class="intel-of">of 20</span></p>
+              <p class="kpi-delta up">▲ Page 1 · was #53</p>
+            </div>
+            <div class="kpi">
+              <p class="kpi-label">Rating</p>
+              <p class="kpi-value">4.92</p>
+              <p class="kpi-delta neutral">128 reviews</p>
+            </div>
+            <div class="kpi">
+              <p class="kpi-label">Superhost</p>
+              <p class="kpi-value">Yes</p>
+              <p class="kpi-delta neutral">Title reviewed</p>
+            </div>
+          </div>
+          <div class="intel-chart">
+            <p class="intel-chart-label mono">Rank · last 14 days · Dubai Marina · 2BR · entire home</p>
+            <svg viewBox="0 0 520 150" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="rankFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#34D399" stop-opacity="0.22"/>
+                  <stop offset="1" stop-color="#34D399" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line class="ic-page" x1="8" y1="50.7" x2="512" y2="50.7"/>
+              <text class="ic-page-label" x="12" y="45.7">page 1 boundary · #20</text>
+              <path class="ic-area" d="M8.0 114.5 L46.8 110.6 L85.5 102.9 L124.3 97.1 L163.1 91.3 L201.8 85.5 L240.6 75.8 L279.4 68.1 L318.2 62.3 L356.9 56.5 L395.7 48.8 L434.5 44.9 L473.2 41.1 L512.0 39.1 L512.0 128 L8.0 128 Z" fill="url(#rankFill)"/>
+              <path class="ic-line" d="M8.0 114.5 L46.8 110.6 L85.5 102.9 L124.3 97.1 L163.1 91.3 L201.8 85.5 L240.6 75.8 L279.4 68.1 L318.2 62.3 L356.9 56.5 L395.7 48.8 L434.5 44.9 L473.2 41.1 L512.0 39.1"/>
+              <circle class="ic-dot" cx="512.0" cy="39.1" r="4"/>
+              <text class="ic-start" x="18.0" y="128.5">#53 · page 3</text>
+              <text class="ic-end" x="508.0" y="29.1">#14</text>
+            </svg>
+          </div>
+          <div class="intel-serp">
+            <p class="intel-serp-row"><span class="mono">#13</span><span>Competitor · 2BR · Marina Promenade</span></p>
+            <p class="intel-serp-row is-you"><span class="mono">#14</span><span>Luxury 2BR Marina View <em>you</em></span><span class="status-pill status-pill--ok"><span class="dot dot--green" aria-hidden="true"></span>PAGE 1</span></p>
+            <p class="intel-serp-row"><span class="mono">#15</span><span>Competitor · 2BR · Marina Walk</span></p>
+          </div>
+          <p class="dash-note intel-note"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative</p>
+        </div>
+      </div>
+
+      <div class="rms-grid intel-grid">
+        <article class="rms-cell reveal">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 6-7"/></svg></span>
+          <h3>Market and competitor intelligence</h3>
+          <p>Live PriceLabs data. You against your real neighbourhood comp set every morning: occupancy, ADR and RevPAR over 7, 15 and 30 days. Booking pace against the same week last year, so you know whether it is you or the market. Who is undercutting, the market&rsquo;s median booked price, your percentile. Your price calendar audited: pushed prices against the algorithm, min-stay rules, gaps.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:60ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></span>
+          <h3>Event and demand radar</h3>
+          <p>Geo-matched to each property. Conferences, exhibitions and holidays that spike demand, matched to your building&rsquo;s location: a World Trade Centre expo flags your Business Bay unit, not a beach flat 20 km away. Flagged weeks ahead with venue and distance, plus the pricing move to make. A daily news scan per city for demand shocks, filtered to your market only.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:120ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 15h4"/></svg></span>
+          <h3>Revenue truth engine</h3>
+          <p>Real booking data from your PMS reservation feed: every reservation, every night. New bookings appear within about 15 minutes, with a Telegram ping and the dashboard updated in your property&rsquo;s local time. Each month&rsquo;s goal is your own last year, not a market index. Send any P&amp;L, owner statement or PriceLabs report, even a scanned PDF or a photo, and it is cross-checked against your live numbers.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:180ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>And the agent acts on it</h3>
+          <p>Answers any revenue question 24/7, in your language, from your live data, never invented numbers. Writes your monthly owner reports, guest replies and counter-offers. Proposes price changes, you tap Approve, they go live on PriceLabs across all channels and are verified by read-back. Capped moves, cost-floor protected, booked nights untouchable. Nothing changes without you.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -3714,7 +3866,7 @@ html { scroll-padding-top: 114px; }
           <p class="tier-desc">Our AI revenue manager on your portfolio around the clock. It proposes, you approve, we execute in PriceLabs.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief at 9:45am</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Live dashboard: goals, pace, forecasts, ranking, listing health</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Live dashboard: goals, pace, forecasts, ranking, listing health, new bookings within about 15 minutes</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs verified and corrected daily</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Specific pricing proposals, applied only on your approval</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor monitoring</li>
@@ -3722,7 +3874,7 @@ html { scroll-padding-top: 114px; }
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Tower-level comp intelligence</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace and demand alerts</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Local event intelligence and compression warnings</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Airbnb visibility and ranking tracking</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily Airbnb rank tracking, real search scraping</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Trigger-based actions</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap and last-minute strategy</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Revenue goal tracking and monthly summary</li>
