@@ -482,6 +482,9 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); max-width: 21ch; }
   font-weight: 600;
   font-size: 0.86em;
   letter-spacing: -0.02em;
+  /* the mono face pairs a wide space with the tracking above, which reads as a
+     double space between the two words. Pull it back so it sets as one phrase. */
+  word-spacing: -0.22em;
 }
 /* ============================================================
    CREDENTIALS STRIP (high on the page, under the hero)
@@ -2565,6 +2568,23 @@ html { scroll-padding-top: 114px; }
   .intel-serp-row .status-pill { display: none; }
 }
 
+
+/* the hero credential line: closes the hero the way the badge used to open it */
+.hero .hero-creds {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+}
+.hero .hero-creds .hc-sep { color: var(--hairline-strong); }
+.hero h1 { max-width: 20ch; line-height: 1.04; }
+@media (max-width: 767px) { .hero .hero-creds { font-size: 11.5px; letter-spacing: 0.04em; } }
+
 </style>
   <noscript>
     <style>
@@ -2765,15 +2785,13 @@ html { scroll-padding-top: 114px; }
         </div>
         <p class="hero-card-foot">Approved by you · Executed in PriceLabs</p>
       </aside>
-      <p class="hero-badge reveal"><span class="dot dot--green dot--pulse" aria-hidden="true"></span> Revenue managers running your pricing, with our own AI</p>
-      <!-- The headline states the positioning outright: we are revenue managers who
-           built the AI, not a software company selling one. "revenue management"
-           carries the site's signal green; the closing "AI." is set in the mono face —
-           the same voice the dashboard and the briefings speak in. No new colours. -->
-      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Expert <em class="h1-accent">revenue management</em>, powered by our own&nbsp;<span class="h1-mono">AI.</span></h1>
-      <p class="hero-sub reveal" style="--reveal-delay:120ms">We set and manage your pricing strategy, and our own AI revenue manager works your portfolio around the clock.</p>
-      <p class="hero-identity reveal" style="--reveal-delay:150ms"><strong>We are revenue managers.</strong> Certified revenue management for STR operators, plus an AI revenue assistant on your phone for the answers you need on the spot.</p>
-      <p class="hero-body reveal" style="--reveal-delay:180ms">Strategy set by people, watched by our AI, shown in a live dashboard. Built by operators who run live Dubai STR portfolios every single day.</p>
+      <!-- The hero, owner-written. Two lines: what we do for you, and what our
+           own AI does. The accent green carries "expertly managed" and the mono
+           face carries "always on", the same two treatments the old headline used.
+           The credential line closes it; keep it in step with 22-credentials-strip. -->
+      <h1 id="hero-title" class="reveal" style="--reveal-delay:60ms">Your revenue,<br><em class="h1-accent">expertly managed</em>.<br>Our own AI,<br><span class="h1-mono">always on</span>.</h1>
+      <p class="hero-sub reveal" style="--reveal-delay:120ms">We build and manage your short-term rental pricing strategy, while our own AI monitors your portfolio around the clock. With an AI revenue assistant on your phone, clear answers about your pricing, bookings and performance are always within reach.</p>
+      <p class="hero-creds mono reveal" style="--reveal-delay:180ms"><span class="dot dot--green" aria-hidden="true"></span>CRME-certified expertise <span class="hc-sep">·</span> PriceLabs Expert Ecosystem</p>
       <div class="hero-ctas reveal" style="--reveal-delay:240ms">
         <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20STR%20portfolio%20with%20Oasis%20Revenue%20Lab." target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
