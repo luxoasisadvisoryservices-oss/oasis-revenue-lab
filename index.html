@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- GENERATED FILE — do not edit directly. Edit the files in partials/ styles/ scripts/ then run: python3 build.py -->
 <html lang="en">
 <head>
@@ -977,6 +977,10 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); max-width: 21ch; }
   line-height: 1.3;
 }
 .consult-key em { color: #0B8F63; font-style: normal; }
+/* The line now lives in the dark services panel, not the light Consultancy section
+   it was styled for: ink-on-ink was invisible. White lead, signal green emphasis. */
+.rms-section .consult-key { color: #fff; border-left-color: var(--green); margin: 0 0 44px; }
+.rms-section .consult-key em { color: var(--green); }
 .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .pillar {
   background: var(--white);
