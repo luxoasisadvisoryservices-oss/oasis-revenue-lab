@@ -2528,19 +2528,24 @@ html { scroll-padding-top: 114px; }
    ===================================================================== */
 .intel-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
-  gap: 56px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: 44px;
   align-items: center;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
-.intel-h3 { font-size: clamp(22px, 2.3vw, 28px); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 14px; }
+.intel-h3 { font-size: clamp(19px, 1.7vw, 23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 4px; }
+/* the rank panel is proof, not a feature page: keep the whole block short */
+.intel-side .tg-bullets { margin: 20px 0 0; }
+.intel-side .tg-bullets li { padding: 11px 0; font-size: 13.6px; line-height: 1.5; }
+.intel-checks { display: flex; flex-wrap: wrap; gap: 6px; padding: 13px 20px 15px; border-top: 1px solid var(--hairline); }
+.intel-checks span { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-dark); border: 1px solid var(--hairline-strong); border-radius: 999px; padding: 4px 9px; }
 .intel-side .tg-bullets li { color: var(--body-dark); }
 .intel-side .tg-bullets li strong { color: #fff; }
 .intel-kpis { grid-template-columns: repeat(3, 1fr); }
 .intel-of { font-size: 0.55em; color: var(--muted-dark); font-weight: 500; letter-spacing: 0; }
-.intel-chart { padding: 18px 22px 8px; }
+.intel-chart { padding: 14px 20px 6px; }
 .intel-chart-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-dark); margin-bottom: 10px; }
-.intel-chart svg { display: block; width: 100%; height: 150px; overflow: visible; }
+.intel-chart svg { display: block; width: 100%; height: 92px; overflow: visible; }
 .intel-chart .ic-line { fill: none; stroke: var(--green); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .intel-chart .ic-dot { fill: var(--green); stroke: var(--panel); stroke-width: 2; }
 .intel-chart .ic-page { stroke: rgba(255,255,255,0.22); stroke-width: 1; stroke-dasharray: 4 4; }
@@ -3443,17 +3448,17 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">What We Fetch, Scan and Compare</p>
         <h2 id="intel-title">Our system goes and looks. Where it cannot, it says so.</h2>
-        <p class="lead">Airbnb search observed daily. Market reference rates per property. Your own reservation feed from the property management system you connect. The OTA campaign catalogue with its real stacking rules. Events matched to the nights you still have open. This is what your revenue manager reads every morning, what the AI reasons from, and what you see in your dashboard. Where a figure depends on an input you have not supplied, the workspace names that input instead of estimating around it.</p>
+        <p class="lead">Airbnb search, market reference rates, your own reservation feed, the OTA campaign catalogue and the events around each property. This is what your revenue manager reads every morning and what the AI reasons from. Where a figure needs an input you have not supplied, it names the input rather than estimating around it.</p>
       </div>
 
       <div class="intel-layout">
         <div class="intel-side">
           <h3 class="intel-h3 reveal">Airbnb search, scanned daily. Not estimated.</h3>
           <ul class="tg-bullets" role="list">
-            <li class="reveal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Public search is observed, not estimated.</strong> Coverage and depth vary by market, and the view tells you which it is.</span></li>
-            <li class="reveal" style="--reveal-delay:40ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Checked against your local set:</strong> the area around the property, the bedroom count and the listing type, so the comparison is one a guest would actually make.</span></li>
-            <li class="reveal" style="--reveal-delay:80ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A position signal with history,</strong> reported as where the listing stands against that set, so a slide shows up before bookings fall.</span></li>
-            <li class="reveal" style="--reveal-delay:120ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>The public listing page is read too:</strong> rating, review count, status and title, with what is worth improving.</span></li>
+            <li class="reveal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Observed, not estimated.</strong> Depth varies by market, and the view says which.</span></li>
+            <li class="reveal" style="--reveal-delay:40ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Your true local set:</strong> the streets around the property, the bedroom count, the listing type.</span></li>
+            <li class="reveal" style="--reveal-delay:80ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A position signal with history,</strong> so a slide shows up before the bookings do.</span></li>
+            <li class="reveal" style="--reveal-delay:120ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>The listing page is read too:</strong> rating, reviews, status and title, with what to improve.</span></li>
           </ul>
         </div>
 
@@ -3500,6 +3505,8 @@ html { scroll-padding-top: 114px; }
               <text class="ic-end" x="508.0" y="29.1">stronger</text>
             </svg>
           </div>
+          
+          <div class="intel-checks"><span>Local set</span><span>Bedrooms</span><span>Listing type</span><span>Entire home</span><span>Rating</span><span>Review count</span><span>Superhost</span><span>Title</span><span>14-day history</span><span>Daily scan</span></div>
           <p class="dash-note intel-note"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative</p>
         </div>
       </div>
