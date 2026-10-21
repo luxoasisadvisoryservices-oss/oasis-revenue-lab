@@ -2631,6 +2631,40 @@ html { scroll-padding-top: 114px; }
 .hero-links .hl-sep { color: var(--hairline-strong); }
 .hero .text-link { color: var(--body-dark); border-bottom: 1px solid rgba(255,255,255,0.22); text-decoration: none; }
 .hero .text-link:hover { color: #fff; border-bottom-color: var(--green); }
+/* Compact engagement cards: four across on desktop, two by two on tablet and
+   phone, single column only on the narrowest screens. These rules sit after the
+   1020px block that forces .tiers to one column, so they win on equal
+   specificity by source order. Do not move them above it. */
+.tiers--compact { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; align-items: stretch; }
+.tiers--compact .tier--sm ul { margin-bottom: 0; }
+.tier-flag--plan { background: var(--amber-dim); color: var(--amber); border-color: rgba(245,158,11,0.35); }
+.svc-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+@media (max-width: 560px) { .svc-cta .btn { width: 100%; } }
+/* audience rows inside #paths: two columns and body type, not the mono market
+   labels the #global section uses the same component for */
+.paths-who { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-dark); margin: 48px 0 16px; }
+.paths .global-row { grid-template-columns: 290px 1fr; }
+.paths .global-row .areas { font-family: var(--sans); font-size: 13.8px; line-height: 1.55; }
+@media (max-width: 760px) {
+  .paths .global-row { grid-template-columns: 1fr; gap: 7px; padding: 18px 20px; }
+}
+.tier--sm { padding: 22px 20px; }
+.tier--sm .tier-num { font-size: 11px; }
+.tier--sm h3 { font-size: 17px; margin-top: 10px; letter-spacing: -0.015em; }
+.tier--sm .tier-mode { font-size: 11px; margin-top: 5px; }
+.tier--sm .tier-desc { font-size: 13px; margin-top: 10px; line-height: 1.5; }
+.tier--sm .tier-flag { font-size: 10px; }
+.tier--sm ul { margin: 14px 0 18px; gap: 7px; }
+.tier--sm li { font-size: 12.6px; gap: 8px; line-height: 1.45; }
+/* the global 1020px rule promotes the featured card to first; with four numbered
+   cards that reads as 02, 01, 03, 04, so it is cancelled here */
+.tiers--compact .tier--featured { order: 0; }
+@media (max-width: 1099px) {
+  .tiers--compact { grid-template-columns: repeat(2, minmax(0,1fr)); max-width: 680px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 479px) {
+  .tiers--compact { grid-template-columns: 1fr; max-width: 360px; }
+}
 .paths .tiers { grid-template-columns: repeat(2, minmax(0,1fr)); max-width: 980px; margin-inline: auto; }
 @media (max-width: 860px) { .paths .tiers { grid-template-columns: 1fr; } }
 .sample-ribbon {
@@ -2804,7 +2838,7 @@ html { scroll-padding-top: 114px; }
     <nav class="main-nav" id="main-nav" aria-label="Main navigation">
       <a href="#hybrid">Managed Revenue</a>
       <a href="#revenue-teams">Revenue Teams</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#pricing">Packages</a>
       <a class="nav-login" href="https://dashboard.oasisrevenuelab.com" target="_blank" rel="noopener">Client login</a>
       <a class="nav-external" href="https://luxoasisadvisory.com" target="_blank" rel="noopener">Lux Oasis Advisory
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
@@ -2884,10 +2918,10 @@ html { scroll-padding-top: 114px; }
         </a>
       </div>
       <div class="hero-ctas reveal" style="--reveal-delay:240ms">
-        <a class="btn btn--primary" href="#hybrid">Explore managed revenue
+        <a class="btn btn--primary" href="#get-started">Manage my revenue
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </a>
-        <a class="btn btn--ghost" href="#revenue-teams">For revenue managers
+        <a class="btn btn--ghost" href="#pricing">Explore services
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </a>
       </div>
@@ -2990,36 +3024,48 @@ html { scroll-padding-top: 114px; }
   <section class="section section--dark paths" id="paths" aria-labelledby="paths-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Two ways to work with us</p>
-        <h2 id="paths-title">Revenue management, supported by one connected workspace.</h2>
-        <p class="lead">ORL brings portfolio performance, booking data, commercial context, AI assistance and client reporting together. You can have our revenue managers run it for you, or run it yourself inside your own revenue-management business.</p>
+        <p class="eyebrow">What we do</p>
+        <h2 id="paths-title">Revenue management, supported by the OneConnect workspace.</h2>
+        <p class="lead">We are a short-term rental revenue management business. Certified revenue managers build and run your pricing strategy. OneConnect is the workspace that supports that service: you connect your systems, review how the portfolio is performing, pull the reports you need, and work with the revenue agent in between.</p>
       </div>
-      <div class="tiers">
-        <article class="tier tier--featured reveal">
-          <p class="tier-flag">Property managers &amp; operators</p>
-          <p class="tier-num">PATH 01</p>
-          <h3>Managed revenue</h3>
-          <p class="tier-mode">Hybrid: your workspace, our revenue managers</p>
-          <p class="tier-desc">You get the dashboard and the AI assistance. Our certified revenue managers own the pricing strategy and bring you the decisions, with the evidence behind them.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Your own dashboard and reports</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pricing strategy set and reviewed by people</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Software included in the agreed package</li>
-          </ul>
-          <a class="btn btn--primary" href="#hybrid">Explore managed revenue</a>
+
+      <div class="rms-grid">
+        <article class="rms-cell reveal">
+          <h3>Connect your systems</h3>
+          <p>Your pricing engine and your property management system feed one workspace, so the figures you are shown are the figures your own systems hold.</p>
         </article>
-        <article class="tier reveal" style="--reveal-delay:60ms">
-          <p class="tier-num">PATH 02</p>
-          <h3>ORL for Revenue Teams</h3>
-          <p class="tier-mode">Software licence · agency pilot</p>
-          <p class="tier-desc">Your expertise, your clients, one workspace. You keep the service and the client relationship. We provide the software, onboarding and technical support within an agreed scope.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Manager workspace across authorised client portfolios</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>A separate dashboard for each client</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Licence to use the product, not a sale of the software</li>
-          </ul>
-          <a class="btn btn--ghost" href="#revenue-teams">For revenue managers</a>
+        <article class="rms-cell reveal" style="--reveal-delay:60ms">
+          <h3>Review the portfolio</h3>
+          <p>Revenue to date, occupancy against the market, booking pace, MPI and a forward view, per property and across the whole portfolio.</p>
         </article>
+        <article class="rms-cell reveal" style="--reveal-delay:120ms">
+          <h3>Pull the reports</h3>
+          <p>Owner updates and performance reports prepared from your own data, ready to send without rebuilding them every month.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:180ms">
+          <h3>Work with the revenue agent</h3>
+          <p>Ask why a number moved, see the evidence behind a proposal, approve what you want applied. Anything commercial waits for your decision.</p>
+        </article>
+      </div>
+
+      <p class="paths-who reveal">Who we work with</p>
+      <div class="global-rows reveal">
+        <div class="global-row">
+          <h3>Holiday-home operators</h3>
+          <p class="areas">Property management companies and subletting operators running guest-ready portfolios.</p>
+        </div>
+        <div class="global-row">
+          <h3>Landlords and owners</h3>
+          <p class="areas">Renting out your own property. You do not need to run a management company to work with us.</p>
+        </div>
+        <div class="global-row">
+          <h3>Multi-property businesses</h3>
+          <p class="areas">Leased units and units managed on behalf of owners, under one commercial view.</p>
+        </div>
+        <div class="global-row">
+          <h3>Revenue managers and revenue teams</h3>
+          <p class="areas">Portfolio analysis, revenue strategy and ongoing revenue decisions for your own clients.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -3033,7 +3079,7 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">Path 01 · Managed revenue</p>
         <h2 id="rms-title">Your revenue strategy, supported by our team.</h2>
-        <p class="lead">You work in your own dashboard. The AI prepares the investigation and the reporting. Certified revenue managers set the strategy, review what the numbers mean and bring you the decisions. You approve anything commercial before it happens.</p>
+        <p class="lead">For property managers, subletting companies and private owners alike, from a single apartment to a full portfolio. You work in your own dashboard. The AI prepares the investigation and the reporting. Certified revenue managers set the strategy, review what the numbers mean and bring you the decisions. You approve anything commercial before it happens.</p>
       </div>
 
       <p class="consult-key reveal">Pricing tools give you data. <em>We give you a position.</em></p>
@@ -3123,7 +3169,7 @@ html { scroll-padding-top: 114px; }
         <p><strong>Want this run properly on your listings?</strong> Every conversation starts with your actual units, rates and cost structure.</p>
         <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20revenue%20management%20for%20my%20listings." target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38a9.9 9.9 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
-          Talk on WhatsApp
+          Manage my revenue
         </a>
       </div>
     </div>
@@ -3137,7 +3183,7 @@ html { scroll-padding-top: 114px; }
           <p class="eyebrow">Who We Are</p>
           <h2 id="story-title">Built by real operators. Not by developers who read about hospitality.</h2>
           <p class="lead">Oasis Revenue Lab was built inside an actual STR operation managing live Dubai listings. We work daily inside Lux Oasis Holiday Homes, our operating partner — a separate UAE company, DTCM-licensed and active in JBR, Dubai Marina, and Downtown. Every signal, every recommendation, every floor-price rule is tested on that portfolio first.</p>
-          <a class="btn btn--dark" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20the%20revenue%20team." target="_blank" rel="noopener">Talk to the Revenue Team</a>
+          <a class="btn btn--dark" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20the%20revenue%20team." target="_blank" rel="noopener">Manage my revenue</a>
         </div>
         <div class="story-points">
           <article class="story-point reveal">
@@ -3382,7 +3428,7 @@ html { scroll-padding-top: 114px; }
       </div>
       <div class="features-note reveal">
         <p><strong>Client delivery sits across all six.</strong> A dashboard the client can open, a weekly review and a daily report they can download, and a record of what was decided and why.</p>
-        <a class="btn btn--dark btn--sm" href="#product">See the workspace</a>
+        <a class="btn btn--dark btn--sm" href="#product">Explore services</a>
       </div>
     </div>
   </section>
@@ -3470,7 +3516,7 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">Path 02 · ORL for Revenue Teams</p>
         <h2 id="rt-title">Your expertise. Your clients. One workspace.</h2>
-        <p class="lead">Use ORL to review portfolio performance, investigate commercial opportunities and prepare clear client reporting. Bring your revenue-management service into a connected workspace, supported by AI assistance and relevant market context.</p>
+        <p class="lead">OneConnect supports three things for a revenue team: portfolio analysis across the clients you are authorised to see, revenue strategy you set and defend yourself, and the ongoing revenue decisions in between, with the evidence assembled and the client report prepared for you.</p>
         <p class="sample-ribbon reveal"><span class="dot dot--amber" aria-hidden="true"></span>Agency pilot · by demo</p>
       </div>
 
@@ -3491,8 +3537,8 @@ html { scroll-padding-top: 114px; }
       </div>
 
       <div class="rms-cta reveal">
-        <p><strong>Pilot pricing, by quote.</strong> We will walk the workspace with your own client structure before anything is priced.</p>
-        <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%20run%20revenue%20management%20and%20I%27d%20like%20a%20partner%20demo%20of%20ORL%20for%20Revenue%20Teams." target="_blank" rel="noopener">Request a partner demo</a>
+        <p><strong>Request a quote.</strong> We walk the workspace with your own client structure first, then price it against the work involved.</p>
+        <a class="btn btn--primary btn--sm" href="https://wa.me/971585089283?text=Hi%2C%20I%20run%20revenue%20management%20and%20I%27d%20like%20a%20partner%20demo%20of%20ORL%20for%20Revenue%20Teams." target="_blank" rel="noopener">Request a quote</a>
       </div>
     </div>
   </section>
@@ -3605,7 +3651,7 @@ html { scroll-padding-top: 114px; }
             <li class="reveal" style="--reveal-delay:200ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Trigger-based actions</strong> — if this, then do that</span></li>
             <li class="reveal" style="--reveal-delay:240ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Outcomes tracked</strong> against your reservation feed</span></li>
           </ul>
-          <a class="btn btn--primary reveal" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Ask About the AI Revenue Agent</a>
+          <a class="btn btn--primary reveal" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Request a quote</a>
         </div>
       </div>
     </div>
@@ -3817,105 +3863,59 @@ html { scroll-padding-top: 114px; }
   <section class="section section--dark" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">How It Works &amp; Pricing</p>
+        <p class="eyebrow">Services</p>
         <h2 id="pricing-title">The AI is not replacing revenue management expertise. It is scaling it.</h2>
-        <p class="lead">Start with what you need. Scale from there.</p>
+        <p class="lead">Four ways to work with us. Scope and pricing are agreed on your portfolio, your markets and the work involved.</p>
       </div>
-      <div class="founding-banner reveal">
-        <p class="fb-text">Software for operators: first 50 seats <strong>AED 89/listing/month</strong>, standard price after launch AED 149/listing/month. Human revenue management is quoted separately. Agency licensing is a pilot, by quote.</p>
-      </div>
-      <div class="tiers">
-        <article class="tier reveal">
-          <p class="tier-num">TIER 01</p>
-          <h3>AI Revenue Agent</h3>
-          <p class="tier-mode">Software subscription</p>
-          <p class="tier-desc">The workspace and the AI assistance on your own portfolio. It proposes with the evidence; you approve; you keep control of what is switched on.</p>
+      <div class="tiers tiers--compact">
+        <article class="tier tier--sm reveal">
+          <h3>Consultancy</h3>
+          <p class="tier-mode">One focused engagement</p>
+          <p class="tier-desc">We set your pricing foundations, then hand them over and you run them yourself.</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief at 9:45am</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Live dashboard: goals, pace, forecasts, visibility and listing health. New bookings checked every 30 minutes, plus your provider’s lag; full refresh daily</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pricing reviewed daily against your floor and your rules</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Specific pricing proposals, with the reasoning, applied only on your approval</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor monitoring</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>MPI vs competitors</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Tower-level comp intelligence</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Booking pace and demand alerts</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Local event intelligence and compression warnings</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Visibility tracking against your local set, with history</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Trigger-based actions</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Orphan gap and last-minute strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Revenue goal tracking and monthly summary</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Draft owner updates and property reports</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Paste your costs — get your floor price instantly</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ask the workspace anything, in your own language</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Channel economics and OTA promotion assessment, where the inputs exist</li>
-          </ul>
-          <div class="price-value"><span class="amount">AED 89</span><span class="per">/ listing / month</span></div>
-          <p class="price-fine"><strong>For the first 50 seats.</strong> Standard price after launch: AED 149/listing/month. This is the software. Human revenue management and consultancy are quoted separately. PriceLabs, your PMS and any optional data services remain payable to those providers.</p>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20start%20with%20the%20AI%20Revenue%20Agent." target="_blank" rel="noopener">Start with AI Agent</a>
-        </article>
-        <article class="tier tier--featured reveal" style="--reveal-delay:60ms">
-          <p class="tier-flag">Recommended</p>
-          <p class="tier-num">TIER 02</p>
-          <h3>Hybrid Revenue Management</h3>
-          <p class="tier-mode">AI plus human expertise</p>
-          <p class="tier-desc">Everything in the AI Revenue Agent, plus certified revenue managers running your pricing strategy. Quoted separately from the AED 89 subscription.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Everything in Tier 1</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Direct revenue manager access</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Strategic pricing reviews</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ongoing advisory</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Market interpretation sessions</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs strategy and setup guidance</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rate structure and floor architecture</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal strategy and event planning</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review call</li>
-          </ul>
-          <div class="price-value"><span class="amount">Custom</span><span class="per">based on portfolio size</span></div>
-          <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20discuss%20Hybrid%20Revenue%20Management." target="_blank" rel="noopener">Discuss Hybrid Support</a>
-        </article>
-        <article class="tier reveal" style="--reveal-delay:120ms">
-          <p class="tier-num">TIER 03</p>
-          <h3>One-Time Consultancy</h3>
-          <p class="tier-mode">Focused engagement</p>
-          <p class="tier-desc">A focused consultancy engagement to get your pricing foundations right. Priced as a one-time fee, separate from the AI subscription.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs full setup or review</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>PriceLabs setup or full review</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Floor price architecture per unit</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Apartment-specific setup</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal pricing strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekday and weekend rate logic</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Event and peak strategy</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Dubai-specific logic</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Min-stay optimisation</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Last-minute rules</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portfolio review</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seasonal, event and min-stay strategy</li>
           </ul>
-          <div class="price-value"><span class="amount">Custom</span><span class="per">one-time</span></div>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20book%20a%20one-time%20consultancy." target="_blank" rel="noopener">Book Consultancy</a>
         </article>
-
-        <article class="tier reveal" style="--reveal-delay:180ms">
-          <p class="tier-num">TIER 04</p>
-          <h3>ORL for Revenue Teams</h3>
-          <p class="tier-mode">Agency licence · pilot</p>
-          <p class="tier-desc">For revenue managers and revenue-management companies serving their own clients.</p>
+        <article class="tier tier--sm reveal" style="--reveal-delay:60ms">
+          <h3>Revenue Agent</h3>
+          <p class="tier-mode">The workspace, working on its own</p>
+          <p class="tier-desc">OneConnect and the AI assistance on your portfolio. It proposes with the evidence. You approve.</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Manager workspace across authorised client portfolios</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>A separate dashboard for each client</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portfolio and property performance analysis</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>AI-assisted investigation and report preparation</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Channel economics and promotion assessment, where inputs exist</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Local events and market context</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Decision and approval records for supported workflows</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Onboarding and technical support within an agreed scope</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Co-branded: your identity, &ldquo;Powered by ORL&rdquo;</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief and live dashboard</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pricing reviewed against your floor</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Proposals applied on your approval</li>
           </ul>
-          <div class="price-value"><span class="amount">Pilot pricing</span><span class="per">request a quote</span></div>
-          <p class="price-fine">A licence to use the product within agreed terms. Not a sale of the software. Full white-labelling, custom domains and advanced team permissions are separately scoped.</p>
-          <a class="btn btn--ghost" href="#revenue-teams">Request a partner demo</a>
+        </article>
+        <article class="tier tier--sm tier--featured reveal" style="--reveal-delay:120ms">
+          <p class="tier-flag">Most operators start here</p>
+          <h3>Managed Revenue</h3>
+          <p class="tier-mode">Our revenue managers run it</p>
+          <p class="tier-desc">We own the pricing strategy and bring you the decisions. The workspace comes with it.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Strategy set and reviewed by people</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Direct revenue manager access</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review</li>
+          </ul>
+        </article>
+        <article class="tier tier--sm reveal" style="--reveal-delay:180ms">
+          <p class="tier-flag tier-flag--plan">Pilot &middot; by demo</p>
+          <h3>ORL for Revenue Teams</h3>
+          <p class="tier-mode">For revenue managers and agencies</p>
+          <p class="tier-desc">Run your own clients inside OneConnect. Open as a pilot with selected partners, not generally available.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Workspace across your authorised clients</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>A separate dashboard for each client</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>A licence to use, not a sale of the software</li>
+          </ul>
         </article>
       </div>
-      <p class="pricing-footnote">All enquiries handled personally. Excludes VAT.<br><span class="mono">Operated by Lux Oasis Advisory &amp; Services LLC — TRN 104722180700003.</span></p>
+      <div class="svc-cta reveal">
+        <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20you%20to%20manage%20my%20revenue." target="_blank" rel="noopener">Manage my revenue</a>
+        <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20revenue%20management." target="_blank" rel="noopener">Request a quote</a>
+      </div>
+      <p class="pricing-footnote">Tell us how many properties you have and which markets they are in, and we come back with scope, a figure and exactly what it covers.<br>All enquiries handled personally. Excludes VAT.<br><span class="mono">Operated by Lux Oasis Advisory &amp; Services LLC &mdash; TRN 104722180700003.</span></p>
     </div>
   </section>
 
@@ -3924,7 +3924,7 @@ html { scroll-padding-top: 114px; }
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">Global Markets</p>
-        <h2 id="global-title">Built from real Dubai operations. Live in Italy. Designed for operators worldwide.</h2>
+        <h2 id="global-title">Built from hands-on Dubai holiday-home operations. Active in Europe. Designed for short-term rental businesses worldwide.</h2>
       </div>
       <div class="global-rows reveal">
         <div class="global-row">
@@ -3943,7 +3943,7 @@ html { scroll-padding-top: 114px; }
           <span class="global-status global-status--expanding"><span class="dot dot--amber" aria-hidden="true"></span>Expanding</span>
         </div>
         <div class="global-row">
-          <h3>Europe</h3>
+          <h3>Rest of Europe</h3>
           <p class="areas">UK · Spain · Portugal</p>
           <span class="global-status global-status--planned">Planned</span>
         </div>
@@ -4007,7 +4007,7 @@ html { scroll-padding-top: 114px; }
         </details>
         <details class="faq-item">
           <summary>How much does it cost?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">AED 89 per listing per month for the first 50 seats. The standard price after launch is AED 149 per listing per month. Hybrid and consultancy engagements are priced custom to your portfolio.</p>
+          <p class="faq-answer">Every engagement is quoted on your portfolio: how many properties, which markets, and whether you want the software on its own or our revenue managers owning the strategy. Tell us the portfolio and we come back with a figure and exactly what it covers. PriceLabs, your PMS and any optional data services stay payable to those providers.</p>
         </details>
                 <details class="faq-item">
           <summary>Can I use ORL inside my own revenue-management business?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -4019,7 +4019,7 @@ html { scroll-padding-top: 114px; }
         </details>
 <details class="faq-item">
           <summary>Do you only cover Dubai?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">No. We run revenue management in Dubai and in Italy. Our deepest Dubai data covers JBR, Dubai Marina, Downtown, Business Bay, and Palm Jumeirah. GCC expansion is planned for 2026.</p>
+          <p class="faq-answer">No. The product was built on live Dubai operations and we run revenue management in Dubai and in Europe. Our deepest data covers JBR, Dubai Marina, Downtown, Business Bay and Palm Jumeirah. The workspace itself is market-agnostic and works wherever your pricing engine and PMS have coverage.</p>
         </details>
         <details class="faq-item">
           <summary>I already have a property manager. Does this still work?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -4031,7 +4031,7 @@ html { scroll-padding-top: 114px; }
         </details>
         <details class="faq-item">
           <summary>Is there a contract?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">No long-term contract. Service is monthly rolling, cancel with 30 days notice. Launch-phase clients keep the founding rate of AED 89 per listing per month for 18 months from signing; after that the standard rate of AED 149 applies unless we agree otherwise in writing before it changes.</p>
+          <p class="faq-answer">No long-term contract. Service is monthly rolling, cancel with 30 days notice. Your rate is fixed in writing for the term agreed at signing and does not change inside that term without your written agreement.</p>
         </details>
         <details class="faq-item">
           <summary>Do you work with properties outside holiday homes?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -4082,7 +4082,7 @@ html { scroll-padding-top: 114px; }
           <li><a href="#hybrid">Revenue Management</a></li>
           <li><a href="#features">AI Revenue Agent</a></li>
           <li><a href="#pricing">Consultancy</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#pricing">Packages</a></li>
         </ul>
       </nav>
       <nav class="footer-col" aria-label="Resource links">
