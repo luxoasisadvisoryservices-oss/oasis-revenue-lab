@@ -2565,6 +2565,8 @@ html { scroll-padding-top: 114px; }
 .intel-note { padding: 12px 22px 14px; }
 .intel-grid { grid-template-columns: repeat(2, 1fr); }
 .intel-grid .rms-cell p { font-size: 14.5px; }
+/* the fifth capability card has no partner, so it takes the full row */
+.intel-grid .intel-wide { grid-column: 1 / -1; }
 @media (max-width: 1020px) {
   .intel-layout { grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
   .intel-rank { max-width: 620px; }
@@ -3398,7 +3400,7 @@ html { scroll-padding-top: 114px; }
           <span class="feature-num">03</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
           <h3>Local demand</h3>
-          <p>Events, holidays, seasonal patterns and market conditions, read against your own open nights and your own everyday rate rather than against a radius.</p>
+          <p>Events, holidays, seasonal patterns, regional news and the conditions moving travel demand, read against your own open nights and your own everyday rate rather than against a radius. Announced months ahead where they are known.</p>
         </article>
         <article class="feature-cell reveal">
           <span class="feature-num">04</span>
@@ -3448,7 +3450,7 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">What We Fetch, Scan and Compare</p>
         <h2 id="intel-title">Our system goes and looks. Where it cannot, it says so.</h2>
-        <p class="lead">Airbnb search, market reference rates, your own reservation feed, the OTA campaign catalogue and the events around each property. This is what your revenue manager reads every morning and what the AI reasons from. Where a figure needs an input you have not supplied, it names the input rather than estimating around it.</p>
+        <p class="lead">Airbnb search, market reference rates, your own reservation feed, the Airbnb and Booking.com campaign catalogues, the events around each property, and the news and conditions moving demand in your region. This is what your revenue manager reads every morning and what the AI reasons from. Where a figure needs an input you have not supplied, it names the input rather than estimating around it.</p>
       </div>
 
       <div class="intel-layout">
@@ -3513,8 +3515,8 @@ html { scroll-padding-top: 114px; }
       <div class="rms-grid intel-grid">
         <article class="rms-cell reveal">
           <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg></span>
-          <h3>OTA campaigns, promotions and discounts</h3>
-          <p>Every campaign your channels offer, property by property, with its booking window, its stay window and the rules about what is allowed to stack with what. Each one is judged on your own rate, your own fee stack and your own floor, not on the headline discount. It gives you the order to do things in as well: raise the rate first, then switch the last-minute discount on. Switching it on stays yours to do in the OTA console, and the result is watched afterwards.</p>
+          <h3>Promotions and discounts, Airbnb and Booking.com</h3>
+          <p>Every campaign the two channels offer, property by property, with its booking window, its stay window and the rules about what is allowed to stack with what. Each one is judged on your own rate, your own fee stack and your own floor, not on the headline discount. It gives you the order to do things in as well: raise the rate first, then switch the last-minute discount on. Switching it on stays yours to do in the OTA console, and the result is watched afterwards.</p>
         </article>
         <article class="rms-cell reveal" style="--reveal-delay:60ms">
           <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
@@ -3530,6 +3532,11 @@ html { scroll-padding-top: 114px; }
           <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
           <h3>Revenue truth, from your own bookings</h3>
           <p>Every reservation and every night from the property management system you connect, not a sample and not a projection. New bookings are checked every 30 minutes plus your provider&rsquo;s own lag, with a full refresh daily, and the product states that on the view. The year scoreboard compares the same units month by month across both years, counts closed months only, names any unit that did not trade all year, and tells you plainly whether the goal is still reachable.</p>
+        </article>
+        <article class="rms-cell intel-wide reveal" style="--reveal-delay:240ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg></span>
+          <h3>Market conditions, news, and what they do to demand</h3>
+          <p>The agent reads the market each property sits in, not only the property. Local and regional news, and what it is likely to do to travel demand rather than the fact that it happened. Events announced months ahead, flagged while your calendar is still open and the rate can still be moved. Regional conditions, including the geopolitical situation where that moves travel, which in this part of the world it regularly does. The job is not to summarise a headline. It is to tell you what it means for your open nights and the rate you are holding, and to say so while there is still time to act on it.</p>
         </article>
       </div>
 
