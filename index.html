@@ -2545,6 +2545,11 @@ html { scroll-padding-top: 114px; }
   align-items: center;
   margin-bottom: 40px;
 }
+.intel-sources { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 20px; padding: 0; }
+.intel-sources .eco-chip { font-size: 12.5px; padding: 8px 15px; color: #D7E0EC; border-color: var(--hairline-strong); transition: border-color .2s var(--ease), color .2s var(--ease); }
+.intel-sources .eco-chip:hover { color: #fff; border-color: rgba(52,211,153,0.45); }
+.intel-caveat { font-size: 14px; color: var(--muted-dark); max-width: 64ch; border-left: 2px solid var(--hairline-strong); padding-left: 14px; line-height: 1.6; }
+@media (max-width: 600px) { .intel-sources { gap: 7px; } .intel-sources .eco-chip { font-size: 11.5px; padding: 6px 11px; } }
 .intel-h3 { font-size: clamp(19px, 1.7vw, 23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 4px; }
 /* the rank panel is proof, not a feature page: keep the whole block short */
 .intel-side .tg-bullets { margin: 20px 0 0; }
@@ -2871,7 +2876,6 @@ html { scroll-padding-top: 114px; }
       <a href="#hybrid">Managed Revenue</a>
       <a href="#revenue-teams">Revenue Teams</a>
       <a href="#pricing">Packages</a>
-      <a class="nav-login" href="https://dashboard.oasisrevenuelab.com" target="_blank" rel="noopener">Client login</a>
       <a class="nav-external" href="https://luxoasisadvisory.com" target="_blank" rel="noopener">Lux Oasis Advisory
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
@@ -2959,8 +2963,6 @@ html { scroll-padding-top: 114px; }
       </div>
       <p class="hero-links reveal" style="--reveal-delay:300ms">
         <a class="text-link" href="#product">Explore the dashboard</a>
-        <span class="hl-sep" aria-hidden="true">·</span>
-        <a class="text-link" href="https://dashboard.oasisrevenuelab.com" target="_blank" rel="noopener">Client login</a>
       </p>
       <div class="hero-secondary reveal" style="--reveal-delay:360ms">
         <p><strong>Not sure what your floor price should be?</strong> Use our free calculator — no sign-up required.</p>
@@ -3475,7 +3477,16 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">What We Fetch, Scan and Compare</p>
         <h2 id="intel-title">Our system goes and looks. Where it cannot, it says so.</h2>
-        <p class="lead">Airbnb search, market reference rates, your own reservation feed, the Airbnb and Booking.com campaign catalogues, the events around each property, and the news and conditions moving demand in your region. This is what your revenue manager reads every morning and what the AI reasons from. Where a figure needs an input you have not supplied, it names the input rather than estimating around it.</p>
+        <p class="lead">Six inputs, read every morning. The same ones your revenue manager reads and the AI reasons from.</p>
+        <ul class="intel-sources" role="list">
+          <li class="eco-chip reveal" style="--reveal-delay:0ms"><span class="dot dot--green" aria-hidden="true"></span>Airbnb search</li>
+          <li class="eco-chip reveal" style="--reveal-delay:60ms"><span class="dot dot--green" aria-hidden="true"></span>Market reference rates</li>
+          <li class="eco-chip reveal" style="--reveal-delay:120ms"><span class="dot dot--green" aria-hidden="true"></span>Your reservation feed</li>
+          <li class="eco-chip reveal" style="--reveal-delay:180ms"><span class="dot dot--green" aria-hidden="true"></span>Airbnb and Booking.com campaigns</li>
+          <li class="eco-chip reveal" style="--reveal-delay:240ms"><span class="dot dot--green" aria-hidden="true"></span>Events near each property</li>
+          <li class="eco-chip reveal" style="--reveal-delay:300ms"><span class="dot dot--green" aria-hidden="true"></span>Regional news and conditions</li>
+        </ul>
+        <p class="intel-caveat reveal" style="--reveal-delay:400ms">Where a figure needs an input you have not supplied, it names the input rather than estimating around it.</p>
       </div>
 
       <div class="intel-layout">
