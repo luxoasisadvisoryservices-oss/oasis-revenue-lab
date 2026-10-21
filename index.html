@@ -3381,13 +3381,13 @@ html { scroll-padding-top: 114px; }
           <span class="feature-num">01</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
           <h3>Performance</h3>
-          <p>Revenue, occupancy, ADR, RevPAR and booking pace. Goals and forecasts per property and across the portfolio, with the date range and data coverage stated on the view.</p>
+          <p>Revenue, occupancy, ADR, RevPAR and booking pace. Goals and forecasts per property and across the portfolio, with the date range and data coverage stated on the view. The year view says whether the goal is still reachable, or already beaten.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:60ms">
           <span class="feature-num">02</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 3-10 2 3h5"/></svg></span>
           <h3>Commercial analysis</h3>
-          <p>Channel fees, markups, recorded costs and OTA promotion assessments, where the inputs exist. Booking revenue, payout and estimated profitability are kept apart, never merged into one figure.</p>
+          <p>Every OTA campaign and discount your channels offer, per property, with its booking window, stay window and stacking rules, each judged on your own rate, fee stack and floor. Booking revenue, payout and estimated profitability are kept apart, never merged into one figure.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:120ms">
           <span class="feature-num">03</span>
@@ -3399,7 +3399,7 @@ html { scroll-padding-top: 114px; }
           <span class="feature-num">04</span>
           <span class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="0.5"/><rect x="12" y="8" width="3" height="9" rx="0.5"/><rect x="17" y="5" width="3" height="12" rx="0.5"/></svg></span>
           <h3>Visibility and competitors</h3>
-          <p>Observations of public listings and search, reported as where a listing stands against its local set. Depth and coverage vary by market, and the view says so.</p>
+          <p>Airbnb search observed daily, not estimated, reported as where your listing stands against its true local set with history behind it. Your public listing page is read too: rating, review count, status and title, with what is worth improving.</p>
         </article>
         <article class="feature-cell reveal" style="--reveal-delay:60ms">
           <span class="feature-num">05</span>
@@ -3442,13 +3442,13 @@ html { scroll-padding-top: 114px; }
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">What We Fetch, Scan and Compare</p>
-        <h2 id="intel-title">What the workspace reads, and what it will not claim.</h2>
-        <p class="lead">Public listing and search observations. Market reference rates. Your reservation feed from the property management system you connect. Event calendars and local context matched to each property. Where a figure depends on an input you have not supplied, the workspace names the input instead of estimating.</p>
+        <h2 id="intel-title">Our system goes and looks. Where it cannot, it says so.</h2>
+        <p class="lead">Airbnb search observed daily. Market reference rates per property. Your own reservation feed from the property management system you connect. The OTA campaign catalogue with its real stacking rules. Events matched to the nights you still have open. This is what your revenue manager reads every morning, what the AI reasons from, and what you see in your dashboard. Where a figure depends on an input you have not supplied, the workspace names that input instead of estimating around it.</p>
       </div>
 
       <div class="intel-layout">
         <div class="intel-side">
-          <h3 class="intel-h3 reveal">Visibility, reported honestly.</h3>
+          <h3 class="intel-h3 reveal">Airbnb search, scanned daily. Not estimated.</h3>
           <ul class="tg-bullets" role="list">
             <li class="reveal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Public search is observed, not estimated.</strong> Coverage and depth vary by market, and the view tells you which it is.</span></li>
             <li class="reveal" style="--reveal-delay:40ms"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Checked against your local set:</strong> the area around the property, the bedroom count and the listing type, so the comparison is one a guest would actually make.</span></li>
@@ -3468,7 +3468,7 @@ html { scroll-padding-top: 114px; }
           <div class="dash-kpis intel-kpis">
             <div class="kpi">
               <p class="kpi-label">Position</p>
-              <p class="kpi-value">Not in<span class="intel-of"> top 170</span></p>
+              <p class="kpi-value" style="white-space:nowrap">Outside<span class="intel-of"> top 170</span></p>
               <p class="kpi-delta neutral">room to climb</p>
             </div>
             <div class="kpi">
@@ -3503,6 +3503,29 @@ html { scroll-padding-top: 114px; }
           <p class="dash-note intel-note"><span class="dot dot--amber" aria-hidden="true"></span> Illustrative</p>
         </div>
       </div>
+      <div class="rms-grid intel-grid">
+        <article class="rms-cell reveal">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg></span>
+          <h3>OTA campaigns, promotions and discounts</h3>
+          <p>Every campaign your channels offer, property by property, with its booking window, its stay window and the rules about what is allowed to stack with what. Each one is judged on your own rate, your own fee stack and your own floor, not on the headline discount. It gives you the order to do things in as well: raise the rate first, then switch the last-minute discount on. Switching it on stays yours to do in the OTA console, and the result is watched afterwards.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:60ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
+          <h3>Market and competitor context</h3>
+          <p>Occupancy against the market, a market reference rate per property and MPI across the portfolio, each carrying the date range and the data coverage on the view itself. Booking pace is read against the curve rather than against a feeling, so a property booked 68 per cent where the curve says 44 per cent is reported as genuinely ahead, and one sitting behind is flagged while there is still time to act.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:120ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <h3>Events and local demand</h3>
+          <p>Named events with their date range and the reason they matter, tied to the nights you still have open and to your own everyday rate rather than to a radius on a map. The point is never that an event exists. It is whether you have anything left to sell in that window, and whether the rate you are holding reflects what is about to happen.</p>
+        </article>
+        <article class="rms-cell reveal" style="--reveal-delay:180ms">
+          <span class="rms-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+          <h3>Revenue truth, from your own bookings</h3>
+          <p>Every reservation and every night from the property management system you connect, not a sample and not a projection. New bookings are checked every 30 minutes plus your provider&rsquo;s own lag, with a full refresh daily, and the product states that on the view. The year scoreboard compares the same units month by month across both years, counts closed months only, names any unit that did not trade all year, and tells you plainly whether the goal is still reachable.</p>
+        </article>
+      </div>
+
     </div>
   </section>
 
