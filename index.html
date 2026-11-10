@@ -2655,6 +2655,68 @@ html { scroll-padding-top: 114px; }
 .hero-links .hl-sep { color: var(--hairline-strong); }
 .hero .text-link { color: var(--body-dark); border-bottom: 1px solid rgba(255,255,255,0.22); text-decoration: none; }
 .hero .text-link:hover { color: #fff; border-bottom-color: var(--green); }
+
+/* =====================================================================
+   MANAGE YOUR PRICES FROM TELEGRAM  (#telegram-control)
+   Sits on the light band between #telegram (dark) and #ecosystem (panel).
+   Tabs are progressive enhancement: without JS no panel carries [hidden],
+   so both audiences are readable. Do not move the noscript override.
+   ===================================================================== */
+.tgc-layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,400px); gap: 56px; align-items: start; }
+.tgc-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.tgc-tab {
+  font-family: var(--sans); font-size: 13.5px; font-weight: 600;
+  padding: 10px 16px; border-radius: 100px; cursor: pointer;
+  border: 1px solid var(--hairline-light); background: transparent; color: var(--ink-muted);
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.tgc-tab:hover { color: var(--ink); border-color: rgba(11,18,32,0.28); }
+.tgc-tab[aria-selected="true"] { background: #0B8F63; border-color: #0B8F63; color: #fff; }
+.tgc-tab:focus-visible { outline: 2px solid #0B8F63; outline-offset: 2px; }
+.tgc-panel { font-size: 15px; line-height: 1.65; color: var(--ink-body); margin-bottom: 30px; }
+.tgc-panel strong { color: var(--ink); font-weight: 600; }
+.tgc-panel + .tgc-panel { margin-top: 10px; }
+.tgc-steps { list-style: none; counter-reset: tgc; margin: 0 0 28px; padding: 0; display: grid; gap: 0; }
+.tgc-steps li {
+  counter-increment: tgc; position: relative; padding: 15px 0 15px 44px;
+  border-top: 1px solid var(--hairline-light); font-size: 14.6px; line-height: 1.6; color: var(--ink-body);
+}
+.tgc-steps li:last-child { border-bottom: 1px solid var(--hairline-light); }
+.tgc-steps li::before {
+  content: counter(tgc); position: absolute; left: 0; top: 14px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  color: #0B8F63; background: rgba(11,143,99,0.10); border: 1px solid rgba(11,143,99,0.28);
+}
+.tgc-steps strong { color: var(--ink); font-weight: 600; }
+.tgc-note {
+  border-left: 2px solid #0B8F63; padding: 2px 0 2px 16px; margin: 0 0 26px;
+  font-size: 13.8px; line-height: 1.65; color: var(--ink-muted);
+}
+.tgc-note p { margin: 0 0 9px; }
+.tgc-note p:last-child { margin-bottom: 0; }
+.tgc-note strong { color: var(--ink); font-weight: 600; }
+.tgc-figure { margin: 0; position: sticky; top: 118px; }
+.tgc-figure img {
+  display: block; width: 100%; height: auto; border-radius: var(--radius);
+  border: 1px solid var(--hairline-light); box-shadow: 0 24px 64px -28px rgba(11,18,32,0.45);
+}
+.tgc-figure figcaption {
+  margin-top: 12px; font-size: 12.5px; line-height: 1.55; color: var(--ink-muted); text-align: center;
+}
+.tgc-figure figcaption em { font-style: normal; color: var(--ink); font-weight: 600; }
+@media (max-width: 1020px) {
+  .tgc-layout { grid-template-columns: 1fr; gap: 40px; }
+  .tgc-figure { position: static; max-width: 380px; margin-inline: auto; order: -1; }
+}
+@media (max-width: 560px) {
+  .tgc-tab { font-size: 12.5px; padding: 9px 13px; }
+  .tgc-steps li { padding-left: 38px; font-size: 14px; }
+  .tgc-figure { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .tgc-tab { transition: none; } }
+
 /* Compact engagement cards: four across on desktop, two by two on tablet and
    phone, single column only on the narrowest screens. These rules sit after the
    1020px block that forces .tiers to one column, so they win on equal
@@ -2818,6 +2880,7 @@ html { scroll-padding-top: 114px; }
   ]
 }
   </script>
+<noscript><style>.tgc-panel[hidden]{display:block !important}.tgc-tabs{display:none}</style></noscript>
 </head>
 <body>
 
@@ -3770,6 +3833,59 @@ html { scroll-padding-top: 114px; }
       </div>
     </div>
     </div><!-- /.tg-sticky -->
+  </section>
+
+  <!-- ============ MANAGE PRICES FROM TELEGRAM ============ -->
+  <!-- Capability section. Claim discipline: the assistant proposes and waits; the
+       PriceLabs read-back confirms PriceLabs ONLY, never the guest-facing channel
+       price. Do not add language implying instant OTA updates, autonomous changes,
+       or that staff hold pricing rights. -->
+  <section class="section section--light tgc-section" id="telegram-control" aria-labelledby="tgc-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Your whole book, from your phone</p>
+        <h2 id="tgc-title">Manage your prices from Telegram</h2>
+        <p class="lead">Your revenue assistant, available 24/7. Give an instruction from your phone, review the proposal and approve the change. For a revenue manager that means every client you are authorised for, from one conversation, without opening a laptop.</p>
+      </div>
+
+      <div class="tgc-layout">
+        <div class="tgc-main reveal">
+          <div class="tgc-tabs" role="tablist" aria-label="Who is making the change">
+            <button type="button" class="tgc-tab" role="tab" id="tgc-tab-rm" aria-controls="tgc-panel-rm" aria-selected="true" tabindex="0">Revenue managers</button>
+            <button type="button" class="tgc-tab" role="tab" id="tgc-tab-op" aria-controls="tgc-panel-op" aria-selected="false" tabindex="-1">Holiday home operators</button>
+          </div>
+
+          <div class="tgc-panel" role="tabpanel" id="tgc-panel-rm" aria-labelledby="tgc-tab-rm">
+            <p>Switch between the client accounts you are authorised for without leaving the chat, choose the property inside the one you want, and make the change there. The assistant keeps that client and property selected for your follow-up messages, so you can work through several accounts in one sitting instead of repeating yourself. <strong>Each instruction still comes back for review before anything is written, and you only ever see the clients your permissions cover.</strong></p>
+          </div>
+          <div class="tgc-panel" role="tabpanel" id="tgc-panel-op" aria-labelledby="tgc-tab-op" hidden>
+            <p>The same workflow across your own authorised listings. Choose the property, ask for the change, read it back and approve it. <strong>No separate client step, and the same review before anything is written.</strong></p>
+          </div>
+
+          <ol class="tgc-steps">
+            <li><strong>Select the property.</strong> It stays selected for follow-up instructions in the same session, under the session policy in force on your account.</li>
+            <li><strong>Type the change.</strong> A nightly price for specific dates, or a supported percentage adjustment.</li>
+            <li><strong>Review it.</strong> The exact dates, the currency, and the price before and after, read back to you.</li>
+            <li><strong>Tap Apply.</strong> Or <strong>Edit</strong> to adjust it, or <strong>Cancel</strong> to stop. Nothing is written until you tap.</li>
+            <li><strong>ORL reads PriceLabs back</strong> and reports what it found, so you see the result rather than an assumption.</li>
+          </ol>
+
+          <div class="tgc-note">
+            <p><strong>Undo</strong> is available afterwards. It is a separate, reviewed change rather than a silent rollback, so it goes through the same review step.</p>
+            <p><strong>Prefer a screen?</strong> The same proposals are reviewable in your dashboard. Telegram is for the times you are not at a desk.</p>
+            <p><strong>What this does and does not confirm.</strong> Applying a change requires the relevant permissions on the account; pricing rights are granted explicitly, never assumed. &ldquo;Saved and verified in PriceLabs&rdquo; confirms the price in PriceLabs. It does not confirm the guest-facing price on Airbnb, Booking.com or any other channel: your PMS and channel synchronisation run separately and on their own timing. Nothing is changed autonomously. Every change is proposed and waits for a person to approve it.</p>
+          </div>
+
+          <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%2C%20I%27d%20like%20to%20book%20a%20demo%20of%20the%20Telegram%20revenue%20assistant." target="_blank" rel="noopener">Book a demo</a>
+        </div>
+
+        <figure class="tgc-figure reveal" style="--reveal-delay:80ms">
+          <img src="ORL_Telegram_approval_illustration.png" width="680" height="1020" loading="lazy" decoding="async"
+               alt="Mock-up of the ORL Revenue Assistant in Telegram. The user selects the client Harbour Stays and the property Marina Loft, then asks to set the nightly price to AED 712 for 24 November 2026. A review card shows the property, the date, one night, and the price changing from AED 711 to AED 712, with Apply, Edit and Cancel buttons. A confirmation below reads “Saved and verified in PriceLabs, channel sync happens separately”, with an Undo button.">
+          <figcaption>A recreated example using fictional names, <em>Harbour Stays</em> and <em>Marina Loft</em>. Not an untouched customer screenshot.</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
   <section class="section section--panel eco-band" id="ecosystem" aria-labelledby="eco-title">
@@ -5357,6 +5473,39 @@ html { scroll-padding-top: 114px; }
     queue();
   });
   setTimeout(function () { measure(); scenes.forEach(function (s) { s.p = -1; }); queue(); }, 900);
+})();
+</script>
+
+<script>
+/* #telegram-control tabs. Progressive enhancement: panels are only hidden once
+   this runs, so a no-JS visitor sees both audiences (see the noscript rule). */
+(function () {
+  var list = document.querySelector('#telegram-control .tgc-tabs');
+  if (!list) return;
+  var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+  function panelOf(tab) { return document.getElementById(tab.getAttribute('aria-controls')); }
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      var p = panelOf(t);
+      if (p) { if (on) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); } }
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { select(tab, false); });
+    tab.addEventListener('keydown', function (e) {
+      var k = e.key, n = null;
+      if (k === 'ArrowRight' || k === 'ArrowDown') n = tabs[(i + 1) % tabs.length];
+      else if (k === 'ArrowLeft' || k === 'ArrowUp') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') n = tabs[0];
+      else if (k === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); select(n, true); }
+    });
+  });
+  select(tabs[0], false);
 })();
 </script>
 </body>
