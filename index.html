@@ -2848,7 +2848,10 @@ html { scroll-padding-top: 114px; }
           "availableLanguage": [
             "en"
           ],
-          "areaServed": ["AE", "IT"]
+          "areaServed": [
+            "AE",
+            "IT"
+          ]
         }
       ]
     },
@@ -2873,14 +2876,230 @@ html { scroll-padding-top: 114px; }
         "@id": "https://luxoasisadvisory.com/#organization"
       },
       "areaServed": [
-        { "@type": "Country", "name": "United Arab Emirates" },
-        { "@type": "Country", "name": "Italy" }
+        {
+          "@type": "Country",
+          "name": "United Arab Emirates"
+        },
+        {
+          "@type": "Country",
+          "name": "Italy"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Oasis Revenue Lab services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Managed Revenue",
+              "description": "Our revenue managers own the pricing strategy and bring you the decisions, with direct revenue manager access and a monthly performance review. The workspace is included."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Revenue Agent",
+              "description": "The workspace and AI assistance on your own portfolio: daily brief and live dashboard, pricing reviewed against your floor, and proposals applied only on your approval."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consultancy",
+              "description": "One focused engagement: PriceLabs setup or full review, floor price architecture per unit, and seasonal, event and minimum-stay strategy."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Listings and Direct Booking",
+              "description": "Listing optimisation and a direct booking site connected to your PMS, built with structured data and semantic markup so search engines and AI assistants can read it."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ORL for Revenue Teams",
+              "description": "Pilot programme, by demo, not generally available: a workspace for revenue managers and agencies serving their own clients. A licence to use the software, not a sale of it."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.oasisrevenuelab.com/#webpage",
+      "url": "https://www.oasisrevenuelab.com/",
+      "name": "Oasis Revenue Lab — Revenue Management for Short-Term Rentals",
+      "description": "A revenue management company for short-term rentals. Certified revenue managers build and run your pricing strategy, supported by a connected workspace and our own AI revenue agent. Built from hands-on Dubai holiday-home operations, active in Europe. Operated by Lux Oasis Advisory & Services LLC.",
+      "isPartOf": {
+        "@id": "https://www.oasisrevenuelab.com/#website"
+      },
+      "about": {
+        "@id": "https://www.oasisrevenuelab.com/#service"
+      },
+      "dateModified": "2026-11-12",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.oasisrevenuelab.com/#faq",
+      "url": "https://www.oasisrevenuelab.com/#faq",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://www.oasisrevenuelab.com/#website"
+      },
+      "dateModified": "2026-11-12",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is Oasis Revenue Lab different from just using PriceLabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PriceLabs adjusts rates algorithmically, but it cannot tell you whether your strategy is working, whether your floor is correct, or what the market is actually doing. Oasis Revenue Lab sits on top: daily monitoring, market interpretation, floor verification, and clear recommendations, all held in one connected workspace. We also configure and manage PriceLabs for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to use PriceLabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PriceLabs is where we are certified and where our clients run today. Support for other pricing tools is in development, so the strategy is not locked to one piece of software. If you already run something else, tell us what you use and we will confirm what we can support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you change my prices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not without your approval. The AI proposes a specific rate for specific dates with the reasoning, you approve it, and the change is made in your pricing engine inside the guardrails you set (your floor, your ceiling, your rules). OTA campaigns and promotions stay yours to switch on in the console, and we watch the result. Nothing moves on your calendar that you have not agreed to. Existing clients get it first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I need to get started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An active PriceLabs account and Telegram. We take your listing details and run a short onboarding call to set your floors and goals. Setup takes under 48 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every engagement is quoted on your portfolio: how many properties, which markets, and whether you want the software on its own or our revenue managers owning the strategy. Tell us the portfolio and we come back with a figure and exactly what it covers. PriceLabs, your PMS and any optional data services stay payable to those providers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use ORL inside my own revenue-management business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is ORL for Revenue Teams, and it is an agency pilot rather than a self-service product. You keep the service, the client relationship and every commercial decision; we provide the software, onboarding and technical support within an agreed scope. It is a licence to use the product, not a sale of it. Start with a partner demo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is still missing before an agency can onboard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Independent agency separation, staff accounts, client access and the data boundaries between them are verified with each pilot partner before anything goes live. Full white-labelling, custom domains and advanced team permissions are separately scoped and are not part of the pilot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you only cover Dubai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The product was built on live Dubai operations and we run revenue management in Dubai and in Europe. Our deepest data covers JBR, Dubai Marina, Downtown, Business Bay and Palm Jumeirah. The workspace itself is market-agnostic and works wherever your pricing engine and PMS have coverage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I already have a property manager. Does this still work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Oasis Revenue Lab works alongside your property manager as the revenue intelligence layer. If your PM handles pricing, we can work with them directly on the strategy layer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long until I see results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Briefings start within 48 hours. Portfolios that are underpriced or missing floor discipline typically improve within 2–4 weeks. Outcomes are tracked via Hostaway."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No long-term contract. Service is monthly rolling, cancel with 30 days notice. Your rate is fixed in writing for the term agreed at signing and does not change inside that term without your written agreement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with properties outside holiday homes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our focus is short-term rentals on Airbnb and Booking.com priced with PriceLabs. Serviced apartments and boutique hotels are on the roadmap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I change prices from my phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. In the ORL revenue assistant on Telegram you select the property, type the change, review the exact dates, currency and the price before and after, then tap Apply. ORL reads PriceLabs back and reports the result. Applying a change requires the relevant permissions on the account, and nothing is changed without a person approving it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a price saved in PriceLabs update Airbnb or Booking.com straight away?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. “Saved and verified in PriceLabs” confirms the price in PriceLabs. It does not confirm the guest-facing price on any channel: your PMS and channel synchronisation run separately and on their own timing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build direct booking websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as part of our listings and direct booking work: listing optimisation, a direct booking site connected to your PMS with live rates and availability, and pages built with structured data and semantic markup so search engines and AI assistants can read them. It comes with the commercial judgement on when direct should undercut the OTA and when it must not. Quoted on request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to run a property management company to work with you?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We work with holiday-home operators and property management companies, with landlords and owners renting out their own property, with businesses running leased units or units managed for owners, and with revenue managers serving their own clients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is behind Oasis Revenue Lab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oasis Revenue Lab is operated by Lux Oasis Advisory & Services LLC, registered in the Sharjah Free Zone, UAE. Our operating partner is Lux Oasis Holiday Homes, a separate UAE company that holds the DTCM licence, and every system runs on that live portfolio before it reaches a client."
+          }
+        }
       ]
     }
   ]
 }
-  </script>
+</script>
 <noscript><style>.tgc-panel[hidden]{display:block !important}.tgc-tabs{display:none}</style></noscript>
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Summary for AI assistants">
 </head>
 <body>
 
@@ -4266,6 +4485,22 @@ html { scroll-padding-top: 114px; }
         <details class="faq-item">
           <summary>Do you work with properties outside holiday homes?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
           <p class="faq-answer">Our focus is short-term rentals on Airbnb and Booking.com priced with PriceLabs. Serviced apartments and boutique hotels are on the roadmap.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I change prices from my phone?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p class="faq-answer">Yes. In the ORL revenue assistant on Telegram you select the property, type the change, review the exact dates, currency and the price before and after, then tap Apply. ORL reads PriceLabs back and reports the result. Applying a change requires the relevant permissions on the account, and nothing is changed without a person approving it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does a price saved in PriceLabs update Airbnb or Booking.com straight away?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p class="faq-answer">Not necessarily. &ldquo;Saved and verified in PriceLabs&rdquo; confirms the price in PriceLabs. It does not confirm the guest-facing price on any channel: your PMS and channel synchronisation run separately and on their own timing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you build direct booking websites?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p class="faq-answer">Yes, as part of our listings and direct booking work: listing optimisation, a direct booking site connected to your PMS with live rates and availability, and pages built with structured data and semantic markup so search engines and AI assistants can read them. It comes with the commercial judgement on when direct should undercut the OTA and when it must not. Quoted on request.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to run a property management company to work with you?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p class="faq-answer">No. We work with holiday-home operators and property management companies, with landlords and owners renting out their own property, with businesses running leased units or units managed for owners, and with revenue managers serving their own clients.</p>
         </details>
         <details class="faq-item">
           <summary>Who is behind Oasis Revenue Lab?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
