@@ -2,7 +2,7 @@
 
 > Revenue management for short-term rentals. Revenue managers build and run the pricing strategy, supported by one connected workspace and Oasis Revenue Lab's own AI revenue agent. Built from hands-on Dubai holiday-home operations, active in Europe, designed for short-term rental businesses worldwide.
 
-Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, registered in the Sharjah Free Zone, UAE. Prices are not published: every engagement is quoted on the portfolio, the markets and the work involved.
+Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, registered in the Sharjah Free Zone, UAE. There are three kinds of fee: a software fee per property per month for the Revenue Agent, a management fee for Managed Revenue, and an individually quoted assisted pilot for agencies. Figures are confirmed in writing on enquiry.
 
 ## Who it is for
 
@@ -13,14 +13,16 @@ Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, regist
 
 ## Services
 
-- [Managed Revenue](https://www.oasisrevenuelab.com/#hybrid): ORL's revenue managers own the pricing strategy and bring the client the decisions, with the evidence behind them. The workspace is included.
-- [Revenue Agent](https://www.oasisrevenuelab.com/#features): the workspace and AI assistance on the client's own portfolio. It proposes with the evidence and the client approves.
-- [Consultancy](https://www.oasisrevenuelab.com/#pricing): one focused engagement covering PriceLabs setup or review, floor price architecture per unit, and seasonal, event and minimum-stay strategy.
+- [Managed Revenue](https://www.oasisrevenuelab.com/#hybrid): a management fee, quoted on the property or portfolio. ORL's revenue managers own the pricing strategy and bring the client the decisions, with the evidence behind them. The Revenue Agent workspace is included.
+- [Revenue Agent](https://www.oasisrevenuelab.com/#features): a software fee per property, per month. The workspace and AI assistance on the client's own property or portfolio. It proposes with the evidence and the client approves.
+- [Pricing](https://www.oasisrevenuelab.com/#pricing): the three offers side by side.
+- Consultancy: one focused engagement, quoted separately, covering PriceLabs setup or review, floor price architecture per unit, and seasonal, event and minimum-stay strategy.
 - [Listings and Direct Booking](https://www.oasisrevenuelab.com/#listings): listing optimisation and a direct booking site connected to the client's PMS, built with structured data and semantic markup.
-- [ORL for Revenue Teams](https://www.oasisrevenuelab.com/#revenue-teams): a pilot programme, by demo, not generally available. A workspace for revenue managers and agencies serving their own clients. A licence to use the software, not a sale of it.
+- [ORL for Revenue Teams](https://www.oasisrevenuelab.com/#revenue-teams): an assisted agency pilot, quoted individually, not self-service. Revenue managers and agencies run several clients in one workspace, switch between portfolios and approve changes from Telegram, and each owner gets private access to their own dashboard and reporting. A licence to use the software, not a sale of it.
 
 ## How it works
 
+- [A worked example](https://www.oasisrevenuelab.com/#workflow): a booking cancels, the manager reviews the guest price, comparable listings and estimated payout, approves a change in Telegram or on the dashboard, and ORL records what PriceLabs confirmed. Fictional property, example figures.
 - [What the system reads](https://www.oasisrevenuelab.com/#intelligence): Airbnb search observed daily, market reference rates, the client's own reservation feed from the connected PMS, Airbnb and Booking.com campaign catalogues, events near each property, and regional news and conditions affecting demand.
 - [Price changes from Telegram](https://www.oasisrevenuelab.com/#telegram-control): select the property, type the change, review the exact dates, currency and before-and-after price, tap Apply, and ORL reads PriceLabs back and reports the result.
 - [The workspace](https://www.oasisrevenuelab.com/#product): portfolio performance, forecasts, goals and pace, OTA campaign assessment, events, reports and a persona profile that tunes the agent to the client's risk appetite and rules.
