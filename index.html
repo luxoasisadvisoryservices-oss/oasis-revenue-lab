@@ -2807,6 +2807,62 @@ html { scroll-padding-top: 114px; }
   .wf-log li { grid-template-columns: 44px 1fr; font-size: 13.4px; }
 }
 
+
+/* ---------- hero decision strip (replaces the second KPI ticker) ---------- */
+.dfeed { margin-top: 64px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); background: rgba(255,255,255,0.018); overflow: hidden; position: relative; padding: 14px 0 18px; }
+.dfeed::before, .dfeed::after { content: ""; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none; }
+.dfeed::before { left: 0; background: linear-gradient(90deg, var(--ink), transparent); }
+.dfeed::after { right: 0; background: linear-gradient(270deg, var(--ink), transparent); }
+.dfeed-label { position: relative; z-index: 3; display: flex; align-items: center; gap: 9px; max-width: var(--maxw); margin: 0 auto 12px; padding: 0 24px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #F5B942; }
+.dfeed-track { display: flex; width: max-content; animation: ticker 64s linear infinite; }
+.dfeed:hover .dfeed-track { animation-play-state: paused; }
+.dfeed-group { display: flex; gap: 12px; padding-right: 12px; }
+.dcard { width: 300px; border: 1px solid var(--hairline-strong); border-radius: 12px; background: linear-gradient(180deg, rgba(22,33,58,0.85), rgba(17,26,44,0.85)); padding: 13px 15px 14px; }
+.dc-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dc-area { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-dark); white-space: nowrap; }
+.dc-badge { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 100px; padding: 3px 8px; border: 1px solid transparent; white-space: nowrap; }
+.dc-badge--ok { color: var(--green); background: var(--green-dim); border-color: rgba(52,211,153,0.3); }
+.dc-badge--wait { color: var(--amber); background: var(--amber-dim); border-color: rgba(245,158,11,0.35); }
+.dc-badge--hold { color: var(--body-dark); background: rgba(255,255,255,0.04); border-color: var(--hairline-strong); }
+.dc-name { font-size: 13.5px; font-weight: 600; color: #fff; margin-top: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dc-rate { margin-top: 7px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 8px; font-family: var(--mono); font-size: 13px; color: var(--muted-dark); }
+.dc-rate s { color: var(--muted-dark); }
+.dc-rate strong { color: #fff; font-weight: 600; font-size: 15px; }
+.dc-arrow { color: var(--green); }
+.dc-note { flex-basis: 100%; font-family: var(--sans); font-size: 12px; color: var(--muted-dark); }
+@media (max-width: 640px) { .dfeed { margin-top: 44px; } .dcard { width: 258px; } .dfeed-label { font-size: 9.5px; padding: 0 16px; } }
+@media (prefers-reduced-motion: reduce) {
+  .dfeed { overflow-x: auto; }
+  .dfeed-track { animation: none; }
+  .dfeed-group + .dfeed-group { display: none; }
+}
+
+/* ---------- workflow player. Everything is visible without it: the hidden
+   states below only exist once the script adds .wf-live to the stage. ---------- */
+.wf-player { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 18px; }
+.wf-player[hidden] { display: none; }
+.wf-dots { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 auto; }
+.wf-dots button, .wf-replay { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink-muted); background: var(--white); border: 1px solid var(--hairline-light); border-radius: 100px; min-height: 44px; padding: 0 15px 0 12px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+.wf-dots button span { font-family: var(--mono); font-size: 11px; width: 21px; height: 21px; border-radius: 50%; display: grid; place-items: center; background: rgba(11,18,32,0.06); color: var(--ink-muted); }
+.wf-dots button em { font-style: normal; }
+.wf-dots button:hover, .wf-replay:hover { color: var(--ink); border-color: rgba(11,18,32,0.28); }
+.wf-dots button.is-done span { background: rgba(11,143,99,0.14); color: #0B7A55; }
+.wf-dots button[aria-current="step"] { background: #0B8F63; border-color: #0B8F63; color: #fff; }
+.wf-dots button[aria-current="step"] span { background: rgba(255,255,255,0.22); color: #fff; }
+.wf-dots button:focus-visible, .wf-replay:focus-visible { outline: 2px solid #0B8F63; outline-offset: 2px; }
+.wf-replay { padding: 0 16px; color: var(--ink); }
+.wf-live [data-wf-step] { opacity: 0; transform: translateY(8px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.wf-live [data-wf-step].is-on { opacity: 1; transform: none; }
+.wf-live .wf-btns.is-on.is-spent { opacity: 0.4; }
+.wf-btn--go { transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.wf-btn--go.is-pressed { transform: scale(0.96); box-shadow: 0 0 0 4px rgba(52,211,153,0.38); }
+.wf-step { transition: border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.wf-step.is-current { border-color: #0B8F63; box-shadow: 0 0 0 3px rgba(11,143,99,0.12); }
+@media (max-width: 600px) {
+  .wf-dots button:not([aria-current]) { padding: 0 11px; }
+  .wf-dots button:not([aria-current]) em { display: none; }
+}
+
 .tiers--fees { align-items: stretch; }
 .tiers--fees .tier--featured { order: 0; }
 .fee-type { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
@@ -3371,27 +3427,24 @@ html { scroll-padding-top: 114px; }
         <a class="btn btn--ghost btn--sm" href="#calculator">Get Free Calculator</a>
       </div>
     </div>
-    <div class="ticker-wrap" aria-hidden="true">
-      <div class="ticker">
-        <div class="ticker-group">
-          <span class="ticker-item">REV 30D <strong>AED 38,400</strong> <span class="tick-up">▲ 12%</span></span>
-          <span class="ticker-item">AVG OCC <strong>74%</strong> <span class="tick-up">MKT 61%</span></span>
-          <span class="ticker-item">MPI 30D <strong>1.32</strong> <span class="tick-up">OUTPERFORMING</span></span>
-          <span class="ticker-item">2BR MARINA ADR <strong>AED 920</strong> · FLOOR <strong>AED 680</strong></span>
-          <span class="ticker-item">1BR JBR <span class="tick-warn">3 UNSOLD NIGHTS MON–WED</span></span>
-          <span class="ticker-item">PRICELABS <span class="tick-up">VERIFIED DAILY</span></span>
-          <span class="ticker-item">BRIEFING DAILY <strong>09:45 GST</strong> ON YOUR PHONE</span>
-          <span class="ticker-item">FLOOR PRICES <span class="tick-up">PROTECTED</span></span>
+    <div class="dfeed" aria-hidden="true">
+      <p class="dfeed-label"><span class="dot dot--amber"></span>Illustrative decisions &middot; example figures &middot; nothing is applied without approval</p>
+      <div class="dfeed-track">
+        <div class="dfeed-group">
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Marina</span><span class="dc-badge dc-badge--ok">Approved in Telegram</span></p><p class="dc-name">Marina Loft &middot; 3 nights reopened</p><p class="dc-rate"><s>AED 740</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>AED 710</strong><span class="dc-note">est. payout stays above floor</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; JBR</span><span class="dc-badge dc-badge--wait">Proposed</span></p><p class="dc-name">1BR JBR &middot; weekend filling 12 days out</p><p class="dc-rate"><s>AED 620</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>AED 665</strong><span class="dc-note">waiting for approval</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Downtown</span><span class="dc-badge dc-badge--hold">Held at floor</span></p><p class="dc-name">Studio Downtown &middot; last-minute gap</p><p class="dc-rate"><strong>AED 480</strong><span class="dc-note">a cut would go below the floor</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">ROM &middot; Trastevere</span><span class="dc-badge dc-badge--ok">Approved</span></p><p class="dc-name">2BR Trastevere &middot; event week</p><p class="dc-rate"><s>EUR 210</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>EUR 245</strong><span class="dc-note">read back from PriceLabs</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Business Bay</span><span class="dc-badge dc-badge--hold">No further cut</span></p><p class="dc-name">2BR Business Bay &middot; discount already on</p><p class="dc-rate"><strong>AED 560</strong><span class="dc-note">10% last-minute already active</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">MIL &middot; Navigli</span><span class="dc-badge dc-badge--wait">Proposed</span></p><p class="dc-name">1BR Navigli &middot; 2 orphan nights</p><p class="dc-rate"><s>EUR 150</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>EUR 132</strong><span class="dc-note">waiting for approval</span></p></div>
         </div>
-        <div class="ticker-group">
-          <span class="ticker-item">REV 30D <strong>AED 38,400</strong> <span class="tick-up">▲ 12%</span></span>
-          <span class="ticker-item">AVG OCC <strong>74%</strong> <span class="tick-up">MKT 61%</span></span>
-          <span class="ticker-item">MPI 30D <strong>1.32</strong> <span class="tick-up">OUTPERFORMING</span></span>
-          <span class="ticker-item">2BR MARINA ADR <strong>AED 920</strong> · FLOOR <strong>AED 680</strong></span>
-          <span class="ticker-item">1BR JBR <span class="tick-warn">3 UNSOLD NIGHTS MON–WED</span></span>
-          <span class="ticker-item">PRICELABS <span class="tick-up">VERIFIED DAILY</span></span>
-          <span class="ticker-item">BRIEFING DAILY <strong>09:45 GST</strong> ON YOUR PHONE</span>
-          <span class="ticker-item">FLOOR PRICES <span class="tick-up">PROTECTED</span></span>
+        <div class="dfeed-group">
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Marina</span><span class="dc-badge dc-badge--ok">Approved in Telegram</span></p><p class="dc-name">Marina Loft &middot; 3 nights reopened</p><p class="dc-rate"><s>AED 740</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>AED 710</strong><span class="dc-note">est. payout stays above floor</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; JBR</span><span class="dc-badge dc-badge--wait">Proposed</span></p><p class="dc-name">1BR JBR &middot; weekend filling 12 days out</p><p class="dc-rate"><s>AED 620</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>AED 665</strong><span class="dc-note">waiting for approval</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Downtown</span><span class="dc-badge dc-badge--hold">Held at floor</span></p><p class="dc-name">Studio Downtown &middot; last-minute gap</p><p class="dc-rate"><strong>AED 480</strong><span class="dc-note">a cut would go below the floor</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">ROM &middot; Trastevere</span><span class="dc-badge dc-badge--ok">Approved</span></p><p class="dc-name">2BR Trastevere &middot; event week</p><p class="dc-rate"><s>EUR 210</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>EUR 245</strong><span class="dc-note">read back from PriceLabs</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">DXB &middot; Business Bay</span><span class="dc-badge dc-badge--hold">No further cut</span></p><p class="dc-name">2BR Business Bay &middot; discount already on</p><p class="dc-rate"><strong>AED 560</strong><span class="dc-note">10% last-minute already active</span></p></div>
+          <div class="dcard"><p class="dc-top"><span class="dc-area">MIL &middot; Navigli</span><span class="dc-badge dc-badge--wait">Proposed</span></p><p class="dc-name">1BR Navigli &middot; 2 orphan nights</p><p class="dc-rate"><s>EUR 150</s><span class="dc-arrow" aria-hidden="true">&rarr;</span><strong>EUR 132</strong><span class="dc-note">waiting for approval</span></p></div>
         </div>
       </div>
     </div>
@@ -3413,26 +3466,36 @@ html { scroll-padding-top: 114px; }
         <p class="wf-ribbon"><span class="dot dot--amber" aria-hidden="true"></span>Example &middot; fictional property &middot; example figures</p>
       </div>
 
-      <div class="wf-stage">
+      <div class="wf-player" hidden>
+        <ol class="wf-dots">
+          <li><button type="button" data-wf-go="1"><span>1</span><em>Booking cancels</em></button></li>
+          <li><button type="button" data-wf-go="2"><span>2</span><em>Review</em></button></li>
+          <li><button type="button" data-wf-go="3"><span>3</span><em>Choose</em></button></li>
+          <li><button type="button" data-wf-go="4"><span>4</span><em>Recorded</em></button></li>
+          <li><button type="button" data-wf-go="5"><span>5</span><em>Owner sees</em></button></li>
+        </ol>
+        <button type="button" class="wf-replay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Replay</button>
+      </div>
+      <div class="wf-stage" data-wf>
         <figure class="wf-fig reveal">
           <div class="wf-dash">
             <div class="wf-dash-bar"><span class="dot dot--green" aria-hidden="true"></span><span class="wf-dash-title">Harbour Stays &middot; Marina Loft</span><span class="wf-dash-stamp">Example data</span></div>
             <div class="wf-kpis">
-              <div class="wf-kpi"><p class="wf-kpi-l">Reopened nights</p><p class="wf-kpi-v">3</p><p class="wf-kpi-d">24 to 26 Nov</p></div>
-              <div class="wf-kpi"><p class="wf-kpi-l">Guest price</p><p class="wf-kpi-v">AED 639</p><p class="wf-kpi-d">was AED 666</p></div>
-              <div class="wf-kpi"><p class="wf-kpi-l">Local set median</p><p class="wf-kpi-v">AED 690</p><p class="wf-kpi-d">6 listings observed</p></div>
-              <div class="wf-kpi"><p class="wf-kpi-l">Est. payout</p><p class="wf-kpi-v">AED 540</p><p class="wf-kpi-d">per night &middot; floor AED 520</p></div>
+              <div class="wf-kpi" data-wf-step="1"><p class="wf-kpi-l">Reopened nights</p><p class="wf-kpi-v">3</p><p class="wf-kpi-d">24 to 26 Nov</p></div>
+              <div class="wf-kpi" data-wf-step="2"><p class="wf-kpi-l">Guest price</p><p class="wf-kpi-v" data-wf-num data-from="666" data-to="639">AED 639</p><p class="wf-kpi-d" data-wf-sub data-before="after the 10% discount" data-after="was AED 666">was AED 666</p></div>
+              <div class="wf-kpi" data-wf-step="2"><p class="wf-kpi-l">Local set median</p><p class="wf-kpi-v">AED 690</p><p class="wf-kpi-d">6 listings observed</p></div>
+              <div class="wf-kpi" data-wf-step="2"><p class="wf-kpi-l">Est. payout</p><p class="wf-kpi-v" data-wf-num data-from="563" data-to="540">AED 540</p><p class="wf-kpi-d">per night &middot; floor AED 520</p></div>
             </div>
             <p class="wf-log-title">Decision record</p>
             <ol class="wf-log">
-              <li><span class="wf-t">09:02</span><span>Cancellation picked up. 3 nights reopened.</span></li>
-              <li><span class="wf-t">09:02</span><span>Discount check: last-minute 10% recorded as on.</span></li>
-              <li><span class="wf-t">09:14</span><span>AED 740 to AED 710 approved in Telegram by the revenue manager.</span></li>
-              <li><span class="wf-t">09:14</span><span>PriceLabs read back: AED 710 confirmed for 24 to 26 Nov. Channel sync runs separately.</span></li>
-              <li><span class="wf-t">After</span><span>The owner sees this record in their own dashboard.</span></li>
+              <li data-wf-step="1"><span class="wf-t">09:02</span><span>Cancellation picked up. 3 nights reopened.</span></li>
+              <li data-wf-step="1"><span class="wf-t">09:02</span><span>Discount check: last-minute 10% recorded as on.</span></li>
+              <li data-wf-step="3"><span class="wf-t">09:14</span><span>AED 740 to AED 710 approved in Telegram by the revenue manager.</span></li>
+              <li data-wf-step="4"><span class="wf-t">09:14</span><span>PriceLabs read back: AED 710 confirmed for 24 to 26 Nov. Channel sync runs separately.</span></li>
+              <li data-wf-step="5"><span class="wf-t">After</span><span>The owner sees this record in their own dashboard.</span></li>
             </ol>
-            <p class="wf-log-title">Why AED 710, and not lower</p>
-            <ul class="wf-why">
+            <p class="wf-log-title" data-wf-step="2">Why AED 710, and not lower</p>
+            <ul class="wf-why" data-wf-step="2">
               <li>The guest price is already under the local median of AED 690.</li>
               <li>A 10% discount is already on, so any cut stacks on top of it.</li>
               <li>At AED 710 the estimated payout stays AED 20 above the floor.</li>
@@ -3447,8 +3510,8 @@ html { scroll-padding-top: 114px; }
               <span class="wf-notch" aria-hidden="true"></span>
               <div class="wf-top"><span class="wf-av" aria-hidden="true">RL</span><div><p class="wf-name">ORL Revenue Assistant</p><p class="wf-status"><span class="dot dot--green" aria-hidden="true"></span>Telegram</p></div></div>
               <div class="wf-feed">
-                <div class="wf-msg"><b>Cancellation &middot; Marina Loft</b><br>3 nights reopened: Tue 24 to Thu 26 Nov</div>
-                <div class="wf-msg">
+                <div class="wf-msg" data-wf-step="1"><b>Cancellation &middot; Marina Loft</b><br>3 nights reopened: Tue 24 to Thu 26 Nov</div>
+                <div class="wf-msg" data-wf-step="2">
                   <p class="wf-card-title">Review before you act</p>
                   <p class="wf-kv"><span>Price now</span><span>AED 740</span></p>
                   <p class="wf-kv"><span>Discount on record</span><span>Last-minute 10%</span></p>
@@ -3457,9 +3520,9 @@ html { scroll-padding-top: 114px; }
                   <p class="wf-kv"><span>Est. payout</span><span>AED 563 &middot; floor 520</span></p>
                   <p class="wf-prop"><b>Proposal:</b> AED 710 for 24 to 26 Nov. Guest pays AED 639, est. payout AED 540.</p>
                 </div>
-                <div class="wf-btns" aria-hidden="true"><span class="wf-btn wf-btn--go">Apply AED 710</span><span class="wf-btn">Edit</span><span class="wf-btn">Cancel</span></div>
-                <div class="wf-msg wf-msg--ok"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Saved and verified in PriceLabs</b><br>AED 710 &times; 3 nights. Channel sync happens separately.</div>
-                <div class="wf-btns wf-btns--one" aria-hidden="true"><span class="wf-btn">Undo</span></div>
+                <div class="wf-btns" data-wf-step="2" data-wf-actions aria-hidden="true"><span class="wf-btn wf-btn--go">Apply AED 710</span><span class="wf-btn">Edit</span><span class="wf-btn">Cancel</span></div>
+                <div class="wf-msg wf-msg--ok" data-wf-step="4"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Saved and verified in PriceLabs</b><br>AED 710 &times; 3 nights. Channel sync happens separately.</div>
+                <div class="wf-btns wf-btns--one" data-wf-step="4" aria-hidden="true"><span class="wf-btn">Undo</span></div>
               </div>
             </div>
           </div>
@@ -5950,6 +6013,61 @@ html { scroll-padding-top: 114px; }
     });
   });
   select(tabs[0], false);
+})();
+</script>
+
+<script>
+/* #workflow player. The page is complete without it; with reduced motion it
+   never starts. On first scroll into view it rewinds and plays once, then
+   rests on the final state. Dots jump to a step, Replay starts again. */
+(function () {
+  var sec = document.getElementById('workflow');
+  if (!sec) return;
+  var stage = sec.querySelector('[data-wf]'), player = sec.querySelector('.wf-player');
+  if (!stage || !player || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var all = function (q) { return Array.prototype.slice.call(sec.querySelectorAll(q)); };
+  var parts = all('[data-wf-step]'), cards = all('.wf-step'), dots = all('[data-wf-go]');
+  var nums = all('[data-wf-num]'), subs = all('[data-wf-sub]');
+  var go = sec.querySelector('.wf-btn--go'), actions = sec.querySelector('[data-wf-actions]');
+  var AT = [0, 1500, 4300, 5700, 8300], timers = [];
+  function setNum(el, v) { el.textContent = 'AED ' + Math.round(v); }
+  function tween(el, from, to) {
+    var t0 = performance.now();
+    (function frame(t) {
+      var k = Math.min(1, (t - t0) / 700);
+      setNum(el, from + (to - from) * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+  function show(n, animate) {
+    parts.forEach(function (p) { p.classList.toggle('is-on', +p.getAttribute('data-wf-step') <= n); });
+    cards.forEach(function (c, i) { c.classList.toggle('is-current', i + 1 === n); });
+    dots.forEach(function (d, i) {
+      if (i + 1 === n) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+      d.classList.toggle('is-done', i + 1 < n);
+    });
+    if (go) go.classList.toggle('is-pressed', n === 3);
+    if (actions) actions.classList.toggle('is-spent', n >= 4);
+    nums.forEach(function (el) {
+      var from = +el.getAttribute('data-from'), to = +el.getAttribute('data-to');
+      if (n >= 4) { if (animate && el.getAttribute('data-state') === 'before') tween(el, from, to); else setNum(el, to); el.setAttribute('data-state', 'after'); }
+      else { setNum(el, from); el.setAttribute('data-state', 'before'); }
+    });
+    subs.forEach(function (el) { el.textContent = el.getAttribute(n >= 4 ? 'data-after' : 'data-before'); });
+  }
+  function stop() { timers.forEach(clearTimeout); timers = []; }
+  function play() {
+    stop(); show(0, false);
+    AT.forEach(function (ms, i) { timers.push(setTimeout(function () { show(i + 1, true); }, ms + 350)); });
+  }
+  stage.classList.add('wf-live'); player.hidden = false; show(5, false);
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { stop(); show(i + 1, true); }); });
+  player.querySelector('.wf-replay').addEventListener('click', play);
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); play(); } });
+  }, { threshold: 0.2 });
+  io.observe(stage);
 })();
 </script>
 </body>
