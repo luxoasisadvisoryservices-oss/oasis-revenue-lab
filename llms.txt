@@ -14,7 +14,7 @@ Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, regist
 ## Services
 
 - [Managed Revenue](https://www.oasisrevenuelab.com/#hybrid): a management fee, quoted on the property or portfolio. ORL's revenue managers own the pricing strategy and bring the client the decisions, with the evidence behind them. The Revenue Agent workspace is included.
-- [Revenue Agent](https://www.oasisrevenuelab.com/#features): a software fee per property, per month. The workspace and AI assistance on the client's own property or portfolio. It proposes with the evidence and the client approves.
+- [Revenue Agent](https://www.oasisrevenuelab.com/#pricing): a software fee per property, per month. The workspace and AI assistance on the client's own property or portfolio. It proposes with the evidence and the client approves.
 - [Pricing](https://www.oasisrevenuelab.com/#pricing): the three offers side by side.
 - Consultancy: one focused engagement, quoted separately, covering PriceLabs setup or review, floor price architecture per unit, and seasonal, event and minimum-stay strategy.
 - [Listings and Direct Booking](https://www.oasisrevenuelab.com/#listings): listing optimisation and a direct booking site connected to the client's PMS, built with structured data and semantic markup.
@@ -24,8 +24,8 @@ Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, regist
 
 - [A worked example](https://www.oasisrevenuelab.com/#workflow): a booking cancels, the manager reviews the guest price, comparable listings and estimated payout, approves a change in Telegram or on the dashboard, and ORL records what PriceLabs confirmed. Fictional property, example figures.
 - [What the system reads](https://www.oasisrevenuelab.com/#intelligence): Airbnb search observed daily, market reference rates, the client's own reservation feed from the connected PMS, Airbnb and Booking.com campaign catalogues, events near each property, and regional news and conditions affecting demand.
-- [Price changes from Telegram](https://www.oasisrevenuelab.com/#telegram-control): select the property, type the change, review the exact dates, currency and before-and-after price, tap Apply, and ORL reads PriceLabs back and reports the result.
-- [The workspace](https://www.oasisrevenuelab.com/#product): portfolio performance, forecasts, goals and pace, OTA campaign assessment, events, reports and a persona profile that tunes the agent to the client's risk appetite and rules.
+- [Price changes from Telegram](https://www.oasisrevenuelab.com/#workflow): select the property, type the change, review the exact dates, currency and before-and-after price, tap Apply, and ORL reads PriceLabs back and reports the result.
+- The workspace: portfolio performance, forecasts, goals and pace, OTA campaign assessment, events, reports and a persona profile that tunes the agent to the client's risk appetite and rules.
 - [Frequently asked questions](https://www.oasisrevenuelab.com/#faq)
 
 ## Limits worth stating accurately
