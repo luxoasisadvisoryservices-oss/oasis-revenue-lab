@@ -2,7 +2,7 @@
 
 > Revenue management for short-term rentals. Revenue managers build and run the pricing strategy, supported by one connected workspace and Oasis Revenue Lab's own AI revenue agent. Built from hands-on Dubai holiday-home operations, active in Europe, designed for short-term rental businesses worldwide.
 
-Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, registered in the Sharjah Free Zone, UAE. There are three kinds of fee: a software fee per property per month for the Revenue Agent, a management fee for Managed Revenue, and an individually quoted assisted pilot for agencies. Figures are confirmed in writing on enquiry.
+Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, registered in the Sharjah Free Zone, UAE. There are three kinds of fee: a software fee per property per month for the Revenue Agent (published, from AED 89), a management fee for Managed Revenue (quoted), and an individually quoted assisted pilot for agencies. Prices exclude VAT.
 
 ## Who it is for
 
@@ -14,8 +14,8 @@ Oasis Revenue Lab (ORL) is operated by Lux Oasis Advisory & Services LLC, regist
 ## Services
 
 - [Managed Revenue](https://www.oasisrevenuelab.com/#hybrid): a management fee, quoted on the property or portfolio. ORL's revenue managers own the pricing strategy and bring the client the decisions, with the evidence behind them. The Revenue Agent workspace is included.
-- [Revenue Agent](https://www.oasisrevenuelab.com/#pricing): a software fee per property, per month. The workspace and AI assistance on the client's own property or portfolio. It proposes with the evidence and the client approves.
-- [Pricing](https://www.oasisrevenuelab.com/#pricing): the three offers side by side.
+- [Revenue Agent](https://www.oasisrevenuelab.com/#pricing): a software fee per property, per month. The workspace and AI assistance on the client's own property or portfolio. It proposes with the evidence and the client approves. Graduated pricing: AED 89 each for properties 1 to 5, AED 79 each for properties 6 to 10, AED 69 each for properties 11 to 25, AED 59 each for properties 26 to 50, AED 49 each for properties 51 to 100. More than 100 properties is Enterprise pricing, agreed on the portfolio. Examples: 10 properties cost AED 840 per month, 25 cost AED 1,875, 50 cost AED 3,350. The same list is published in euros (from €22) and US dollars (from $24).
+- [Pricing](https://www.oasisrevenuelab.com/#pricing): a price calculator for the Revenue Agent by number of properties, in AED, EUR and USD, and the three offers side by side.
 - Consultancy: one focused engagement, quoted separately, covering PriceLabs setup or review, floor price architecture per unit, and seasonal, event and minimum-stay strategy.
 - [Listings and Direct Booking](https://www.oasisrevenuelab.com/#listings): listing optimisation and a direct booking site connected to the client's PMS, built with structured data and semantic markup.
 - [ORL for Revenue Teams](https://www.oasisrevenuelab.com/#revenue-teams): an assisted agency pilot, quoted individually, not self-service. Revenue managers and agencies run several clients in one workspace, switch between portfolios and approve changes from Telegram, and each owner gets private access to their own dashboard and reporting. A licence to use the software, not a sale of it.

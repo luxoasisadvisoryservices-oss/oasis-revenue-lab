@@ -2934,6 +2934,53 @@ html { scroll-padding-top: 114px; }
   .svc-chips li { font-size: 12.8px; padding: 7px 12px; }
 }
 
+/* ---------- pricing calculator (Revenue Agent, graduated by portfolio size) ---------- */
+.pc { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 0; border: 1px solid rgba(52,211,153,0.32); border-radius: 18px; background: linear-gradient(180deg, rgba(22,33,58,0.85), rgba(17,26,44,0.85)); margin-bottom: 22px; overflow: hidden; }
+.pc-in { padding: 24px 30px 26px; }
+.pc-out { padding: 28px 30px 26px; border-left: 1px solid var(--hairline); background: rgba(52,211,153,0.05); display: flex; flex-direction: column; }
+.pc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; }
+.pc-curs { display: inline-flex; border: 1px solid var(--hairline-strong); border-radius: 10px; overflow: hidden; flex: 0 0 auto; }
+.pc-cur { min-width: 56px; min-height: 44px; padding: 0 12px; background: transparent; border: 0; border-left: 1px solid var(--hairline-strong); color: var(--muted-dark); font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: background 0.15s var(--ease), color 0.15s var(--ease); }
+.pc-cur:first-child { border-left: 0; }
+.pc-cur:hover { color: #fff; }
+.pc-cur.is-on { background: var(--green); color: #06281C; }
+.pc-cur:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+.pc-q { font-size: 21px; letter-spacing: -0.02em; color: #fff; margin-top: 12px; }
+.pc-count { display: flex; align-items: center; gap: 14px; margin: 16px 0 14px; }
+.pc-step { width: 44px; height: 44px; flex: 0 0 auto; border-radius: 12px; border: 1px solid var(--hairline-strong); background: rgba(255,255,255,0.03); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; font-family: inherit; transition: border-color 0.15s var(--ease), background 0.15s var(--ease); }
+.pc-step:hover { border-color: rgba(52,211,153,0.6); background: rgba(52,211,153,0.08); }
+.pc-step:disabled { opacity: 0.35; cursor: default; }
+.pc-n { font-family: var(--mono); font-size: 34px; font-weight: 600; color: #fff; min-width: 3.4ch; text-align: center; letter-spacing: -0.02em; }
+.pc-range { display: block; height: 6px !important; background: linear-gradient(90deg, var(--green) var(--fill, 0%), rgba(255,255,255,0.14) var(--fill, 0%)) !important; margin: 6px 0 4px; cursor: pointer; }
+.pc-range::-webkit-slider-thumb { width: 26px !important; height: 26px !important; border-color: var(--green) !important; }
+.pc-range::-moz-range-thumb { width: 24px !important; height: 24px !important; border-color: var(--green) !important; }
+.pc-range:focus-visible { outline: 2px solid var(--green); outline-offset: 8px; }
+.pc-bands { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.pc-band { width: 100%; min-height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 8px 4px; border-radius: 10px; border: 1px solid var(--hairline); background: transparent; color: var(--muted-dark); font-family: var(--mono); cursor: pointer; transition: border-color 0.15s var(--ease), background 0.15s var(--ease), color 0.15s var(--ease); }
+.pc-band span { font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+.pc-band b { font-size: 12.5px; font-weight: 600; color: #DFE7F2; white-space: nowrap; }
+.pc-band i { font-style: normal; font-size: 9.5px; letter-spacing: 0.04em; }
+.pc-band:hover { border-color: var(--hairline-strong); }
+.pc-band.is-on { border-color: rgba(52,211,153,0.6); background: rgba(52,211,153,0.10); color: var(--green); }
+.pc-band.is-on b { color: #fff; }
+.pc-band:focus-visible, .pc-step:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.pc-k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-dark); }
+.pc-big { font-size: 46px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; color: #fff; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.pc-total { margin-top: 10px; font-size: 16px; font-weight: 600; color: #E8EDF5; font-variant-numeric: tabular-nums; }
+.pc-split { margin-top: 6px; font-family: var(--mono); font-size: 12px; color: var(--green); min-height: 2.9em; line-height: 1.45; }
+.pc-out .btn { margin-top: 10px; align-self: flex-start; }
+.pc-note { margin-top: 14px; font-size: 12.5px; line-height: 1.5; color: var(--muted-dark); }
+.pc.is-ent .pc-big { font-size: 40px; }
+.hp-price { margin: 10px 0 14px; font-size: 13px; line-height: 1.4; color: var(--muted-dark); }
+.hp-price strong { color: var(--green); font-weight: 600; }
+@media (max-width: 900px) {
+  .pc { grid-template-columns: 1fr; }
+  .pc-out { border-left: 0; border-top: 1px solid var(--hairline); }
+  .pc-in, .pc-out { padding: 22px 18px; }
+  .pc-bands { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pc-big { font-size: 40px; }
+  .pc-out .btn { align-self: stretch; text-align: center; justify-content: center; }
+}
 .tiers--fees { align-items: stretch; }
 .tiers--fees .tier--featured { order: 0; }
 .fee-type { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
@@ -3146,7 +3193,14 @@ html { scroll-padding-top: 114px; }
             "itemOffered": {
               "@type": "Service",
               "name": "Revenue Agent",
-              "description": "Software fee per property, per month. The workspace and AI assistance on your own property or portfolio: daily brief and live dashboard, pricing reviewed against your floor, and price changes applied only on your approval."
+              "description": "Software fee per property, per month, from AED 89 for one property, with a lower rate on each additional property as the portfolio grows. The workspace and AI assistance on your own property or portfolio: daily brief and live dashboard, pricing reviewed against your floor, and price changes applied only on your approval."
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": 89,
+              "priceCurrency": "AED",
+              "unitText": "per property per month",
+              "description": "Starting price for one property, excluding VAT. AED 89 each for properties 1 to 5, AED 79 each for properties 6 to 10, AED 69 each for properties 11 to 25, AED 59 each for properties 26 to 50, AED 49 each for properties 51 to 100. More than 100 properties is Enterprise pricing."
             }
           },
           {
@@ -3188,7 +3242,7 @@ html { scroll-padding-top: 114px; }
       "about": {
         "@id": "https://www.oasisrevenuelab.com/#service"
       },
-      "dateModified": "2026-11-19",
+      "dateModified": "2026-11-23",
       "inLanguage": "en"
     },
     {
@@ -3199,7 +3253,7 @@ html { scroll-padding-top: 114px; }
       "isPartOf": {
         "@id": "https://www.oasisrevenuelab.com/#website"
       },
-      "dateModified": "2026-11-19",
+      "dateModified": "2026-11-23",
       "mainEntity": [
         {
           "@type": "Question",
@@ -3238,7 +3292,7 @@ html { scroll-padding-top: 114px; }
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There are three different fees. The Revenue Agent is a software fee per property, per month. Managed Revenue is a management fee for our revenue managers, quoted on your property or portfolio. ORL for Revenue Teams is an assisted agency pilot, quoted individually. Send your listing link, market and number of properties and we reply with the exact figure and what it covers, in writing, before you start. PriceLabs, your PMS and any optional data services stay payable to those providers."
+            "text": "There are three different fees. The Revenue Agent is a software fee per property, per month, starting at AED 89 for one property. The rate on each additional property falls as the portfolio grows: AED 89 each for properties 1 to 5, AED 79 each for properties 6 to 10, AED 69 each for properties 11 to 25, AED 59 each for properties 26 to 50, AED 49 each for properties 51 to 100. Above 100 properties it is Enterprise pricing, agreed on the portfolio. The same price list is published in euros and US dollars on the pricing calculator, from €22 in euros and $24 in US dollars. Managed Revenue is a management fee for our revenue managers, quoted on your property or portfolio. ORL for Revenue Teams is an assisted agency pilot, quoted individually. All figures exclude VAT. PriceLabs, your PMS and any optional data services stay payable to those providers."
           }
         },
         {
@@ -3399,7 +3453,7 @@ html { scroll-padding-top: 114px; }
       <span>Oasis Revenue Lab<small>Revenue Management</small></span>
     </a>
     <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-      <a href="#workflow">How it works</a>
+      <a href="#hybrid">How it works</a>
       <a href="#revenue-teams">Revenue Teams</a>
       <a href="#pricing">Pricing</a>
       <a class="nav-external" href="https://luxoasisadvisory.com" target="_blank" rel="noopener">Lux Oasis Advisory
@@ -3468,6 +3522,7 @@ html { scroll-padding-top: 114px; }
           <p class="hp-for">For owners and operators</p>
           <h2 class="hp-title" id="hp-owner">One property or your own portfolio</h2>
           <p class="hp-desc">Run it yourself with the Revenue Agent, or have our revenue managers run the strategy for you.</p>
+          <p class="hp-price">Revenue Agent from <strong data-pc-from>AED 89</strong> per property, per month</p>
           <a class="btn btn--primary" href="https://wa.me/971585089283?text=Hi%20ORL%2C%20I%27d%20like%20a%20quote%20for%20my%20property.%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0ANumber%20of%20properties%3A%20%0AI%20want%3A%20software%20only%20%28Revenue%20Agent%29%20or%20hands-on%20management%20%28Managed%20Revenue%29%3F%20" target="_blank" rel="noopener">Get a quote for my property</a>
           <a class="hp-more" href="#pricing">Compare pricing</a>
         </article>
@@ -3476,7 +3531,7 @@ html { scroll-padding-top: 114px; }
           <h2 class="hp-title" id="hp-agency">Several clients, one workspace</h2>
           <p class="hp-desc">Switch between client portfolios, approve changes from Telegram, and give each owner private access and reporting.</p>
           <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%20ORL%2C%20I%27d%20like%20to%20apply%20for%20the%20agency%20pilot%20%28ORL%20for%20Revenue%20Teams%29.%0ACompany%3A%20%0AClient%20portfolios%20I%20manage%3A%20%0ATotal%20properties%3A%20%0AMarkets%3A%20%0APricing%20tool%20and%20PMS%20in%20use%3A%20" target="_blank" rel="noopener">Apply for the agency pilot</a>
-          <a class="hp-more" href="#workflow">See how it works</a>
+          <a class="hp-more" href="#revenue-teams">See how it works for agencies</a>
         </article>
       </div>
       <!-- Credential row. PriceLabs: the official RM Partner badge (same artwork as
@@ -3588,7 +3643,7 @@ html { scroll-padding-top: 114px; }
 <section class="section section--panel rms-section" id="hybrid" aria-labelledby="rms-title">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Path 01 · Managed revenue</p>
+        <p class="eyebrow">How it works</p>
         <h2 id="rms-title">Your revenue strategy, supported by our team.</h2>
         <p class="lead">For property managers, subletting companies and private owners alike, from a single apartment to a full portfolio. You work in your own dashboard. The AI prepares the investigation and the reporting. Certified revenue managers set the strategy, review what the numbers mean and bring you the decisions. You approve anything commercial before it happens.</p>
       </div>
@@ -3907,13 +3962,37 @@ html { scroll-padding-top: 114px; }
       <div class="section-head reveal">
         <p class="eyebrow">Pricing</p>
         <h2 id="pricing-title">What you pay for, and who does the work.</h2>
-        <p class="lead">Three offers, three different kinds of fee. Send your listing and we reply with the exact figure and what it covers, in writing, before you start.</p>
+        <p class="lead">Three offers, three different kinds of fee. The Revenue Agent has a published price that falls as you add properties. Managed Revenue and the agency pilot are quoted on what you manage.</p>
+      </div>
+      <div class="pc reveal" data-pc data-pc-upto='[5, 10, 25, 50, 100]' data-pc-prices='{"AED": [89, 79, 69, 59, 49], "EUR": [22, 20, 17, 15, 12], "USD": [24, 22, 19, 16, 13]}' data-pc-base="AED">
+        <div class="pc-in">
+          <div class="pc-head">
+            <p class="fee-type">Revenue Agent &middot; price by portfolio size</p>
+            <div class="pc-curs" role="group" aria-label="Currency"><button type="button" class="pc-cur is-on" data-pc-cur="AED" aria-pressed="true">AED</button><button type="button" class="pc-cur" data-pc-cur="EUR" aria-pressed="false">EUR</button><button type="button" class="pc-cur" data-pc-cur="USD" aria-pressed="false">USD</button></div>
+          </div>
+          <h3 class="pc-q" id="pc-label">How many properties?</h3>
+          <div class="pc-count">
+            <button type="button" class="pc-step" data-pc-step="-1" aria-label="One property fewer">&minus;</button>
+            <output class="pc-n" data-pc-n for="pc-range">1</output>
+            <button type="button" class="pc-step" data-pc-step="1" aria-label="One property more">+</button>
+          </div>
+          <input class="pc-range" id="pc-range" data-pc-range type="range" min="1" max="101" step="1" value="1" aria-labelledby="pc-label" aria-valuetext="1 property">
+          <ul class="pc-bands" role="list"><li><button type="button" class="pc-band is-on" data-pc-set="1"><span>1 to 5</span><b data-pc-rate="0">AED 89</b><i>each</i></button></li><li><button type="button" class="pc-band" data-pc-set="6"><span>6 to 10</span><b data-pc-rate="1">AED 79</b><i>each</i></button></li><li><button type="button" class="pc-band" data-pc-set="11"><span>11 to 25</span><b data-pc-rate="2">AED 69</b><i>each</i></button></li><li><button type="button" class="pc-band" data-pc-set="26"><span>26 to 50</span><b data-pc-rate="3">AED 59</b><i>each</i></button></li><li><button type="button" class="pc-band" data-pc-set="51"><span>51 to 100</span><b data-pc-rate="4">AED 49</b><i>each</i></button></li><li><button type="button" class="pc-band pc-band--ent" data-pc-set="101"><span>Over 100</span><b>Enterprise</b><i>custom</i></button></li></ul>
+        </div>
+        <div class="pc-out" aria-live="polite">
+          <p class="pc-k" data-pc-k>Per property, per month</p>
+          <p class="pc-big"><span data-pc-avg>AED 89</span></p>
+          <p class="pc-total" data-pc-total>AED 89 per month in total</p>
+          <p class="pc-split" data-pc-split>1 property at AED 89</p>
+          <a class="btn btn--primary" data-pc-cta href="https://wa.me/971585089283?text=Hi%20ORL%2C%20I%27d%20like%20to%20start%20with%20the%20Revenue%20Agent.%0ANumber%20of%20properties%3A%201%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0AI%20already%20use%20PriceLabs%3A%20yes%20%2F%20no%20" target="_blank" rel="noopener">Start with 1 property</a>
+          <p class="pc-note">Software fee for the Revenue Agent. Excludes VAT. PriceLabs and your PMS stay billed to you by those providers. Managed Revenue is quoted on your portfolio.</p>
+        </div>
       </div>
       <div class="tiers tiers--fees">
         <article class="tier reveal" id="price-agent">
           <p class="fee-type">Software fee</p>
           <h3>Revenue Agent</h3>
-          <p class="tier-mode">Per property, per month</p>
+          <p class="tier-mode">From <span data-pc-from>AED 89</span> per property, per month</p>
           <p class="tier-desc">The workspace and the AI assistance on your own property or portfolio. It proposes with the evidence. You approve every change.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily brief and live dashboard</li>
@@ -3921,8 +4000,8 @@ html { scroll-padding-top: 114px; }
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Price changes from Telegram, applied on your approval</li>
           </ul>
           <p class="tier-bill"><strong>How it is billed.</strong> One monthly fee per property, stated up front with any setup charge. PriceLabs and your PMS stay billed to you by those providers.</p>
-          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%20ORL%2C%20I%27d%20like%20the%20monthly%20price%20for%20the%20Revenue%20Agent%20on%20one%20property.%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0AI%20already%20use%20PriceLabs%3A%20yes%20%2F%20no%20" target="_blank" rel="noopener">Get my one-property price</a>
-          <a class="tier-or" href="mailto:oasisrevenuelab@luxoasisadvisory.com?subject=Revenue%20Agent%20price%20for%20one%20property&amp;body=Hi%20ORL%2C%20I%27d%20like%20the%20monthly%20price%20for%20the%20Revenue%20Agent%20on%20one%20property.%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0AI%20already%20use%20PriceLabs%3A%20yes%20%2F%20no%20">or ask by email</a>
+          <a class="btn btn--ghost" href="https://wa.me/971585089283?text=Hi%20ORL%2C%20I%27d%20like%20to%20start%20with%20the%20Revenue%20Agent.%0ANumber%20of%20properties%3A%201%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0AI%20already%20use%20PriceLabs%3A%20yes%20%2F%20no%20" target="_blank" rel="noopener">Start with the Revenue Agent</a>
+          <a class="tier-or" href="mailto:oasisrevenuelab@luxoasisadvisory.com?subject=Start%20with%20the%20Revenue%20Agent&amp;body=Hi%20ORL%2C%20I%27d%20like%20to%20start%20with%20the%20Revenue%20Agent.%0ANumber%20of%20properties%3A%201%0AListing%20link%3A%20%0AMarket%20%2F%20area%3A%20%0AI%20already%20use%20PriceLabs%3A%20yes%20%2F%20no%20">or ask by email</a>
         </article>
         <article class="tier tier--featured reveal" style="--reveal-delay:60ms" id="price-managed">
           <p class="tier-flag">Most operators start here</p>
@@ -4252,7 +4331,7 @@ html { scroll-padding-top: 114px; }
         </details>
         <details class="faq-item">
           <summary>How much does it cost?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p class="faq-answer">There are three different fees. The Revenue Agent is a software fee per property, per month. Managed Revenue is a management fee for our revenue managers, quoted on your property or portfolio. ORL for Revenue Teams is an assisted agency pilot, quoted individually. Send your listing link, market and number of properties and we reply with the exact figure and what it covers, in writing, before you start. PriceLabs, your PMS and any optional data services stay payable to those providers.</p>
+          <p class="faq-answer">There are three different fees. The Revenue Agent is a software fee per property, per month, starting at AED 89 for one property. The rate on each additional property falls as the portfolio grows: AED 89 each for properties 1 to 5, AED 79 each for properties 6 to 10, AED 69 each for properties 11 to 25, AED 59 each for properties 26 to 50, AED 49 each for properties 51 to 100. Above 100 properties it is Enterprise pricing, agreed on the portfolio. The same price list is published in euros and US dollars on the pricing calculator, from €22 in euros and $24 in US dollars. Managed Revenue is a management fee for our revenue managers, quoted on your property or portfolio. ORL for Revenue Teams is an assisted agency pilot, quoted individually. All figures exclude VAT. PriceLabs, your PMS and any optional data services stay payable to those providers.</p>
         </details>
                 <details class="faq-item">
           <summary>Can I use ORL inside my own revenue-management business?<span class="faq-q-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -5651,6 +5730,104 @@ html { scroll-padding-top: 114px; }
     inView = entries[entries.length - 1].isIntersecting;
     if (inView && !playing) play();
   }, { threshold: 0.25 }).observe(root);
+})();
+</script>
+<script>
+/* Pricing calculator. The price lists live in data attributes on the element,
+   so the page and the script can never disagree. Each currency has its own
+   fixed list; nothing is converted. The starting currency is a guess from the
+   browser's time zone (no lookup, nothing stored) and the switch stays visible.
+   Without this script the page shows the one-property price and the band list. */
+(function () {
+  var root = document.querySelector("[data-pc]");
+  if (!root) return;
+  var UPTO = JSON.parse(root.getAttribute("data-pc-upto"));
+  var PRICES = JSON.parse(root.getAttribute("data-pc-prices"));
+  var SYM = { AED: "AED ", EUR: "€", USD: "$" };
+  var MAX = UPTO[UPTO.length - 1];
+  var cur = root.getAttribute("data-pc-base");
+  var range = root.querySelector("[data-pc-range]"), nOut = root.querySelector("[data-pc-n]");
+  var kEl = root.querySelector("[data-pc-k]"), avgEl = root.querySelector("[data-pc-avg]");
+  var totEl = root.querySelector("[data-pc-total]"), splitEl = root.querySelector("[data-pc-split]");
+  var cta = root.querySelector("[data-pc-cta]"), pills = root.querySelectorAll("[data-pc-set]");
+  var steps = root.querySelectorAll("[data-pc-step]"), curBtns = root.querySelectorAll("[data-pc-cur]");
+  var rateEls = root.querySelectorAll("[data-pc-rate]"), fromEls = document.querySelectorAll("[data-pc-from]");
+  var WA = "https://wa.me/971585089283?text=";
+  function m(v) {
+    var whole = Math.abs(v - Math.round(v)) < 0.05 || v >= 100;
+    return SYM[cur] + v.toLocaleString("en-GB", { minimumFractionDigits: 0, maximumFractionDigits: whole ? 0 : 1 });
+  }
+  function cost(n) {
+    var t = 0, prev = 0, parts = [], rates = PRICES[cur];
+    for (var i = 0; i < UPTO.length; i++) {
+      var k = Math.min(n, UPTO[i]) - prev;
+      if (k > 0) { t += k * rates[i]; parts.push(k + " at " + m(rates[i])); }
+      prev = UPTO[i];
+    }
+    return { total: t, parts: parts };
+  }
+  try {
+    var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "");
+    var gulf = ["Asia/Dubai", "Asia/Muscat", "Asia/Riyadh", "Asia/Qatar", "Asia/Bahrain", "Asia/Kuwait"];
+    if (gulf.indexOf(tz) >= 0) cur = "AED";
+    else if (tz.indexOf("Europe/") === 0) cur = "EUR";
+    else if (tz) cur = "USD";
+    if (!PRICES[cur]) cur = root.getAttribute("data-pc-base");
+  } catch (e) {}
+  function render() {
+    var n = parseInt(range.value, 10), ent = n > MAX, rates = PRICES[cur];
+    range.style.setProperty("--fill", ((n - 1) / MAX * 100) + "%");
+    root.classList.toggle("is-ent", ent);
+    steps[0].disabled = n <= 1; steps[1].disabled = ent;
+    for (var i = 0; i < pills.length; i++) {
+      var from = parseInt(pills[i].getAttribute("data-pc-set"), 10);
+      var to = i + 1 < pills.length ? parseInt(pills[i + 1].getAttribute("data-pc-set"), 10) - 1 : Infinity;
+      var on = n >= from && n <= to;
+      pills[i].classList.toggle("is-on", on);
+      pills[i].setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    for (var r = 0; r < rateEls.length; r++) rateEls[r].textContent = m(rates[parseInt(rateEls[r].getAttribute("data-pc-rate"), 10)]);
+    for (var c = 0; c < curBtns.length; c++) {
+      var isOn = curBtns[c].getAttribute("data-pc-cur") === cur;
+      curBtns[c].classList.toggle("is-on", isOn);
+      curBtns[c].setAttribute("aria-pressed", isOn ? "true" : "false");
+    }
+    for (var q = 0; q < fromEls.length; q++) fromEls[q].textContent = m(rates[0]);
+    if (ent) {
+      nOut.textContent = MAX + "+";
+      range.setAttribute("aria-valuetext", "More than " + MAX + " properties");
+      kEl.textContent = "More than " + MAX + " properties";
+      avgEl.textContent = "Enterprise";
+      totEl.textContent = "Custom pricing, agreed on your portfolio";
+      splitEl.textContent = "Volume rate, onboarding and support scope set together.";
+      cta.textContent = "Talk to us about Enterprise";
+      cta.href = WA + encodeURIComponent("Hi ORL, I manage more than " + MAX + " properties and would like Enterprise pricing.\nCompany: \nNumber of properties: \nMarkets: \nPricing tool and PMS in use: ");
+      return;
+    }
+    var x = cost(n), word = n === 1 ? "property" : "properties";
+    nOut.textContent = n;
+    range.setAttribute("aria-valuetext", n + " " + word);
+    kEl.textContent = n === 1 ? "Per property, per month" : "Average per property, per month";
+    avgEl.textContent = m(x.total / n);
+    totEl.textContent = m(x.total) + " per month in total";
+    splitEl.textContent = n === 1 ? "1 property at " + m(rates[0]) : x.parts.join(" + ");
+    cta.textContent = "Start with " + n + " " + word;
+    cta.href = WA + encodeURIComponent("Hi ORL, I'd like to start with the Revenue Agent.\nNumber of properties: " + n + "\nCalculator price: " + cur + " " + x.total.toLocaleString("en-GB") + " per month before VAT\nListing links: \nMarket / area: \nI already use PriceLabs: yes / no ");
+  }
+  range.addEventListener("input", render);
+  Array.prototype.forEach.call(pills, function (b) {
+    b.addEventListener("click", function () { range.value = b.getAttribute("data-pc-set"); render(); });
+  });
+  Array.prototype.forEach.call(steps, function (b) {
+    b.addEventListener("click", function () {
+      var v = parseInt(range.value, 10) + parseInt(b.getAttribute("data-pc-step"), 10);
+      range.value = Math.max(1, Math.min(MAX + 1, v)); render();
+    });
+  });
+  Array.prototype.forEach.call(curBtns, function (b) {
+    b.addEventListener("click", function () { cur = b.getAttribute("data-pc-cur"); render(); });
+  });
+  render();
 })();
 </script>
 </body>
